@@ -1,6 +1,5 @@
 # mefocus
 Final project
-Focus app (name?)
 
 Description: an app that encourage users to not using their cell phones for a while to stay focus on whatever they want to do: learning, working, going out, playing with friends,…
 
