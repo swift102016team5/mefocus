@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F201AEE5C443D292E2C4D79A7EBD36AB2A988E89",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F201AEE5C443D292E2C4D79A7EBD36AB2A988E89" : 9223372036854775807,
+    "88C5D1AB1006A69E09841E46D3095A6E207E3C57" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1655B546-F160-45C5-A42F-F1DCC99ECACD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F201AEE5C443D292E2C4D79A7EBD36AB2A988E89" : "mefocus-master\/",
+    "88C5D1AB1006A69E09841E46D3095A6E207E3C57" : "..\/..\/.."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MeFocus",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MeFocus\/MeFocus.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:nongdenchet\/ios_swift_sample.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "88C5D1AB1006A69E09841E46D3095A6E207E3C57"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/swift102016team5\/mefocus.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F201AEE5C443D292E2C4D79A7EBD36AB2A988E89"
+    }
+  ]
+}

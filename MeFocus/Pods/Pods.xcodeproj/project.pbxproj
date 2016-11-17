@@ -7,39 +7,85 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8362349697F366BD43B405938F945B74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		F1CD9C9DD870991260FEC77D7A016141 /* Pods-MeFocus-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D86026F42D3715FD40624D1C103235D /* Pods-MeFocus-dummy.m */; };
-		FCCC5324B1F96F45B9FC59D8C020C325 /* Pods-MeFocus-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 337F04E8C8BEB8E9AC8FE7908AF1043A /* Pods-MeFocus-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0555B537C23CF2F3F29259A55EC98E61 /* CircularSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C970EF2977353005EF2E7A8664D47CB2 /* CircularSlider.swift */; };
+		3FB8535D7C6FBDE6797D682ED3D72341 /* HGCircularSlider-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E69663721F03E0FC6CEE11919ACF487D /* HGCircularSlider-dummy.m */; };
+		4C740487423B3C4D501860328702154E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		6BD3A9751D15ACF37615098532E6FF30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		A204749CAA1B9E4F36F7298CF493DA42 /* CircularSliderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2F80D8409C9B3C5133D26EB2E17E75 /* CircularSliderHelper.swift */; };
+		BF4B9C91B792B6FDD33516D2455F73B9 /* Pods-MeFocus-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 337F04E8C8BEB8E9AC8FE7908AF1043A /* Pods-MeFocus-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CACC3A990B9D3F31961959A96254E359 /* Pods-MeFocus-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D86026F42D3715FD40624D1C103235D /* Pods-MeFocus-dummy.m */; };
+		D421901FE8A491413BEF469FD8168877 /* CircularSlider+Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790A3CEA9CC9BDD1BFEF331D5EBB60E0 /* CircularSlider+Draw.swift */; };
+		EA8CD8794EB3DDDA05FA5543EE7FE703 /* MidPointCircularSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A489361CBC1A264C98912BE4BA8138 /* MidPointCircularSlider.swift */; };
+		EB43A1F1BCFBE006613A1535EF2BE270 /* RangeCircularSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85479D1B8237FCF057B16E87609E0A33 /* RangeCircularSlider.swift */; };
+		F1EC309E29C7CD4CE03F20210FB59EC9 /* HGCircularSlider-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9515F1D4635905B16C0C7AF9DB864136 /* HGCircularSlider-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EAA0FFA9CB3B3CFA7906BC00C5417B48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 62374D10486D54E4DFA95DFEFF383085;
+			remoteInfo = HGCircularSlider;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0D77A5A1099685FECCBC1C10DBFB4DC8 /* Pods-MeFocus-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MeFocus-acknowledgements.plist"; sourceTree = "<group>"; };
 		0D86026F42D3715FD40624D1C103235D /* Pods-MeFocus-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MeFocus-dummy.m"; sourceTree = "<group>"; };
+		1A6D7AA1CDACBF26284AA3E444605C78 /* Pods_MeFocus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeFocus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		23F0CAEB6C469CE87850BC2B2F6DAC50 /* HGCircularSlider.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = HGCircularSlider.modulemap; sourceTree = "<group>"; };
+		254DF51F70C7AC32AB98CC491686C604 /* HGCircularSlider.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HGCircularSlider.xcconfig; sourceTree = "<group>"; };
 		337F04E8C8BEB8E9AC8FE7908AF1043A /* Pods-MeFocus-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MeFocus-umbrella.h"; sourceTree = "<group>"; };
+		471008D0805586845C56053A82776EBC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A7E056A77372A668E90FB412FF9ED62 /* HGCircularSlider-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HGCircularSlider-prefix.pch"; sourceTree = "<group>"; };
+		5A2F80D8409C9B3C5133D26EB2E17E75 /* CircularSliderHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CircularSliderHelper.swift; path = HGCircularSlider/Classes/CircularSliderHelper.swift; sourceTree = "<group>"; };
 		5D2996314E0C9AFF7DA019F72D572A6E /* Pods-MeFocus-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MeFocus-frameworks.sh"; sourceTree = "<group>"; };
+		790A3CEA9CC9BDD1BFEF331D5EBB60E0 /* CircularSlider+Draw.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CircularSlider+Draw.swift"; path = "HGCircularSlider/Classes/CircularSlider+Draw.swift"; sourceTree = "<group>"; };
 		83CAFEFB2C4DD0C5F0BDD48751D82BF2 /* Pods-MeFocus-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MeFocus-acknowledgements.markdown"; sourceTree = "<group>"; };
+		85479D1B8237FCF057B16E87609E0A33 /* RangeCircularSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RangeCircularSlider.swift; path = HGCircularSlider/Classes/RangeCircularSlider.swift; sourceTree = "<group>"; };
 		907E0A53CADA9D14CA5E4401F74FABBD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9515F1D4635905B16C0C7AF9DB864136 /* HGCircularSlider-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HGCircularSlider-umbrella.h"; sourceTree = "<group>"; };
+		C2A489361CBC1A264C98912BE4BA8138 /* MidPointCircularSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MidPointCircularSlider.swift; path = HGCircularSlider/Classes/MidPointCircularSlider.swift; sourceTree = "<group>"; };
+		C970EF2977353005EF2E7A8664D47CB2 /* CircularSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CircularSlider.swift; path = HGCircularSlider/Classes/CircularSlider.swift; sourceTree = "<group>"; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D3F806F318538746216E86AF661A81D7 /* Pods-MeFocus.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MeFocus.modulemap"; sourceTree = "<group>"; };
 		E05A70BA886C0E24A786FE3757B9B61F /* Pods-MeFocus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeFocus.debug.xcconfig"; sourceTree = "<group>"; };
+		E5CB6A4AAFE2D6E02793DA88027854E1 /* HGCircularSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HGCircularSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E69663721F03E0FC6CEE11919ACF487D /* HGCircularSlider-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HGCircularSlider-dummy.m"; sourceTree = "<group>"; };
 		E9B93F0029FD47751AE3CEB5F1DE155F /* Pods-MeFocus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeFocus.release.xcconfig"; sourceTree = "<group>"; };
 		ED38A018A3F53AC170BB78413BB84EDE /* Pods-MeFocus-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MeFocus-resources.sh"; sourceTree = "<group>"; };
-		FA0C4975EF44AD5A178CA154159AB9D2 /* Pods_MeFocus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeFocus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		885392E3C2364CC04CE9B85FD6726C0D /* Frameworks */ = {
+		7DFDABB157AD03228BB42DDB7EA6C386 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8362349697F366BD43B405938F945B74 /* Foundation.framework in Frameworks */,
+				6BD3A9751D15ACF37615098532E6FF30 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0EEACD02A563D4F632B925494F2BABC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C740487423B3C4D501860328702154E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3322541322DCCC1DB9249064C30DE829 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5DD99463E6F90422ACFE7492C920FC55 /* HGCircularSlider */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -48,10 +94,38 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		4EFC93EE3CD0D7347D3B1BF723D7E261 /* Products */ = {
+		52FE24C46760021674EBCB4900E65744 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				FA0C4975EF44AD5A178CA154159AB9D2 /* Pods_MeFocus.framework */,
+				23F0CAEB6C469CE87850BC2B2F6DAC50 /* HGCircularSlider.modulemap */,
+				254DF51F70C7AC32AB98CC491686C604 /* HGCircularSlider.xcconfig */,
+				E69663721F03E0FC6CEE11919ACF487D /* HGCircularSlider-dummy.m */,
+				4A7E056A77372A668E90FB412FF9ED62 /* HGCircularSlider-prefix.pch */,
+				9515F1D4635905B16C0C7AF9DB864136 /* HGCircularSlider-umbrella.h */,
+				471008D0805586845C56053A82776EBC /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/HGCircularSlider";
+			sourceTree = "<group>";
+		};
+		5DD99463E6F90422ACFE7492C920FC55 /* HGCircularSlider */ = {
+			isa = PBXGroup;
+			children = (
+				C970EF2977353005EF2E7A8664D47CB2 /* CircularSlider.swift */,
+				790A3CEA9CC9BDD1BFEF331D5EBB60E0 /* CircularSlider+Draw.swift */,
+				5A2F80D8409C9B3C5133D26EB2E17E75 /* CircularSliderHelper.swift */,
+				C2A489361CBC1A264C98912BE4BA8138 /* MidPointCircularSlider.swift */,
+				85479D1B8237FCF057B16E87609E0A33 /* RangeCircularSlider.swift */,
+				52FE24C46760021674EBCB4900E65744 /* Support Files */,
+			);
+			path = HGCircularSlider;
+			sourceTree = "<group>";
+		};
+		7D1BA193CCA18771CC11CDB6E5AD671C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E5CB6A4AAFE2D6E02793DA88027854E1 /* HGCircularSlider.framework */,
+				1A6D7AA1CDACBF26284AA3E444605C78 /* Pods_MeFocus.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,7 +135,8 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				4EFC93EE3CD0D7347D3B1BF723D7E261 /* Products */,
+				3322541322DCCC1DB9249064C30DE829 /* Pods */,
+				7D1BA193CCA18771CC11CDB6E5AD671C /* Products */,
 				B18ECE252B096C3ECE3A5DBDDBC1D380 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -103,32 +178,58 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		C90EB032A6921DB89C35D574FA834CA1 /* Headers */ = {
+		5AA3013ECC8869A80B9174810F36F458 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCCC5324B1F96F45B9FC59D8C020C325 /* Pods-MeFocus-umbrella.h in Headers */,
+				F1EC309E29C7CD4CE03F20210FB59EC9 /* HGCircularSlider-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		714FB9456257A4210FAC57878F809D78 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF4B9C91B792B6FDD33516D2455F73B9 /* Pods-MeFocus-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		5B39537E0274EBE935B39A7594FE9ADD /* Pods-MeFocus */ = {
+		62374D10486D54E4DFA95DFEFF383085 /* HGCircularSlider */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 93D1A99A4E3B3DCB2D0929D627D86F14 /* Build configuration list for PBXNativeTarget "Pods-MeFocus" */;
+			buildConfigurationList = 9C074FDECA65823E55214365D31E1329 /* Build configuration list for PBXNativeTarget "HGCircularSlider" */;
 			buildPhases = (
-				E3EBE60A1631892DA372D856131F9E23 /* Sources */,
-				885392E3C2364CC04CE9B85FD6726C0D /* Frameworks */,
-				C90EB032A6921DB89C35D574FA834CA1 /* Headers */,
+				7DBF491AC3C287076D056D344622935F /* Sources */,
+				7DFDABB157AD03228BB42DDB7EA6C386 /* Frameworks */,
+				5AA3013ECC8869A80B9174810F36F458 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			name = HGCircularSlider;
+			productName = HGCircularSlider;
+			productReference = E5CB6A4AAFE2D6E02793DA88027854E1 /* HGCircularSlider.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CE87D7AA22EFD72EA54D66CA32D40C79 /* Pods-MeFocus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2DA1D9F3C3062B1F61825F5E910F8AF3 /* Build configuration list for PBXNativeTarget "Pods-MeFocus" */;
+			buildPhases = (
+				54F1E581730DB9194F6EA23156C62173 /* Sources */,
+				C0EEACD02A563D4F632B925494F2BABC /* Frameworks */,
+				714FB9456257A4210FAC57878F809D78 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D167AC23ABE698C5FF6CD0B1B7A7F0B3 /* PBXTargetDependency */,
+			);
 			name = "Pods-MeFocus";
 			productName = "Pods-MeFocus";
-			productReference = FA0C4975EF44AD5A178CA154159AB9D2 /* Pods_MeFocus.framework */;
+			productReference = 1A6D7AA1CDACBF26284AA3E444605C78 /* Pods_MeFocus.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -148,25 +249,48 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 4EFC93EE3CD0D7347D3B1BF723D7E261 /* Products */;
+			productRefGroup = 7D1BA193CCA18771CC11CDB6E5AD671C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5B39537E0274EBE935B39A7594FE9ADD /* Pods-MeFocus */,
+				62374D10486D54E4DFA95DFEFF383085 /* HGCircularSlider */,
+				CE87D7AA22EFD72EA54D66CA32D40C79 /* Pods-MeFocus */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E3EBE60A1631892DA372D856131F9E23 /* Sources */ = {
+		54F1E581730DB9194F6EA23156C62173 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1CD9C9DD870991260FEC77D7A016141 /* Pods-MeFocus-dummy.m in Sources */,
+				CACC3A990B9D3F31961959A96254E359 /* Pods-MeFocus-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DBF491AC3C287076D056D344622935F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D421901FE8A491413BEF469FD8168877 /* CircularSlider+Draw.swift in Sources */,
+				0555B537C23CF2F3F29259A55EC98E61 /* CircularSlider.swift in Sources */,
+				A204749CAA1B9E4F36F7298CF493DA42 /* CircularSliderHelper.swift in Sources */,
+				3FB8535D7C6FBDE6797D682ED3D72341 /* HGCircularSlider-dummy.m in Sources */,
+				EA8CD8794EB3DDDA05FA5543EE7FE703 /* MidPointCircularSlider.swift in Sources */,
+				EB43A1F1BCFBE006613A1535EF2BE270 /* RangeCircularSlider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D167AC23ABE698C5FF6CD0B1B7A7F0B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = HGCircularSlider;
+			target = 62374D10486D54E4DFA95DFEFF383085 /* HGCircularSlider */;
+			targetProxy = EAA0FFA9CB3B3CFA7906BC00C5417B48 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		12914D756594D15C6F2CA12FE5F89F1B /* Debug */ = {
@@ -213,7 +337,7 @@
 			};
 			name = Debug;
 		};
-		4BC68917C086D4927BEE2225844E2FE8 /* Release */ = {
+		201EDA14F1518686AE2BBA9D1EAAF099 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E9B93F0029FD47751AE3CEB5F1DE155F /* Pods-MeFocus.release.xcconfig */;
 			buildSettings = {
@@ -247,6 +371,42 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		7A2BF822DED40D10CC571C0342DDCCA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E05A70BA886C0E24A786FE3757B9B61F /* Pods-MeFocus.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-MeFocus/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MeFocus/Pods-MeFocus.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_MeFocus;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		E72E7977875C2D251FC62736BBDDC389 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -288,9 +448,41 @@
 			};
 			name = Release;
 		};
-		EC9A9DF0331A48532CF0FDEAAF762545 /* Debug */ = {
+		EBE84580F77EC90FE37F89EBBDBEFE7E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E05A70BA886C0E24A786FE3757B9B61F /* Pods-MeFocus.debug.xcconfig */;
+			baseConfigurationReference = 254DF51F70C7AC32AB98CC491686C604 /* HGCircularSlider.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/HGCircularSlider/HGCircularSlider-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/HGCircularSlider/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/HGCircularSlider/HGCircularSlider.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = HGCircularSlider;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F06D26B7413D7AA4724B2AFC00FB373E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 254DF51F70C7AC32AB98CC491686C604 /* HGCircularSlider.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -303,20 +495,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-MeFocus/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/HGCircularSlider/HGCircularSlider-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/HGCircularSlider/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-MeFocus/Pods-MeFocus.modulemap";
+				MODULEMAP_FILE = "Target Support Files/HGCircularSlider/HGCircularSlider.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_MeFocus;
+				PRODUCT_NAME = HGCircularSlider;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -335,11 +525,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		93D1A99A4E3B3DCB2D0929D627D86F14 /* Build configuration list for PBXNativeTarget "Pods-MeFocus" */ = {
+		2DA1D9F3C3062B1F61825F5E910F8AF3 /* Build configuration list for PBXNativeTarget "Pods-MeFocus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EC9A9DF0331A48532CF0FDEAAF762545 /* Debug */,
-				4BC68917C086D4927BEE2225844E2FE8 /* Release */,
+				7A2BF822DED40D10CC571C0342DDCCA4 /* Debug */,
+				201EDA14F1518686AE2BBA9D1EAAF099 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9C074FDECA65823E55214365D31E1329 /* Build configuration list for PBXNativeTarget "HGCircularSlider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F06D26B7413D7AA4724B2AFC00FB373E /* Debug */,
+				EBE84580F77EC90FE37F89EBBDBEFE7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

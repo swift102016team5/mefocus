@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BDA37E41DDDF63C00C51DBD /* TimerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA37E31DDDF63C00C51DBD /* TimerTableViewController.swift */; };
 		0BFF538E1DDB18DE00ACF9BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF538D1DDB18DE00ACF9BF /* AppDelegate.swift */; };
-		0BFF53901DDB18DE00ACF9BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF538F1DDB18DE00ACF9BF /* ViewController.swift */; };
 		0BFF53931DDB18DE00ACF9BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BFF53911DDB18DE00ACF9BF /* Main.storyboard */; };
 		0BFF53961DDB18DE00ACF9BF /* MeFocus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF53941DDB18DE00ACF9BF /* MeFocus.xcdatamodeld */; };
 		0BFF53981DDB18DE00ACF9BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BFF53971DDB18DE00ACF9BF /* Assets.xcassets */; };
@@ -19,9 +19,9 @@
 /* Begin PBXFileReference section */
 		05822FA39DC4D648F169B587 /* Pods-MeFocus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeFocus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeFocus/Pods-MeFocus.debug.xcconfig"; sourceTree = "<group>"; };
 		0B3C45021DDB241500DE02B5 /* _10Clock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = _10Clock.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/MeFocus-gwxrxzzwzrvejidugdhtsspmvqwd/Build/Products/Debug-iphonesimulator/10Clock/_10Clock.framework"; sourceTree = "<group>"; };
+		0BDA37E31DDDF63C00C51DBD /* TimerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTableViewController.swift; sourceTree = "<group>"; };
 		0BFF538A1DDB18DE00ACF9BF /* MeFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BFF538D1DDB18DE00ACF9BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0BFF538F1DDB18DE00ACF9BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0BFF53921DDB18DE00ACF9BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0BFF53951DDB18DE00ACF9BF /* MeFocus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MeFocus.xcdatamodel; sourceTree = "<group>"; };
 		0BFF53971DDB18DE00ACF9BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -43,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BDA37E21DDDF61100C51DBD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0BDA37E31DDDF63C00C51DBD /* TimerTableViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		0BFF53811DDB18DE00ACF9BF = {
 			isa = PBXGroup;
 			children = (
@@ -64,8 +72,8 @@
 		0BFF538C1DDB18DE00ACF9BF /* MeFocus */ = {
 			isa = PBXGroup;
 			children = (
+				0BDA37E21DDDF61100C51DBD /* Controllers */,
 				0BFF538D1DDB18DE00ACF9BF /* AppDelegate.swift */,
-				0BFF538F1DDB18DE00ACF9BF /* ViewController.swift */,
 				0BFF53911DDB18DE00ACF9BF /* Main.storyboard */,
 				0BFF53971DDB18DE00ACF9BF /* Assets.xcassets */,
 				0BFF53991DDB18DE00ACF9BF /* LaunchScreen.storyboard */,
@@ -218,7 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BFF53901DDB18DE00ACF9BF /* ViewController.swift in Sources */,
+				0BDA37E41DDDF63C00C51DBD /* TimerTableViewController.swift in Sources */,
 				0BFF53961DDB18DE00ACF9BF /* MeFocus.xcdatamodeld in Sources */,
 				0BFF538E1DDB18DE00ACF9BF /* AppDelegate.swift in Sources */,
 			);
