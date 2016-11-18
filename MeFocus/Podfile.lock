@@ -1,12 +1,48 @@
 PODS:
-  - HGCircularSlider (1.0.0)
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - HGCircularSlider (1.0.2)
+  - Lock (1.27.1):
+    - Lock/Core (= 1.27.1)
+    - Lock/UI (= 1.27.1)
+    - Lock/WebView (= 1.27.1)
+  - Lock/Core (1.27.1):
+    - AFNetworking (~> 3.0)
+  - Lock/CoreUI (1.27.1):
+    - Lock/Core
+    - Masonry (~> 0.6)
+  - Lock/UI (1.27.1):
+    - Lock/CoreUI
+  - Lock/WebView (1.27.1):
+    - Lock/CoreUI
+  - Masonry (0.6.4)
+  - SimpleKeychain (0.7.0)
 
 DEPENDENCIES:
   - HGCircularSlider
+  - Lock (~> 1.27)
+  - SimpleKeychain (~> 0.7)
 
 SPEC CHECKSUMS:
-  HGCircularSlider: 0039d1e50d012739fb7f644e9fd28d0156fa7c3b
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  HGCircularSlider: 70b782934c4826af56386f7bf373bd89fb424f8d
+  Lock: c8709bb9d798eb2824accd78170140faab1a3fc2
+  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
+  SimpleKeychain: b50cef3b87939d480ea1143425c00f5b4b70fe21
 
-PODFILE CHECKSUM: e716ef402c422b08410f2764d996a33579de68b4
+PODFILE CHECKSUM: 318d4d01cf39319cce1c7ab4ce29d650d9179d5c
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.1.0.rc.3
