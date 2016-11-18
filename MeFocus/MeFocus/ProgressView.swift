@@ -10,15 +10,17 @@ import UIKit
 
 class ProgressView: UIView {
     
+    var endAngle: CGFloat = 0
+    
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
-        context?.setStrokeColor(UIColor.red.cgColor)
-        context?.setFillColor(UIColor.green.cgColor)
+//        context?.setStrokeColor(UIColor.red.cgColor)
+//        context?.setFillColor(UIColor.green.cgColor)
         
         context?.beginPath()
         context?.move(to: CGPoint(x: 50, y: 50))
-        
-        context?.addArc(center: CGPoint(x: 50, y: 50), radius: 40, startAngle: 0, endAngle: (1.00001 - progress) * 2.0 * CGFloat(M_PI), clockwise: true)
+        context?.addArc(center: CGPoint(x: 50, y: 50), radius: 40, startAngle: 0, endAngle: endAngle, clockwise: false)
+        context?.addArc(center: CGPoint(x: 50, y: 50), radius: 40, startAngle: endAngle, endAngle: (1.00001 - progress) * 2.0 * CGFloat(M_PI), clockwise: true)
         context?.fillPath()
         
     }
