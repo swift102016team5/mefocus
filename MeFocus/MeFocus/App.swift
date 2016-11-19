@@ -17,12 +17,14 @@ class App: NSObject {
     
     static private var _shared:App?
     
-    static func shared()->App{
+    static var shared:App{
         
-        if self._shared == nil {
-            self._shared = App()
+        get {
+            if self._shared == nil {
+                self._shared = App()
+            }
+            return self._shared!
         }
-        return self._shared!
         
     }
     

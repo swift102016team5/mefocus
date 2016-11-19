@@ -119,7 +119,7 @@ class TimerTableViewController: UITableViewController {
                 print(error.localizedDescription)
             }
         }
-        timer.
+        //timer.
     }
 
 }
