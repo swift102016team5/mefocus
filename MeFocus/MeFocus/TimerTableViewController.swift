@@ -49,25 +49,11 @@ class TimerTableViewController: UITableViewController {
         print("Battery: \(UIDevice.current.batteryLevel)")
         
         NotificationCenter.default.addObserver(self, selector: #selector(TimerTableViewController.triggerNotification), name: NSNotification.Name(ReturnNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TimerTableViewController.startTimer), name: .UIApplicationWillEnterForeground, object: nil)
     }
     
     @IBAction func onStartTimer(_ sender: UIButton) {
-        guard Int(circularSlider.endPointValue) > 0 else {
-            circularSlider.endPointValue = 0
-            return
-        }
-        
-        guard !isCountingTime else {
-            stopTimer()
-            return
-        }
-        taskTimer.timerRun = circularSlider.endPointValue * 60
-        isCountingTime = true
-        circularSlider.isEnabled = false
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updatePlayerUI), userInfo: nil, repeats: true)
-        
-        sender.setTitle("STOP", for: .normal)
-
+        startTimer()
     }
     
     
@@ -98,7 +84,24 @@ class TimerTableViewController: UITableViewController {
         circularSlider.isEnabled = true
         isCountingTime = false
         startButton.setTitle("START", for: .normal)
+    }
+    
+    func startTimer() {
+        guard Int(circularSlider.endPointValue) > 0 else {
+            circularSlider.endPointValue = 0
+            return
+        }
         
+        guard !isCountingTime else {
+            stopTimer()
+            return
+        }
+        taskTimer.timerRun = circularSlider.endPointValue * 60
+        isCountingTime = true
+        circularSlider.isEnabled = false
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updatePlayerUI), userInfo: nil, repeats: true)
+        
+        startButton.setTitle("STOP", for: .normal)
     }
     
     func triggerNotification() {
@@ -119,18 +122,22 @@ class TimerTableViewController: UITableViewController {
                 print(error.localizedDescription)
             }
         }
-        //timer.
+
+        
+        stopTimer()
+
     }
 
 }
 
-extension TimerTableViewController: UNUserNotificationCenterDelegate{
+extension TimerTableViewController: UNUserNotificationCenterDelegate {
     
+    // Do sth on tap on notification
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print("Tapped in notification")
     }
     
-    //This is key callback to present notification while the app is in foreground
+    // This is key callback to present notification while the app is in foreground
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("Notification being triggered")
         //You can either present alert ,sound or increase badge while the app is in foreground too with ios 10
