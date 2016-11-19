@@ -7,6 +7,15 @@
 //
 
 import UIKit
+import CoreData
+
+class Suggestion:NSManagedObject {
+    
+    @NSManaged var goal:String
+    @NSManaged var duration:Int
+    @NSManaged var min_pauses:Int
+    
+}
 
 class Suggestions: NSObject {
     

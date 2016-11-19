@@ -17,6 +17,7 @@
 		3F9722EE1DDF70B300152446 /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9722ED1DDF70B300152446 /* UserLoginViewController.swift */; };
 		3F9722F11DDF7A7200152446 /* Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9722F01DDF7A7200152446 /* Suggestions.swift */; };
 		3F9722F41DDF7AEF00152446 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9722F31DDF7AEF00152446 /* Auth.swift */; };
+		3F9722F61DDF840F00152446 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9722F51DDF840F00152446 /* App.swift */; };
 		3FF3696F1DDF658A003AEA02 /* Sessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF3696E1DDF658A003AEA02 /* Sessions.swift */; };
 		D732715CA153466968115BD1 /* Pods_MeFocus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86EBD245FD761FD66432B85 /* Pods_MeFocus.framework */; };
 		DB1B5C8F1DDED197004FC528 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1B5C8E1DDED197004FC528 /* ProgressView.swift */; };
@@ -40,6 +41,7 @@
 		3F9722EF1DDF786100152446 /* MeFocus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeFocus.entitlements; sourceTree = "<group>"; };
 		3F9722F01DDF7A7200152446 /* Suggestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suggestions.swift; sourceTree = "<group>"; };
 		3F9722F31DDF7AEF00152446 /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		3F9722F51DDF840F00152446 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		3FF3696E1DDF658A003AEA02 /* Sessions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sessions.swift; sourceTree = "<group>"; };
 		B13A83EE95948A159C5FDDD5 /* Pods-MeFocus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeFocus.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeFocus/Pods-MeFocus.release.xcconfig"; sourceTree = "<group>"; };
 		DB1B5C8E1DDED197004FC528 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				3F9722F31DDF7AEF00152446 /* Auth.swift */,
+				3F9722F51DDF840F00152446 /* App.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F9722F61DDF840F00152446 /* App.swift in Sources */,
 				3F9722EE1DDF70B300152446 /* UserLoginViewController.swift in Sources */,
 				0BDA37E41DDDF63C00C51DBD /* TimerTableViewController.swift in Sources */,
 				DB1B5C8F1DDED197004FC528 /* ProgressView.swift in Sources */,

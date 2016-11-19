@@ -34,8 +34,25 @@ class Sessions: NSObject {
 
     static var last:Session?
     
-    static func save(session:Session){
+    static var current:Session?
     
+//    static func start() -> Session {
+//        return Session(
+//            id:"",
+//            user_id:"",
+//            start_at:NSDate().timeIntervalSince1970,
+//            maximum_pause_duration:0,
+//            goal:"Lets do something productive",
+//            total_pauses:0,
+//            duration:3000,
+//            pauses:[]
+//        )
+//        
+//    }
+    
+    static func save(session:Session){
+        
+        
     }
     
     static func find(){
