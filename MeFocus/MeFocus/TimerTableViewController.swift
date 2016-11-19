@@ -8,6 +8,7 @@
 
 import UIKit
 import HGCircularSlider
+import UserNotifications
 
 struct taskTimer {
     static var timerRun: CGFloat = 0
@@ -29,6 +30,7 @@ class TimerTableViewController: UITableViewController {
         return formatter
     }()
     let timeInterval: CGFloat = 5
+    let requestIdentifier = "ReturnRequest"
     
     var timer: Timer?
     var isCountingTime = false
@@ -42,6 +44,11 @@ class TimerTableViewController: UITableViewController {
         circularSlider.minimumValue = 0
         circularSlider.endPointValue = 0
         circularSlider.addTarget(self, action: #selector(updateTimer), for: .valueChanged)
+        
+        UIDevice.current.isBatteryMonitoringEnabled = true
+        print("Battery: \(UIDevice.current.batteryLevel)")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(TimerTableViewController.triggerNotification), name: NSNotification.Name(ReturnNotification), object: nil)
     }
     
     @IBAction func onStartTimer(_ sender: UIButton) {
@@ -93,5 +100,43 @@ class TimerTableViewController: UITableViewController {
         startButton.setTitle("START", for: .normal)
         
     }
+    
+    func triggerNotification() {
+        guard isCountingTime else {
+            return
+        }
+        
+        let content = UNMutableNotificationContent()
+        content.body = "Please go back to your task in 10 sec"
+        content.sound = UNNotificationSound.default()
+        
+        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 0.1, repeats: false)
+        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        timer.
+    }
 
+}
+
+extension TimerTableViewController: UNUserNotificationCenterDelegate{
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("Tapped in notification")
+    }
+    
+    //This is key callback to present notification while the app is in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print("Notification being triggered")
+        //You can either present alert ,sound or increase badge while the app is in foreground too with ios 10
+        //to distinguish between notifications
+        if notification.request.identifier == requestIdentifier {
+            completionHandler([.alert,.sound,.badge])
+        }
+    }
 }
