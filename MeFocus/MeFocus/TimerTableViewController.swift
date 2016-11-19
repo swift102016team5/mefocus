@@ -10,6 +10,10 @@ import UIKit
 import HGCircularSlider
 import UserNotifications
 
+struct taskTimer {
+    static var timerRun: CGFloat = 0
+    static var timeRemaining: CGFloat = 0
+}
 class TimerTableViewController: UITableViewController {
 
     @IBOutlet var timerTableView: UITableView!
@@ -57,12 +61,13 @@ class TimerTableViewController: UITableViewController {
             stopTimer()
             return
         }
-        
+        taskTimer.timerRun = circularSlider.endPointValue * 60
         isCountingTime = true
         circularSlider.isEnabled = false
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updatePlayerUI), userInfo: nil, repeats: true)
         
         sender.setTitle("STOP", for: .normal)
+
     }
     
     
@@ -72,7 +77,7 @@ class TimerTableViewController: UITableViewController {
         var components = DateComponents()
         components.second = Int(endPointValueInSec)
         timerLabel.text = fullTimeFormatter.string(from: components)
-        
+        taskTimer.timeRemaining = endPointValueInSec
         if Int(endPointValueInSec) <= 0 {
             stopTimer()
             circularSlider.endPointValue = 0
@@ -87,10 +92,13 @@ class TimerTableViewController: UITableViewController {
     }
     
     func stopTimer() {
+        taskTimer.timerRun = 0
+        taskTimer.timeRemaining = 0
         timer?.invalidate()
         circularSlider.isEnabled = true
         isCountingTime = false
         startButton.setTitle("START", for: .normal)
+        
     }
     
     func triggerNotification() {

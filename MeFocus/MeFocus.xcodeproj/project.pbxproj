@@ -13,7 +13,15 @@
 		0BFF53961DDB18DE00ACF9BF /* MeFocus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF53941DDB18DE00ACF9BF /* MeFocus.xcdatamodeld */; };
 		0BFF53981DDB18DE00ACF9BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BFF53971DDB18DE00ACF9BF /* Assets.xcassets */; };
 		0BFF539B1DDB18DE00ACF9BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BFF53991DDB18DE00ACF9BF /* LaunchScreen.storyboard */; };
+		3F9722EC1DDF708A00152446 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F9722EB1DDF708A00152446 /* User.storyboard */; };
+		3F9722EE1DDF70B300152446 /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9722ED1DDF70B300152446 /* UserLoginViewController.swift */; };
+		3F9722F11DDF7A7200152446 /* Suggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9722F01DDF7A7200152446 /* Suggestions.swift */; };
+		3F9722F41DDF7AEF00152446 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9722F31DDF7AEF00152446 /* Auth.swift */; };
+		3FF3696F1DDF658A003AEA02 /* Sessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF3696E1DDF658A003AEA02 /* Sessions.swift */; };
 		D732715CA153466968115BD1 /* Pods_MeFocus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86EBD245FD761FD66432B85 /* Pods_MeFocus.framework */; };
+		DB1B5C8F1DDED197004FC528 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1B5C8E1DDED197004FC528 /* ProgressView.swift */; };
+		DB1B5C911DDED20F004FC528 /* FeaturedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1B5C901DDED20F004FC528 /* FeaturedViewController.swift */; };
+		DB1B5C931DDED29D004FC528 /* dog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DB1B5C921DDED29D004FC528 /* dog.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +35,16 @@
 		0BFF53971DDB18DE00ACF9BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BFF539A1DDB18DE00ACF9BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BFF539C1DDB18DE00ACF9BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F9722EB1DDF708A00152446 /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
+		3F9722ED1DDF70B300152446 /* UserLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginViewController.swift; sourceTree = "<group>"; };
+		3F9722EF1DDF786100152446 /* MeFocus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeFocus.entitlements; sourceTree = "<group>"; };
+		3F9722F01DDF7A7200152446 /* Suggestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suggestions.swift; sourceTree = "<group>"; };
+		3F9722F31DDF7AEF00152446 /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		3FF3696E1DDF658A003AEA02 /* Sessions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sessions.swift; sourceTree = "<group>"; };
 		B13A83EE95948A159C5FDDD5 /* Pods-MeFocus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeFocus.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeFocus/Pods-MeFocus.release.xcconfig"; sourceTree = "<group>"; };
+		DB1B5C8E1DDED197004FC528 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		DB1B5C901DDED20F004FC528 /* FeaturedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedViewController.swift; sourceTree = "<group>"; };
+		DB1B5C921DDED29D004FC528 /* dog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dog.jpg; sourceTree = "<group>"; };
 		F86EBD245FD761FD66432B85 /* Pods_MeFocus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeFocus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -47,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				0BDA37E31DDDF63C00C51DBD /* TimerTableViewController.swift */,
+				DB1B5C901DDED20F004FC528 /* FeaturedViewController.swift */,
+				3F9722ED1DDF70B300152446 /* UserLoginViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -72,15 +91,38 @@
 		0BFF538C1DDB18DE00ACF9BF /* MeFocus */ = {
 			isa = PBXGroup;
 			children = (
+				3F9722EF1DDF786100152446 /* MeFocus.entitlements */,
+				3F9722F21DDF7ADE00152446 /* Services */,
+				3FF3696D1DDF656B003AEA02 /* Models */,
+				DB1B5C8D1DDED183004FC528 /* Views */,
 				0BDA37E21DDDF61100C51DBD /* Controllers */,
 				0BFF538D1DDB18DE00ACF9BF /* AppDelegate.swift */,
 				0BFF53911DDB18DE00ACF9BF /* Main.storyboard */,
 				0BFF53971DDB18DE00ACF9BF /* Assets.xcassets */,
+				DB1B5C921DDED29D004FC528 /* dog.jpg */,
 				0BFF53991DDB18DE00ACF9BF /* LaunchScreen.storyboard */,
 				0BFF539C1DDB18DE00ACF9BF /* Info.plist */,
 				0BFF53941DDB18DE00ACF9BF /* MeFocus.xcdatamodeld */,
+				3F9722EB1DDF708A00152446 /* User.storyboard */,
 			);
 			path = MeFocus;
+			sourceTree = "<group>";
+		};
+		3F9722F21DDF7ADE00152446 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3F9722F31DDF7AEF00152446 /* Auth.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		3FF3696D1DDF656B003AEA02 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3FF3696E1DDF658A003AEA02 /* Sessions.swift */,
+				3F9722F01DDF7A7200152446 /* Suggestions.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		80549C9648BC4917A9996169 /* Frameworks */ = {
@@ -90,6 +132,14 @@
 				F86EBD245FD761FD66432B85 /* Pods_MeFocus.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB1B5C8D1DDED183004FC528 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DB1B5C8E1DDED197004FC528 /* ProgressView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		DF8198C40945DF8C2F4C1E57 /* Pods */ = {
@@ -139,6 +189,11 @@
 						DevelopmentTeam = GUG9R4BBXS;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -165,6 +220,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB1B5C931DDED29D004FC528 /* dog.jpg in Resources */,
+				3F9722EC1DDF708A00152446 /* User.storyboard in Resources */,
 				0BFF539B1DDB18DE00ACF9BF /* LaunchScreen.storyboard in Resources */,
 				0BFF53981DDB18DE00ACF9BF /* Assets.xcassets in Resources */,
 				0BFF53931DDB18DE00ACF9BF /* Main.storyboard in Resources */,
@@ -226,9 +283,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F9722EE1DDF70B300152446 /* UserLoginViewController.swift in Sources */,
 				0BDA37E41DDDF63C00C51DBD /* TimerTableViewController.swift in Sources */,
+				DB1B5C8F1DDED197004FC528 /* ProgressView.swift in Sources */,
+				3FF3696F1DDF658A003AEA02 /* Sessions.swift in Sources */,
 				0BFF53961DDB18DE00ACF9BF /* MeFocus.xcdatamodeld in Sources */,
 				0BFF538E1DDB18DE00ACF9BF /* AppDelegate.swift in Sources */,
+				DB1B5C911DDED20F004FC528 /* FeaturedViewController.swift in Sources */,
+				3F9722F11DDF7A7200152446 /* Suggestions.swift in Sources */,
+				3F9722F41DDF7AEF00152446 /* Auth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +357,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -337,7 +400,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -351,6 +414,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MeFocus/MeFocus.entitlements;
 				DEVELOPMENT_TEAM = GUG9R4BBXS;
 				INFOPLIST_FILE = MeFocus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -368,6 +432,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MeFocus/MeFocus.entitlements;
 				DEVELOPMENT_TEAM = GUG9R4BBXS;
 				INFOPLIST_FILE = MeFocus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
