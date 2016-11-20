@@ -14,6 +14,14 @@ extension Session {
     func isExceedMaxiumPause() -> Bool {
         return SessionsManager.isExceedMaxiumPause(session:self)
     }
+
+    func isOver() -> Bool {
+        let now = Int64(NSDate().timeIntervalSince1970)
+        if start_at + duration >= now {
+            return true
+        }
+        return false
+    }
     
     func finish(){
         end_at = Int64(NSDate().timeIntervalSince1970)
@@ -45,11 +53,13 @@ class SessionsManager:NSObject {
         
         if SessionsManager.unfinished == nil {
             SessionsManager.reset()
-            return Session(data:[
+            let session = Session(data:[
                 "goal":goal,
                 "duration":duration,
                 "maximum_pause_duration":maximPauseDuration
             ])
+            Storage.shared.save()
+            return session
         }
         throw SessionsManagerError.Unfinished
     }
@@ -76,7 +86,16 @@ class SessionsManager:NSObject {
             let sessions = Storage.shared.fetch(request: request) as! [Session]
             
             if sessions.count == 1 {
-                return sessions.first
+                if let unfinish = sessions.first {
+                    
+                    if unfinish.isExceedMaxiumPause() || unfinish.isOver() {
+                        unfinish.finish()
+                        return nil
+                    }
+                    
+                    return unfinish
+                }
+
             }
             
             return nil

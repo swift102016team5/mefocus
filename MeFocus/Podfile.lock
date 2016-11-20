@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - AutoCompleteTextField (0.2.3)
   - HGCircularSlider (1.0.2)
   - Lock (1.27.1):
     - Lock/Core (= 1.27.1)
@@ -32,17 +33,19 @@ PODS:
   - SimpleKeychain (0.7.0)
 
 DEPENDENCIES:
+  - AutoCompleteTextField
   - HGCircularSlider
   - Lock (~> 1.27)
   - SimpleKeychain (~> 0.7)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AutoCompleteTextField: 8129516998156b0dedd006547a2d0b67f4dd8edb
   HGCircularSlider: 70b782934c4826af56386f7bf373bd89fb424f8d
   Lock: c8709bb9d798eb2824accd78170140faab1a3fc2
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   SimpleKeychain: b50cef3b87939d480ea1143425c00f5b4b70fe21
 
-PODFILE CHECKSUM: 318d4d01cf39319cce1c7ab4ce29d650d9179d5c
+PODFILE CHECKSUM: a09a3ee0e284b45b5bb547297c1edd669c777563
 
 COCOAPODS: 1.1.0.rc.3

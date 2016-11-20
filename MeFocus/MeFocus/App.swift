@@ -36,6 +36,71 @@ class App: NSObject {
         // Check if user watch preview already
     }
     
+    func getControllerFromStoryboard(
+        storyboard:String,
+        controller:String,
+        modifier:((UIViewController) -> Void)?
+        ) -> UIViewController{
+        
+        let storyboard = UIStoryboard(name:storyboard, bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: controller)
+        
+        if let m = modifier {
+            m(controller)
+        }
+        return controller
+    }
+    
+    func present(
+        presenter:UIViewController,
+        storyboard:String,
+        controller:String,
+        modifier:((UIViewController) -> Void)?,
+        completion:(() -> Void)?
+        ){
+        
+        let presenting = getControllerFromStoryboard(
+            storyboard: storyboard,
+            controller: controller,
+            modifier: modifier
+        )
+        
+        presenter.present(presenting, animated: true, completion: completion)
+    }
+    
+    func redirect(
+        delegate:AppDelegate,
+        storyboard:String,
+        controller:String,
+        modifier:((UIViewController) -> Void)?) {
+        
+        
+        let redirect = getControllerFromStoryboard(
+            storyboard: storyboard,
+            controller: controller,
+            modifier: modifier
+        )
+        
+        delegate.window = UIWindow(frame: UIScreen.main.bounds)
+        if let window = delegate.window {
+            
+            window.rootViewController = redirect
+            window.makeKeyAndVisible()
+        
+        }
+    }
+    
+    func viewedOnboard(){
+        UserDefaults.standard.set(true,forKey:"viewed_onboard")
+    }
+    
+    func isViewedOnboard()->Bool{
+        if let viewed = UserDefaults.standard.value(forKey: "viewed_onboard") {
+            return viewed as! Bool
+        }
+        return false
+    }
+    
     var isOnline:Bool {
         get {
             var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
