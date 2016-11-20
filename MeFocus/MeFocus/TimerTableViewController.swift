@@ -31,33 +31,28 @@ class TimerTableViewController: UITableViewController {
     }()
     let timeInterval: CGFloat = 5
     let requestIdentifier = "ReturnRequest"
+    let backgroundLimitTime = 10
+    let gray = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1)
     
     var timer: Timer?
+    var backgroundTimer: Timer?
+    var remainBackgroundTime = 0
     var isCountingTime = false
+    var goalFailed = false
+    var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        timerTableView.isScrollEnabled = false
-        
-        circularSlider.maximumValue = 12 * 60
-        circularSlider.minimumValue = 0
-        circularSlider.endPointValue = 0
-        circularSlider.addTarget(self, action: #selector(updateTimer), for: .valueChanged)
-        
-        UIDevice.current.isBatteryMonitoringEnabled = true
-        print("Battery: \(UIDevice.current.batteryLevel)")
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(TimerTableViewController.triggerNotification), name: NSNotification.Name(ReturnNotification), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(TimerTableViewController.startTimer), name: .UIApplicationWillEnterForeground, object: nil)
+        initViews()
+        addObservers()
     }
     
     @IBAction func onStartTimer(_ sender: UIButton) {
         startTimer()
     }
     
-    
-    func updatePlayerUI() {
+    func updateTimerUI() {
         circularSlider.endPointValue -= 1 / 60
         let endPointValueInSec = circularSlider.endPointValue * 60
         var components = DateComponents()
@@ -83,7 +78,7 @@ class TimerTableViewController: UITableViewController {
         timer?.invalidate()
         circularSlider.isEnabled = true
         isCountingTime = false
-        startButton.setTitle("START", for: .normal)
+        setStartButton(withState: true)
     }
     
     func startTimer() {
@@ -96,12 +91,24 @@ class TimerTableViewController: UITableViewController {
             stopTimer()
             return
         }
+        
+        guard !goalFailed else {
+            goalFailed = false
+            setStartButton(withState: true)
+            return
+        }
+        
+        backgroundTimer?.invalidate()
         taskTimer.timerRun = circularSlider.endPointValue * 60
         isCountingTime = true
         circularSlider.isEnabled = false
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updatePlayerUI), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1.0,
+                                     target: self,
+                                     selector: #selector(updateTimerUI),
+                                     userInfo: nil,
+                                     repeats: true)
         
-        startButton.setTitle("STOP", for: .normal)
+        setStartButton(withState: false)
     }
     
     func triggerNotification() {
@@ -114,7 +121,9 @@ class TimerTableViewController: UITableViewController {
         content.sound = UNNotificationSound.default()
         
         let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 0.1, repeats: false)
-        let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: requestIdentifier,
+                                            content: content,
+                                            trigger: trigger)
         
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().add(request) { (error) in
@@ -123,7 +132,72 @@ class TimerTableViewController: UITableViewController {
             }
         }
         
+        startBackgroundCountdown()
+    }
+    
+    func startBackgroundCountdown() {
         stopTimer()
+        startBackgroundTask()
+        
+        remainBackgroundTime = backgroundLimitTime
+        backgroundTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (backgroundTimer) in
+            self.remainBackgroundTime = self.remainBackgroundTime - 1
+            print("Background time: \(self.remainBackgroundTime)")
+            if self.remainBackgroundTime == 0 {
+                print("You failed your goal!!!")
+                self.goalFailed = true
+                backgroundTimer.invalidate()
+                
+                self.endBackgroundTask()
+            }
+        })
+    }
+    
+    func endBackgroundTask() {
+        print("Background task ended!")
+        print("Background time remaining = \(UIApplication.shared.backgroundTimeRemaining) seconds")
+        UIApplication.shared.endBackgroundTask(backgroundTask)
+        backgroundTask = UIBackgroundTaskInvalid
+    }
+    
+    func startBackgroundTask() {
+        print("Background task started!")
+        print("Background time remaining = \(UIApplication.shared.backgroundTimeRemaining) seconds")
+        // Register backgroundTask
+        backgroundTask = UIApplication.shared.beginBackgroundTask(withName: returnNotification, expirationHandler: { () in
+            self.endBackgroundTask()
+        })
+    }
+    
+    func initViews() {
+        timerTableView.isScrollEnabled = false
+        
+        circularSlider.maximumValue = 12 * 60
+        circularSlider.minimumValue = 0
+        circularSlider.endPointValue = 0
+        circularSlider.addTarget(self, action: #selector(updateTimer), for: .valueChanged)
+    }
+    
+    func addObservers() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(TimerTableViewController.triggerNotification),
+                                               name: NSNotification.Name(returnNotification),
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(TimerTableViewController.startTimer),
+                                               name: .UIApplicationWillEnterForeground,
+                                               object: nil)
+    }
+    
+    func setStartButton(withState isStart: Bool) {
+        if isStart {
+            startButton.setTitle("START", for: .normal)
+            startButton.setTitleColor(UIColor.white, for: .normal)
+            return
+        }
+        
+        startButton.setTitle("GIVE UP!", for: .normal)
+        startButton.setTitleColor(gray, for: .normal)
     }
 
 }
