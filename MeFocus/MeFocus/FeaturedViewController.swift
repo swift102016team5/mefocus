@@ -27,7 +27,8 @@ class FeaturedViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if !timer.isValid {
+        if !timer.isValid || taskTimer.isStop {
+            taskTimer.isStop = false
             progressview.removeFromSuperview()
             initProgress()
         }
