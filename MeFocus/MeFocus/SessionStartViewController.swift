@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AutoCompleteTextField
 
 class SessionStartViewController: UIViewController {
 
@@ -15,6 +16,7 @@ class SessionStartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         goalTextField.autoCompleteTextFieldDataSource = goalTextField
+        goalTextField.autoCompleteGoalDelegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -23,37 +25,29 @@ class SessionStartViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onGoalEditEnd(_ sender: Any) {
-        print("END",goalTextField.text)
-        if let goal = goalTextField.text {
-            
-            if let suggestion = SuggestionsManager.findByName(name: goal){
-                print(suggestion)
-            }
-            
-        }
-    }
     
     func textViewDidChange(textView: UITextView) { //Handle the text changes here
         print(textView.text); //the textView parameter is the textView where text was changed
     }
 
+    var goal:String?
+    var duration:Int?
+    var maximumPauseDuration:Int?
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print(goalTextField.text)
-        return
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         let navigation = segue.destination as! UINavigationController
         let controller = navigation.topViewController as! SessionOngoingViewController
         do {
+            
             try controller.session = SessionsManager.start(
-                goal: "Relax",
-                duration: 20000,
-                maximPauseDuration: 10500
+                goal: goal ?? "",
+                duration: duration ?? 0,
+                maximPauseDuration: maximumPauseDuration ?? 0
             )
         }
         catch {
@@ -63,3 +57,16 @@ class SessionStartViewController: UIViewController {
  
 
 }
+
+extension SessionStartViewController:AutoCompleteGoalDelegate {
+    
+    func onResignFirstResponder(suggestion:Suggestion){
+        goal = suggestion.goal
+    }
+    
+    func onResignFirstResponder(goal:String){
+        self.goal = goal
+    }
+    
+}
+

@@ -43,9 +43,8 @@ class SuggestionsManager:NSObject {
         }
     }
     
-    static func findByName(name:String) -> Suggestion? {
-        
-        return nil
+    static func findByGoal(goal:String) -> Suggestion? {
+        return SuggestionsManager.all.filter{$0.goal?.lowercased() == goal.lowercased()}.first
     }
     
 }

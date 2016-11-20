@@ -9,6 +9,13 @@
 import UIKit
 import AutoCompleteTextField
 
+protocol AutoCompleteGoalDelegate {
+    
+    func onResignFirstResponder(suggestion:Suggestion)
+    
+    func onResignFirstResponder(goal:String)
+}
+
 class AutoCompleteGoal: AutoCompleteTextField {
 
     /*
@@ -17,8 +24,28 @@ class AutoCompleteGoal: AutoCompleteTextField {
     override func draw(_ rect: CGRect) {
         // Drawing code
     }
-    */
+     */
+    
+    var autoCompleteGoalDelegate:AutoCompleteGoalDelegate?
+    
+    override open func resignFirstResponder() -> Bool {
 
+        let responder = super.resignFirstResponder()
+        
+        if let delegate = autoCompleteGoalDelegate {
+            let goal:String = text ?? ""
+            if let suggestion = SuggestionsManager.findByGoal(goal: goal){
+                delegate.onResignFirstResponder(suggestion: suggestion)
+                return responder
+            }
+            
+            delegate.onResignFirstResponder(goal: goal)
+            
+        }
+        
+        return responder
+    }
+    
 }
 
 extension AutoCompleteGoal:AutoCompleteTextFieldDataSource {
@@ -36,5 +63,4 @@ extension AutoCompleteGoal:AutoCompleteTextFieldDataSource {
             return ""
         })
     }
-    
 }

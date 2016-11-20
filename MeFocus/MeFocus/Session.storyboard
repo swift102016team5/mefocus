@@ -34,9 +34,6 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="onGoalEditEnd:" destination="Cjw-6s-hJ2" eventType="editingDidEnd" id="lbF-Nf-3Bx"/>
-                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ZN-2S-EZs">
                                 <rect key="frame" x="137" y="216" width="46" height="30"/>
