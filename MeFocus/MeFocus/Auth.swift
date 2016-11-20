@@ -14,12 +14,14 @@ class Auth: NSObject {
 
     static private var _shared:Auth?
     
-    static func shared()->Auth{
+    static var shared:Auth{
         
-        if self._shared == nil {
-            self._shared = Auth()
+        get {
+            if self._shared == nil {
+                self._shared = Auth()
+            }
+            return self._shared!
         }
-        return self._shared!
         
     }
     

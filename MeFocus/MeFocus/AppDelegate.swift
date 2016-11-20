@@ -20,8 +20,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound], completionHandler: { (granted, error) in
-        })
+        center.requestAuthorization(
+            options: [.alert, .sound],
+            completionHandler: { (granted, error) in
+            }
+        )
+        
+//        if let unfinish = SessionsManager.unfinished {
+//            print(unfinish.end_at)
+//            unfinish.finish()
+//            print(unfinish.end_at)
+//        }
+//        else {
+//            print("Nothing to continue , consider make new session")
+//        }
+        
+        
+        
         
 //        self.window = UIWindow(frame: UIScreen.main.bounds)
 //        let storyboard: UIStoryboard = UIStoryboard(name: "User", bundle: nil)

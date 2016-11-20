@@ -131,6 +131,7 @@ class TimerTableViewController: UITableViewController {
                 print(error.localizedDescription)
             }
         }
+
         
         startBackgroundCountdown()
     }

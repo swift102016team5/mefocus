@@ -20,7 +20,7 @@ class UserLoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        Auth.shared().check{
+        Auth.shared.check{
             (auth:Auth) in
             // Dont have profile
             if auth.profile == nil {
