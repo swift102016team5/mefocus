@@ -13,6 +13,7 @@ import UserNotifications
 struct taskTimer {
     static var timerRun: CGFloat = 0
     static var timeRemaining: CGFloat = 0
+    static var isStop = false
 }
 class TimerTableViewController: UITableViewController {
 
@@ -75,7 +76,9 @@ class TimerTableViewController: UITableViewController {
     func stopTimer() {
         taskTimer.timerRun = 0
         taskTimer.timeRemaining = 0
+        taskTimer.isStop = true
         timer?.invalidate()
+        
         circularSlider.isEnabled = true
         isCountingTime = false
         setStartButton(withState: true)
