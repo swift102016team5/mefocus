@@ -26,12 +26,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BIA-qw-rdk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1900" y="168.6656671664168"/>
+            <point key="canvasLocation" x="2031" y="168"/>
         </scene>
         <!--Timer Table View Controller-->
         <scene sceneID="fwE-aZ-LLb">
             <objects>
-                <tableViewController id="5I0-dw-91q" customClass="TimerTableViewController" customModule="MeFocus" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TimerTableViewController" id="5I0-dw-91q" customClass="TimerTableViewController" customModule="MeFocus" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="9cW-2W-uRb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -167,10 +167,10 @@
             </objects>
             <point key="canvasLocation" x="2030.625" y="-584.15492957746483"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--TabBarController-->
         <scene sceneID="vw1-XL-c3Z">
             <objects>
-                <tabBarController id="FEu-gX-YnE" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" title="TabBarController" id="FEu-gX-YnE" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="hHy-SI-H7a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

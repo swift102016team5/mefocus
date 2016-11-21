@@ -14,6 +14,7 @@ struct taskTimer {
     static var timerRun: CGFloat = 0
     static var timeRemaining: CGFloat = 0
 }
+
 class TimerTableViewController: UITableViewController {
 
     @IBOutlet var timerTableView: UITableView!
@@ -26,10 +27,8 @@ class TimerTableViewController: UITableViewController {
         formatter.zeroFormattingBehavior = .dropAll
         formatter.unitsStyle = .abbreviated
         formatter.allowedUnits = [.hour, .minute, .second]
-        
         return formatter
     }()
-    let timeInterval: CGFloat = 5
     let requestIdentifier = "ReturnRequest"
     let backgroundLimitTime = 10
     let gray = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1)
@@ -49,7 +48,7 @@ class TimerTableViewController: UITableViewController {
     }
     
     @IBAction func onStartTimer(_ sender: UIButton) {
-        startTimer()
+        operateTimer()
     }
     
     func updateTimerUI() {
@@ -81,23 +80,31 @@ class TimerTableViewController: UITableViewController {
         setStartButton(withState: true)
     }
     
-    func startTimer() {
+    func operateTimer(notFromBackground: Bool = true) {
+        // Reset / do nothing if timer <= 0
         guard Int(circularSlider.endPointValue) > 0 else {
             circularSlider.endPointValue = 0
             return
         }
         
+        // If timer's counting, stop it
         guard !isCountingTime else {
             stopTimer()
+            goalFailed = true
             return
         }
         
-        guard !goalFailed else {
-            goalFailed = false
-            setStartButton(withState: true)
-            return
+        // If app wake from background, check goalFailed
+        if !notFromBackground {
+            guard !goalFailed else {
+                setStartButton(withState: true)
+                return
+            }
         }
         
+        // Start timer
+        
+        goalFailed = false
         backgroundTimer?.invalidate()
         taskTimer.timerRun = circularSlider.endPointValue * 60
         isCountingTime = true
@@ -128,7 +135,7 @@ class TimerTableViewController: UITableViewController {
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().add(request) { (error) in
             if let error = error {
-                print(error.localizedDescription)
+                NSLog(error.localizedDescription)
             }
         }
 
@@ -138,14 +145,15 @@ class TimerTableViewController: UITableViewController {
     
     func startBackgroundCountdown() {
         stopTimer()
-        startBackgroundTask()
+        registerForBackgroundTask()
         
+        // Background task
         remainBackgroundTime = backgroundLimitTime
         backgroundTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (backgroundTimer) in
             self.remainBackgroundTime = self.remainBackgroundTime - 1
-            print("Background time: \(self.remainBackgroundTime)")
+            NSLog("Background time: \(self.remainBackgroundTime)")
             if self.remainBackgroundTime == 0 {
-                print("You failed your goal!!!")
+                NSLog("You failed your goal!!!")
                 self.goalFailed = true
                 backgroundTimer.invalidate()
                 
@@ -155,15 +163,15 @@ class TimerTableViewController: UITableViewController {
     }
     
     func endBackgroundTask() {
-        print("Background task ended!")
-        print("Background time remaining = \(UIApplication.shared.backgroundTimeRemaining) seconds")
+        NSLog("Background task ended!")
+        NSLog("Background time remaining = \(UIApplication.shared.backgroundTimeRemaining) seconds")
         UIApplication.shared.endBackgroundTask(backgroundTask)
         backgroundTask = UIBackgroundTaskInvalid
     }
     
-    func startBackgroundTask() {
-        print("Background task started!")
-        print("Background time remaining = \(UIApplication.shared.backgroundTimeRemaining) seconds")
+    func registerForBackgroundTask() {
+        NSLog("Background task started!")
+        NSLog("Background time remaining = \(UIApplication.shared.backgroundTimeRemaining) seconds")
         // Register backgroundTask
         backgroundTask = UIApplication.shared.beginBackgroundTask(withName: returnNotification, expirationHandler: { () in
             self.endBackgroundTask()
@@ -185,8 +193,8 @@ class TimerTableViewController: UITableViewController {
                                                name: NSNotification.Name(returnNotification),
                                                object: nil)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(TimerTableViewController.startTimer),
-                                               name: .UIApplicationWillEnterForeground,
+                                               selector: #selector(TimerTableViewController.operateTimer(notFromBackground:)),
+                                               name: NSNotification.Name(enterForegroundNotification),
                                                object: nil)
     }
     
@@ -207,12 +215,12 @@ extension TimerTableViewController: UNUserNotificationCenterDelegate {
     
     // Do sth on tap on notification
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print("Tapped in notification")
+        NSLog("Tapped in notification")
     }
     
     // This is key callback to present notification while the app is in foreground
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        print("Notification being triggered")
+        NSLog("Notification being triggered")
         //You can either present alert ,sound or increase badge while the app is in foreground too with ios 10
         //to distinguish between notifications
         if notification.request.identifier == requestIdentifier {

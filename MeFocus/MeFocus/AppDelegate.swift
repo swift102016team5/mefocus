@@ -11,20 +11,22 @@ import CoreData
 import UserNotifications
 
 let returnNotification = "returnToApp"
+let enterForegroundNotification = "appWillEnterForeground"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var deviceLocked = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(
             options: [.alert, .sound],
             completionHandler: { (granted, error) in
             }
         )
+        registerforDeviceLockNotification()
         
 //        if let unfinish = SessionsManager.unfinished {
 //            print(unfinish.end_at)
@@ -57,11 +59,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        NotificationCenter.default.post(name: NSNotification.Name(returnNotification), object: self)
+        if !deviceLocked {
+            NotificationCenter.default.post(name: NSNotification.Name(returnNotification), object: self)
+        }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        guard !deviceLocked else {
+            deviceLocked = false
+            return
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(enterForegroundNotification), object: self)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -117,6 +126,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    func registerforDeviceLockNotification() {
+        // Void pointer to `self`:
+        let observer = UnsafeRawPointer(Unmanaged.passUnretained(self).toOpaque())
+        
+        CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), observer, { (center, observer, name, object, userInfo) -> Void in
+            // the "com.apple.springboard.lockcomplete" notification will always come after the "com.apple.springboard.lockstate" notification
+            let lockState = name?.rawValue as! String
+            if lockState == "com.apple.springboard.lockcomplete", let observer = observer {
+                let this = Unmanaged<AppDelegate>.fromOpaque(observer).takeUnretainedValue()
+                this.deviceLocked = true
+                NSLog("DEVICE LOCKED")
+            }
+            else {
+                NSLog("LOCK STATUS CHANGED")
+            }
+        }, "com.apple.springboard.lockcomplete" as CFString!, nil, CFNotificationSuspensionBehavior.deliverImmediately)
     }
     
 }
