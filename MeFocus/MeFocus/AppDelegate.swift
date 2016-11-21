@@ -26,18 +26,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             completionHandler: { (granted, error) in
             }
         )
+
         registerforDeviceLockNotification()
+
+        // Check if any unfinished session is going
+        let session = SessionsManager.unfinished
+        if session != nil {
+            App.shared.redirect(
+                delegate: self,
+                storyboard: "Session",
+                controller: "SessionOngoingViewController",
+                modifier:{(controller:UIViewController) in
+                    let ongoing = controller as! SessionOngoingViewController
+                    ongoing.session = session
+                }
+            )
+            return true
+        }
         
-//        if let unfinish = SessionsManager.unfinished {
-//            print(unfinish.end_at)
-//            unfinish.finish()
-//            print(unfinish.end_at)
-//        }
-//        else {
-//            print("Nothing to continue , consider make new session")
-//        }
+        // If user havent seen onboard screen , navigate to it
+        if !App.shared.isViewedOnboard() {
+            App.shared.redirect(
+                delegate: self,
+                storyboard: "Onboard",
+                controller: "OnboardIntroViewController",
+                modifier:nil
+            )
+            return true
+        }
         
-        
+        // Navigate user direct to create new session
+        App.shared.redirect(
+            delegate: self,
+            storyboard: "Session",
+            controller: "SessionStartViewController",
+            modifier:nil
+        )
+        return true
         
         
 //        self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -47,8 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        self.window?.rootViewController = controller
 //        
 //        self.window?.makeKeyAndVisible()
-
-        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

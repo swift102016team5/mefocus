@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AutoCompleteTextField/AutoCompleteTextField.framework"
   install_framework "$BUILT_PRODUCTS_DIR/HGCircularSlider/HGCircularSlider.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Lock/Lock.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Masonry/Masonry.framework"
@@ -92,6 +93,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AutoCompleteTextField/AutoCompleteTextField.framework"
   install_framework "$BUILT_PRODUCTS_DIR/HGCircularSlider/HGCircularSlider.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Lock/Lock.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Masonry/Masonry.framework"

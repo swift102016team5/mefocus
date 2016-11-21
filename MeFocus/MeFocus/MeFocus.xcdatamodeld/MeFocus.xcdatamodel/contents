@@ -16,6 +16,7 @@
         <attribute name="total_pauses" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="pauses" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Pause" inverseName="session" inverseEntity="Pause" syncable="YES"/>
+        <relationship name="suggestion" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Suggestion" syncable="YES"/>
     </entity>
     <entity name="Suggestion" representedClassName="Suggestion" syncable="YES" codeGenerationType="class">
         <attribute name="duration" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -24,7 +25,7 @@
     </entity>
     <elements>
         <element name="Pause" positionX="-63" positionY="39" width="128" height="105"/>
-        <element name="Session" positionX="108" positionY="87" width="128" height="180"/>
+        <element name="Session" positionX="108" positionY="87" width="128" height="195"/>
         <element name="Suggestion" positionX="286" positionY="63" width="128" height="90"/>
     </elements>
 </model>
