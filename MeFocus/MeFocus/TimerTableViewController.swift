@@ -41,6 +41,7 @@ class TimerTableViewController: UITableViewController {
     var goalFailed = false
     var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
     var timeBeforePause: NSDate?
+    var userTargetTime = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +63,8 @@ class TimerTableViewController: UITableViewController {
         taskTimer.timeRemaining = endPointValueInSec
         if Int(endPointValueInSec) <= 0 {
             stopTimer()
-            circularSlider.endPointValue = 0
+            NSLog("You succeeded!!!")
+            resetTimer()
         }
     }
     
@@ -70,6 +72,7 @@ class TimerTableViewController: UITableViewController {
         circularSlider.endPointValue.round()
         var components = DateComponents()
         components.minute = Int(circularSlider.endPointValue)
+        userTargetTime = components.minute!
         timerLabel.text = fullTimeFormatter.string(from: components)
     }
     
@@ -118,8 +121,8 @@ class TimerTableViewController: UITableViewController {
                                      selector: #selector(updateTimerOnCountdown),
                                      userInfo: nil,
                                      repeats: true)
-        
         setStartButton(withState: false)
+        NSLog("User's target time: \(userTargetTime) minutes")
     }
     
     func triggerNotification() {
@@ -223,6 +226,10 @@ class TimerTableViewController: UITableViewController {
     }
     
     func saveCurrentTime() {
+        guard isCountingTime else {
+            return
+        }
+        
         timeBeforePause = NSDate()
         NSLog("Time before paused: \(timeBeforePause)")
         stopTimer()
@@ -236,8 +243,21 @@ class TimerTableViewController: UITableViewController {
         let currentTime = NSDate()
         NSLog("Time at resume: \(currentTime)")
         let interval = currentTime.timeIntervalSince(timeBeforePause! as Date) as Double
-        circularSlider.endPointValue = circularSlider.endPointValue - CGFloat(interval / 60)
+        let intervalInMin = interval / 60
+        
+        guard intervalInMin < Double(userTargetTime) else {
+            NSLog("You succeeded!!!")
+            resetTimer()
+            return
+        }
+
+        circularSlider.endPointValue = circularSlider.endPointValue - CGFloat(intervalInMin)
         operateTimer()
+    }
+    
+    func resetTimer() {
+        circularSlider.endPointValue = 0
+        timerLabel.text = "0h 0m 0s"
     }
 
 }
