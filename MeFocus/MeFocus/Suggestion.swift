@@ -14,7 +14,7 @@ extension Suggestion {
 
 class SuggestionsManager:NSObject {
 
-    static private var _all:[Suggestion] = [
+    static private var _defaults:[Suggestion] = [
         Suggestion(data:[
             "goal":"Relax",
             "duration":600,
@@ -37,8 +37,16 @@ class SuggestionsManager:NSObject {
         ]),
     ]
     
+    static private var _all:[Suggestion] = []
+    
     static var all:[Suggestion]{
         get {
+            if _all.count == 0 {
+                let request = Storage.shared.request(entityName: "Suggestion")
+                let suggestions = Storage.shared.fetch(request: request) as! [Suggestion]
+                
+                _all = (suggestions.count > 0) ? suggestions : _defaults
+            }
             return _all
         }
     }

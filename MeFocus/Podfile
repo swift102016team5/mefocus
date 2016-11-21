@@ -9,4 +9,5 @@ target 'MeFocus' do
   pod 'Lock', '~> 1.27'
   pod 'SimpleKeychain', '~> 0.7'
   pod 'AutoCompleteTextField'
+  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 end

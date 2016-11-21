@@ -9,6 +9,20 @@
 import UIKit
 import Foundation
 import SystemConfiguration
+import ChameleonFramework
+
+/**
+ ** Theme truck
+ **/
+
+struct Theme {
+    
+    var backgroundColor:UIColor
+    var backgroundDarkColor:UIColor
+    
+    var textColor:UIColor
+    
+}
 
 /**
  ** Core application with configurations and states
@@ -28,12 +42,15 @@ class App: NSObject {
         
     }
     
+    var theme:Theme
+    
     override init(){
-        // Populate suggestions
-        
-        // Sync Sessions
-        
-        // Check if user watch preview already
+        // Theming
+        theme = Theme(
+            backgroundColor: .flatGreen,
+            backgroundDarkColor:.flatMintDark,
+            textColor:.flatWhite
+        )
     }
     
     func getControllerFromStoryboard(

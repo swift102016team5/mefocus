@@ -20,6 +20,7 @@
 		3F5EBC911DE176D600C2F15F /* Onboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F5EBC901DE176D600C2F15F /* Onboard.storyboard */; };
 		3F5EBC931DE1770300C2F15F /* OnboardIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5EBC921DE1770300C2F15F /* OnboardIntroViewController.swift */; };
 		3F60A46C1DE072B700A6D948 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F60A46B1DE072B700A6D948 /* Storage.swift */; };
+		3F6DDDA71DE2239C00EEFF51 /* BackgroundUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6DDDA61DE2239C00EEFF51 /* BackgroundUIView.swift */; };
 		3F7352411DE18F4D001721C8 /* AutoCompleteGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7352401DE18F4D001721C8 /* AutoCompleteGoal.swift */; };
 		3F7352431DE192BE001721C8 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7352421DE192BE001721C8 /* Suggestion.swift */; };
 		3F9722EC1DDF708A00152446 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F9722EB1DDF708A00152446 /* User.storyboard */; };
@@ -50,6 +51,7 @@
 		3F5EBC901DE176D600C2F15F /* Onboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboard.storyboard; sourceTree = "<group>"; };
 		3F5EBC921DE1770300C2F15F /* OnboardIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardIntroViewController.swift; sourceTree = "<group>"; };
 		3F60A46B1DE072B700A6D948 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		3F6DDDA61DE2239C00EEFF51 /* BackgroundUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundUIView.swift; sourceTree = "<group>"; };
 		3F7352401DE18F4D001721C8 /* AutoCompleteGoal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteGoal.swift; sourceTree = "<group>"; };
 		3F7352421DE192BE001721C8 /* Suggestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 		3F9722EB1DDF708A00152446 /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				3F9722EF1DDF786100152446 /* MeFocus.entitlements */,
+				3F6DDDA51DE2227500EEFF51 /* Themes */,
 				3F9722F21DDF7ADE00152446 /* Services */,
 				3FF3696D1DDF656B003AEA02 /* Models */,
 				DB1B5C8D1DDED183004FC528 /* Views */,
@@ -127,6 +130,14 @@
 				3F5EBC901DE176D600C2F15F /* Onboard.storyboard */,
 			);
 			path = MeFocus;
+			sourceTree = "<group>";
+		};
+		3F6DDDA51DE2227500EEFF51 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				3F6DDDA61DE2239C00EEFF51 /* BackgroundUIView.swift */,
+			);
+			name = Themes;
 			sourceTree = "<group>";
 		};
 		3F9722F21DDF7ADE00152446 /* Services */ = {
@@ -322,6 +333,7 @@
 				0BFF53961DDB18DE00ACF9BF /* MeFocus.xcdatamodeld in Sources */,
 				3F5EBC931DE1770300C2F15F /* OnboardIntroViewController.swift in Sources */,
 				3F5EBC8D1DE1693200C2F15F /* SessionStartViewController.swift in Sources */,
+				3F6DDDA71DE2239C00EEFF51 /* BackgroundUIView.swift in Sources */,
 				0BFF538E1DDB18DE00ACF9BF /* AppDelegate.swift in Sources */,
 				DB1B5C911DDED20F004FC528 /* FeaturedViewController.swift in Sources */,
 				3F35DE291DE0D9FA0083715C /* Session.swift in Sources */,
