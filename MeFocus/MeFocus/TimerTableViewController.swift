@@ -40,6 +40,7 @@ class TimerTableViewController: UITableViewController {
     var isCountingTime = false
     var goalFailed = false
     var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
+    var timeBeforePause: NSDate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +53,7 @@ class TimerTableViewController: UITableViewController {
         operateTimer()
     }
     
-    func updateTimerUI() {
+    func updateTimerOnCountdown() {
         circularSlider.endPointValue -= 1 / 60
         let endPointValueInSec = circularSlider.endPointValue * 60
         var components = DateComponents()
@@ -65,7 +66,7 @@ class TimerTableViewController: UITableViewController {
         }
     }
     
-    func updateTimer() {
+    func updateTimerOnSliderChange() {
         circularSlider.endPointValue.round()
         var components = DateComponents()
         components.minute = Int(circularSlider.endPointValue)
@@ -114,7 +115,7 @@ class TimerTableViewController: UITableViewController {
         circularSlider.isEnabled = false
         timer = Timer.scheduledTimer(timeInterval: 1.0,
                                      target: self,
-                                     selector: #selector(updateTimerUI),
+                                     selector: #selector(updateTimerOnCountdown),
                                      userInfo: nil,
                                      repeats: true)
         
@@ -184,10 +185,11 @@ class TimerTableViewController: UITableViewController {
     func initViews() {
         timerTableView.isScrollEnabled = false
         
+        // Timer's unit is in minute
         circularSlider.maximumValue = 12 * 60
         circularSlider.minimumValue = 0
         circularSlider.endPointValue = 0
-        circularSlider.addTarget(self, action: #selector(updateTimer), for: .valueChanged)
+        circularSlider.addTarget(self, action: #selector(updateTimerOnSliderChange), for: .valueChanged)
     }
     
     func addObservers() {
@@ -198,6 +200,14 @@ class TimerTableViewController: UITableViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(TimerTableViewController.operateTimer(notFromBackground:)),
                                                name: NSNotification.Name(enterForegroundNotification),
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(TimerTableViewController.saveCurrentTime),
+                                               name: NSNotification.Name(saveCurrentTimeNotification),
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(TimerTableViewController.resumeTimer),
+                                               name: NSNotification.Name(resumeTimerNotification),
                                                object: nil)
     }
     
@@ -210,6 +220,24 @@ class TimerTableViewController: UITableViewController {
         
         startButton.setTitle("GIVE UP!", for: .normal)
         startButton.setTitleColor(gray, for: .normal)
+    }
+    
+    func saveCurrentTime() {
+        timeBeforePause = NSDate()
+        NSLog("Time before paused: \(timeBeforePause)")
+        stopTimer()
+    }
+    
+    func resumeTimer() {
+        guard !goalFailed else {
+            return
+        }
+        
+        let currentTime = NSDate()
+        NSLog("Time at resume: \(currentTime)")
+        let interval = currentTime.timeIntervalSince(timeBeforePause! as Date) as Double
+        circularSlider.endPointValue = circularSlider.endPointValue - CGFloat(interval / 60)
+        operateTimer()
     }
 
 }

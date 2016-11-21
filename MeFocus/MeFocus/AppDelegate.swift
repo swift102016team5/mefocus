@@ -12,6 +12,8 @@ import UserNotifications
 
 let returnNotification = "returnToApp"
 let enterForegroundNotification = "appWillEnterForeground"
+let saveCurrentTimeNotification = "saveCurrentTime"
+let resumeTimerNotification = "resumeTimer"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -80,20 +82,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        if !deviceLocked {
+        guard deviceLocked else {
             NotificationCenter.default.post(name: NSNotification.Name(returnNotification), object: self)
-        }
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        guard !deviceLocked else {
-            deviceLocked = false
             return
         }
         
-        NotificationCenter.default.post(name: NSNotification.Name(enterForegroundNotification), object: self)
+        NotificationCenter.default.post(name: NSNotification.Name(saveCurrentTimeNotification), object: self)
+    }
+
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        guard deviceLocked else {
+            NotificationCenter.default.post(name: NSNotification.Name(enterForegroundNotification), object: self)
+            return
+        }
+        
+        deviceLocked = false
+        NotificationCenter.default.post(name: NSNotification.Name(resumeTimerNotification), object: self)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
