@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
         return true
 
-        // Check if any unfinished session is going
+//         Check if any unfinished session is going
         let session = SessionsManager.unfinished
         if session != nil {
             App.shared.redirect(
@@ -115,6 +115,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+        // Stop session when app is terminated
+        SessionsManager.unfinished?.finish()
         self.saveContext()
     }
 

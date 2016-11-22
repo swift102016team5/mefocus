@@ -7,36 +7,240 @@
 //
 
 import UIKit
+import HGCircularSlider
+import UserNotifications
 
 class SessionOngoingViewController: UIViewController {
-
-    var session:Session?{
-        didSet{
+    
+    let fullTimeFormatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.zeroFormattingBehavior = .dropAll
+        formatter.unitsStyle = .abbreviated
+        formatter.allowedUnits = [.hour, .minute, .second]
+        return formatter
+    }()
+    let requestIdentifier = "ReturnRequest"
+    
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timeSlider: CircularSlider!
+    
+    var session: Session? {
+        didSet {
             // Setup some infomation
             print(session)
+            userTargetTime = Int((session?.duration)!)
+            backgroundLimitTime = Int((session?.maximum_pause_duration)!)
         }
     }
+    var timer: Timer?
+    var backgroundTimer: Timer?
+    var backgroundLimitTime = 10
+    var remainBackgroundTime = 0
+    var isCountingTime = false
+    var goalFailed = false
+    var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
+    var timeBeforePause: NSDate?
+    var userTargetTime = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        initViews()
+        addObservers()
+        runTimer()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func onGiveUp(_ sender: UIButton) {
+        stopTimer()
+        dismiss(animated: true, completion: nil)
     }
-    */
+    
+    func initViews() {
+        initTimeSlider()
+        initLabels()
+    }
+    
+    func initTimeSlider() {
+        timeSlider.trackColor = App.shared.theme.backgroundLighColor.withAlphaComponent(0.1)
+        timeSlider.trackFillColor = App.shared.theme.backgroundDarkColor
+        timeSlider.diskFillColor = App.shared.theme.backgroundLighColor.withAlphaComponent(0.2)
+        timeSlider.endThumbStrokeColor = UIColor.flatGreen
+        timeSlider.endThumbTintColor = UIColor.flatWhite
+        timeSlider.endThumbStrokeHighlightedColor = UIColor.flatGreenDark
+        
+        timeSlider.isEnabled = false
+        timeSlider.maximumValue = CGFloat(userTargetTime)
+        timeSlider.minimumValue = 0
+        timeSlider.endPointValue = timeSlider.maximumValue
+    }
+    
+    func initLabels() {
+        var components = DateComponents()
+        components.second = userTargetTime
+        timeLabel.text = fullTimeFormatter.string(from: components)
+    }
+    
+    func runTimer() {
+        guard !goalFailed else {
+            NSLog("You failed!!!")
+            dismiss(animated: true, completion: nil)
+            return
+        }
+        
+        isCountingTime = true
+        backgroundTimer?.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 1.0,
+                                     target: self,
+                                     selector: #selector(updateTimerOnCountdown),
+                                     userInfo: nil,
+                                     repeats: true)
+    }
+    
+    func resumeTimer() {
+        guard !goalFailed else {
+            NSLog("You failed!!!")
+            dismiss(animated: true, completion: nil)
+            return
+        }
+        
+        let currentTime = NSDate()
+        NSLog("Time at resume: \(currentTime)")
+        let interval = currentTime.timeIntervalSince(timeBeforePause! as Date) as Double
+        
+        guard interval < Double(userTargetTime) else {
+            NSLog("You succeeded!!!")
+            return
+        }
+        
+        timeSlider.endPointValue = timeSlider.endPointValue - CGFloat(interval)
+        runTimer()
+    }
+    
+    func stopTimer() {
+        isCountingTime = false
+        timer?.invalidate()
+        SessionsManager.unfinished?.finish()
+    }
+    
+    func saveCurrentTime() {
+        guard isCountingTime else {
+            return
+        }
+        
+        timeBeforePause = NSDate()
+        NSLog("Time before paused: \(timeBeforePause)")
+        stopTimer()
+    }
+    
+    func updateTimerOnCountdown() {
+        timeSlider.endPointValue -= 1
+        let endPointValueInSec = timeSlider.endPointValue
+        var components = DateComponents()
+        components.second = Int(endPointValueInSec)
+        timeLabel.text = fullTimeFormatter.string(from: components)
+        taskTimer.timeRemaining = endPointValueInSec
+        if Int(endPointValueInSec) <= 0 {
+            stopTimer()
+            NSLog("You succeeded!!!")
+        }
+    }
+    
+    func triggerNotification() {
+        guard isCountingTime else {
+            return
+        }
+        
+        let content = UNMutableNotificationContent()
+        content.body = "Please go back to your task in 10 sec"
+        content.sound = UNNotificationSound.default()
+        
+        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 0.1, repeats: false)
+        let request = UNNotificationRequest(identifier: requestIdentifier,
+                                            content: content,
+                                            trigger: trigger)
+        
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error {
+                NSLog(error.localizedDescription)
+            }
+        }
+        
+        
+        startBackgroundCountdown()
+    }
+    
+    func startBackgroundCountdown() {
+        stopTimer()
+        registerForBackgroundTask()
+        
+        // Background task
+        remainBackgroundTime = backgroundLimitTime
+        backgroundTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (backgroundTimer) in
+            self.remainBackgroundTime = self.remainBackgroundTime - 1
+            NSLog("Background time: \(self.remainBackgroundTime)")
+            if self.remainBackgroundTime == 0 {
+                NSLog("You failed your goal!!!")
+                self.goalFailed = true
+                backgroundTimer.invalidate()
+                
+                self.endBackgroundTask()
+            }
+        })
+    }
+    
+    func registerForBackgroundTask() {
+        NSLog("Background task started!")
+        NSLog("Background time remaining = \(UIApplication.shared.backgroundTimeRemaining) seconds")
+        // Register backgroundTask
+        backgroundTask = UIApplication.shared.beginBackgroundTask(withName: returnNotification, expirationHandler: { () in
+            self.endBackgroundTask()
+        })
+    }
+    
+    func endBackgroundTask() {
+        NSLog("Background task ended!")
+        NSLog("Background time remaining = \(UIApplication.shared.backgroundTimeRemaining) seconds")
+        UIApplication.shared.endBackgroundTask(backgroundTask)
+        backgroundTask = UIBackgroundTaskInvalid
+    }
 
+    func addObservers() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(SessionOngoingViewController.triggerNotification),
+                                               name: NSNotification.Name(returnNotification),
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(SessionOngoingViewController.runTimer),
+                                               name: NSNotification.Name(enterForegroundNotification),
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(SessionOngoingViewController.saveCurrentTime),
+                                               name: NSNotification.Name(saveCurrentTimeNotification),
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(SessionOngoingViewController.resumeTimer),
+                                               name: NSNotification.Name(resumeTimerNotification),
+                                               object: nil)
+    }
+
+}
+
+extension SessionOngoingViewController: UNUserNotificationCenterDelegate {
+    
+    // Do sth on tap on notification
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        NSLog("Tapped in notification")
+    }
+    
+    // This is key callback to present notification while the app is in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        NSLog("Notification being triggered")
+        //You can either present alert ,sound or increase badge while the app is in foreground too with ios 10
+        //to distinguish between notifications
+        if notification.request.identifier == requestIdentifier {
+            completionHandler([.alert,.sound,.badge])
+        }
+    }
+    
 }
