@@ -36,6 +36,7 @@ PODS:
   - SimpleKeychain (0.7.0)
 
 DEPENDENCIES:
+  - AFNetworking (~> 3.1.0)
   - AutoCompleteTextField
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - HGCircularSlider
@@ -60,6 +61,6 @@ SPEC CHECKSUMS:
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   SimpleKeychain: b50cef3b87939d480ea1143425c00f5b4b70fe21
 
-PODFILE CHECKSUM: 4b6afb5cc1114ac0cf82690d34364c01dc9cd780
+PODFILE CHECKSUM: dd95d1058bdcfd3a101e41b82cd565b678adf5b4
 
 COCOAPODS: 1.1.0.rc.3

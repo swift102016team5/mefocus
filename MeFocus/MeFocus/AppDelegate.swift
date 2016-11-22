@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         App.shared.redirect(
             delegate: self,
             storyboard: "User",
-            controller: "UserProfileViewController",
+            controller: "UserLoginViewController",
             modifier:nil
         )
         return true
