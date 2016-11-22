@@ -24,9 +24,8 @@ class SessionStartViewController: UIViewController {
         super.viewDidLoad()
         goalTextField.autoCompleteTextFieldDataSource = goalTextField
         goalTextField.autoCompleteGoalDelegate = self
-        
-        view.backgroundColor = UIColor.flatWhite
         initViews()
+        view.backgroundColor = UIColor.flatWhite
     }
     
     func textViewDidChange(textView: UITextView) { // Handle the text changes here
@@ -63,9 +62,9 @@ class SessionStartViewController: UIViewController {
     }
     
     func initTimeSlider() {
-        timeSlider.trackColor = App.shared.theme.backgroundLighColor.withAlphaComponent(0.1)
+        timeSlider.trackColor = App.shared.theme.backgroundLighColor
         timeSlider.trackFillColor = App.shared.theme.backgroundDarkColor
-        timeSlider.diskFillColor = App.shared.theme.backgroundLighColor.withAlphaComponent(0.2)
+        timeSlider.diskFillColor = App.shared.theme.backgroundLighColor
         timeSlider.endThumbStrokeColor = UIColor.flatGreen
         timeSlider.endThumbTintColor = UIColor.flatWhite
         timeSlider.endThumbStrokeHighlightedColor = UIColor.flatGreenDark
