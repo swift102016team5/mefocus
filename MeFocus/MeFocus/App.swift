@@ -17,10 +17,14 @@ import ChameleonFramework
 
 struct Theme {
     
+    var backgroundLighColor:UIColor
     var backgroundColor:UIColor
     var backgroundDarkColor:UIColor
+    var backgroundLighAccentColor:UIColor
+    var backgroundDarkAccentColor:UIColor
     
     var textColor:UIColor
+    var textDarkColor:UIColor
     
 }
 
@@ -47,9 +51,13 @@ class App: NSObject {
     override init(){
         // Theming
         theme = Theme(
+            backgroundLighColor: .flatGreen,
             backgroundColor: .flatGreen,
-            backgroundDarkColor:.flatMintDark,
-            textColor:.flatWhite
+            backgroundDarkColor:.flatGreenDark,
+            backgroundLighAccentColor:.flatMint,
+            backgroundDarkAccentColor:.flatMintDark,
+            textColor:.flatWhite,
+            textDarkColor:.flatBlack
         )
     }
     

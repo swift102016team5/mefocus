@@ -24,6 +24,7 @@ class UserLoginViewController: UIViewController {
             (auth:Auth) in
             // Dont have profile
             if auth.profile == nil {
+                
                 let controller = A0Lock.shared().newLockViewController()
                 controller?.onAuthenticationBlock = { maybeProfile, maybeToken in
                     // Do something with token  profile. e.g.: save them.
