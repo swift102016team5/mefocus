@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -61,6 +62,22 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQA-8A-cW1">
+                                        <rect key="frame" x="42" y="95" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="Bar Chart Filled-50"/>
+                                        <connections>
+                                            <segue destination="5he-Gn-xbM" kind="presentation" id="M3g-kQ-vvX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8tK-bl-VLv">
+                                        <rect key="frame" x="228" y="97" width="48" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="Plus Filled-50"/>
+                                        <connections>
+                                            <action selector="onCreateNewSession:" destination="h8H-N3-CVY" eventType="touchUpInside" id="xsQ-n1-l0w"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -135,7 +152,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="apm-9H-E7H" id="gd9-3O-g9q">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Relax" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AaD-eo-4Kg" customClass="NormalLabel" customModule="MeFocus" customModuleProvider="target">
@@ -211,8 +228,166 @@
             </objects>
             <point key="canvasLocation" x="727.5" y="87.676056338028175"/>
         </scene>
+        <!--Last 7 days-->
+        <scene sceneID="WDl-O7-idJ">
+            <objects>
+                <viewController storyboardIdentifier="UserStatisticViewController" id="PPl-jb-lf9" customClass="UserStatisticViewController" customModule="MeFocus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V72-SS-HaF"/>
+                        <viewControllerLayoutGuide type="bottom" id="y2T-px-1zx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qBh-mK-BfL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEp-ou-B8L" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="124" width="320" height="320"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="AEp-ou-B8L" secondAttribute="height" multiplier="1:1" id="Fcx-7H-q9b"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AEp-ou-B8L" firstAttribute="centerY" secondItem="qBh-mK-BfL" secondAttribute="centerY" id="DzG-qR-D5p"/>
+                            <constraint firstAttribute="trailing" secondItem="AEp-ou-B8L" secondAttribute="trailing" id="auk-fo-Zg6"/>
+                            <constraint firstItem="AEp-ou-B8L" firstAttribute="leading" secondItem="qBh-mK-BfL" secondAttribute="leading" id="gxw-Qw-IcL"/>
+                            <constraint firstItem="AEp-ou-B8L" firstAttribute="centerX" secondItem="qBh-mK-BfL" secondAttribute="centerX" id="vmr-g7-xbB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Last 7 days" id="RPd-ZS-nHb">
+                        <barButtonItem key="leftBarButtonItem" image="Back-30" id="Uqu-eP-Lug">
+                            <connections>
+                                <segue destination="h8H-N3-CVY" kind="popoverPresentation" popoverAnchorBarButtonItem="Uqu-eP-Lug" id="Fwl-iN-wkR">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="barChartView" destination="AEp-ou-B8L" id="sfv-rY-EYu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O3X-jH-qkb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3585" y="-157.3943661971831"/>
+        </scene>
+        <!--By categories-->
+        <scene sceneID="Ltc-QA-ufq">
+            <objects>
+                <viewController storyboardIdentifier="UserStatisticCategoryViewController" id="pfH-uV-olD" customClass="UserStatisticCategoryViewController" customModule="MeFocus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zHZ-bV-msA"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ql0-Xf-gVq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WAk-2I-KYx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7I5-k9-vhl" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="124" width="320" height="320"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7I5-k9-vhl" secondAttribute="height" multiplier="1:1" id="DgM-GA-gNi"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7I5-k9-vhl" firstAttribute="centerX" secondItem="WAk-2I-KYx" secondAttribute="centerX" id="RIp-MV-6BG"/>
+                            <constraint firstItem="7I5-k9-vhl" firstAttribute="centerY" secondItem="WAk-2I-KYx" secondAttribute="centerY" id="bdb-pO-ZHo"/>
+                            <constraint firstItem="7I5-k9-vhl" firstAttribute="leading" secondItem="WAk-2I-KYx" secondAttribute="leading" id="oDB-Hc-5Uq"/>
+                            <constraint firstAttribute="trailing" secondItem="7I5-k9-vhl" secondAttribute="trailing" id="vIC-Qb-x06"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="By categories" id="fev-rF-i3B">
+                        <barButtonItem key="leftBarButtonItem" image="Back-30" id="NNH-vo-gjX">
+                            <connections>
+                                <segue destination="h8H-N3-CVY" kind="presentation" id="dnl-03-2XW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="pieChartView" destination="7I5-k9-vhl" id="Ku0-Xy-myn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7jP-dg-alL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3585" y="617.95774647887322"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="4Er-xX-zPI">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="5he-Gn-xbM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="leo-Fc-nw9" customClass="BackgroundTabNavigation" customModule="MeFocus" customModuleProvider="target">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="XUw-Qk-Mpj" kind="relationship" relationship="viewControllers" id="b4w-gu-RSB"/>
+                        <segue destination="pW3-ES-b93" kind="relationship" relationship="viewControllers" id="Rfa-QM-26m"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3M3-Yu-7Eq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1590" y="88.732394366197184"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="uRE-7F-2MM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pW3-ES-b93" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="Doughnut Chart Green-30" selectedImage="Doughnut Chart-30" id="ACq-hZ-ivu">
+                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="juJ-ey-tQh" customClass="BackgroundNavigation" customModule="MeFocus" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pfH-uV-olD" kind="relationship" relationship="rootViewController" id="pNl-3a-6qR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BOr-Pg-KLX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2587.5" y="617.95774647887322"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hLS-i4-njM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XUw-Qk-Mpj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="Bar Chart Filled Green-30" selectedImage="Bar Chart Filled-30" id="Qje-oy-mGd">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ram-t3-6Zn" customClass="BackgroundNavigation" customModule="MeFocus" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PPl-jb-lf9" kind="relationship" relationship="rootViewController" id="7m6-4H-6Cb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DmP-ro-BkQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2587.5" y="-157.3943661971831"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Back-30" width="30" height="30"/>
+        <image name="Bar Chart Filled Green-30" width="30" height="30"/>
+        <image name="Bar Chart Filled-30" width="30" height="30"/>
+        <image name="Bar Chart Filled-50" width="50" height="50"/>
         <image name="Checked-50" width="50" height="50"/>
+        <image name="Doughnut Chart Green-30" width="30" height="30"/>
+        <image name="Doughnut Chart-30" width="30" height="30"/>
+        <image name="Plus Filled-50" width="50" height="50"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="dnl-03-2XW"/>
+    </inferredMetricsTieBreakers>
 </document>
