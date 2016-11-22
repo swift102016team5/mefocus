@@ -22,6 +22,7 @@ class TimerTableViewController: UITableViewController {
     @IBOutlet weak var circularSlider: CircularSlider!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var categoryLabel: UILabel!
     
     let fullTimeFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
@@ -42,6 +43,8 @@ class TimerTableViewController: UITableViewController {
     var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
     var timeBeforePause: NSDate?
     var userTargetTime = 0
+    
+    var selectedCategoryIndexPath = IndexPath(item: 0, section: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -259,6 +262,13 @@ class TimerTableViewController: UITableViewController {
         circularSlider.endPointValue = 0
         timerLabel.text = "0h 0m 0s"
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navigationController = segue.destination as! UINavigationController
+        let categoryTableViewController = navigationController.topViewController as! CategoryTableViewController
+        categoryTableViewController.delegate = self
+        categoryTableViewController.selectedIndexPath = selectedCategoryIndexPath
+    }
 
 }
 
@@ -278,4 +288,13 @@ extension TimerTableViewController: UNUserNotificationCenterDelegate {
             completionHandler([.alert,.sound,.badge])
         }
     }
+}
+
+extension TimerTableViewController: CategoryTableViewControllerDelegate {
+    
+    func categoryTableViewController(categoryTableViewController: CategoryTableViewController, selectedIndexPath: IndexPath) {
+        selectedCategoryIndexPath = selectedIndexPath
+        categoryLabel.text = categories[selectedIndexPath.row]
+    }
+    
 }
