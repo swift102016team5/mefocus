@@ -31,15 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         registerforDeviceLockNotification()
         
-        App.shared.redirect(
-            delegate: self,
-            storyboard: "User",
-            controller: "UserLoginViewController",
-            modifier:nil
-        )
-        return true
-
-//         Check if any unfinished session is going
+        // Check if any unfinished session is going
         let session = SessionsManager.unfinished
         if session != nil {
             App.shared.redirect(
