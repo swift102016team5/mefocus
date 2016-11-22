@@ -45,14 +45,26 @@ class UserLoginViewController: UIViewController {
                     auth.profile = profile
 
                     controller?.dismiss(animated: true, completion: nil)
+                    self.toProfile()
                 }
                 A0Lock.shared().present(controller, from: self)
                 return
             }
             // Already have profile 
             // Do some navigations ...
+            self.toProfile()
         }
         
+    }
+    
+    func toProfile(){
+        App.shared.present(
+            presenter: self,
+            storyboard: "User",
+            controller: "UserProfileViewController",
+            modifier: nil,
+            completion: nil
+        )
     }
     
     override func didReceiveMemoryWarning() {

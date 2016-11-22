@@ -65,6 +65,20 @@ class BackgroundLeftRightUIView: BackgroundUIView {
     
 }
 
+class BackgroundGradientGrayUIView:BackgroundUIView{
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        backgroundColor = GradientColor(
+            .leftToRight,
+            frame: bounds,
+            colors: [
+                .flatWhite,
+                .flatWhiteDark
+            ]
+        )
+    }
+}
+
 class BackgroundLighterUIView:BackgroundUIView{
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

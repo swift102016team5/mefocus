@@ -16,6 +16,9 @@
 		0BFF53981DDB18DE00ACF9BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BFF53971DDB18DE00ACF9BF /* Assets.xcassets */; };
 		0BFF539B1DDB18DE00ACF9BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BFF53991DDB18DE00ACF9BF /* LaunchScreen.storyboard */; };
 		3F35DE291DE0D9FA0083715C /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F35DE281DE0D9FA0083715C /* Session.swift */; };
+		3F40E87B1DE49E21009DCEC8 /* UserStatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F40E87A1DE49E21009DCEC8 /* UserStatisticViewController.swift */; };
+		3F40E87D1DE4ACC5009DCEC8 /* UserStatisticCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F40E87C1DE4ACC5009DCEC8 /* UserStatisticCategoryViewController.swift */; };
+		3F40E87F1DE4B1DE009DCEC8 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F40E87E1DE4B1DE009DCEC8 /* Navigation.swift */; };
 		3F5EBC8B1DE1689E00C2F15F /* Session.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F5EBC8A1DE1689E00C2F15F /* Session.storyboard */; };
 		3F5EBC8D1DE1693200C2F15F /* SessionStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5EBC8C1DE1693200C2F15F /* SessionStartViewController.swift */; };
 		3F5EBC8F1DE1695400C2F15F /* SessionOngoingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5EBC8E1DE1695400C2F15F /* SessionOngoingViewController.swift */; };
@@ -31,6 +34,7 @@
 		3F9722EE1DDF70B300152446 /* UserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9722ED1DDF70B300152446 /* UserLoginViewController.swift */; };
 		3F9722F41DDF7AEF00152446 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9722F31DDF7AEF00152446 /* Auth.swift */; };
 		3F9722F61DDF840F00152446 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9722F51DDF840F00152446 /* App.swift */; };
+		3FBFF1831DE473D00017F799 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBFF1821DE473D00017F799 /* SessionTableViewCell.swift */; };
 		D732715CA153466968115BD1 /* Pods_MeFocus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86EBD245FD761FD66432B85 /* Pods_MeFocus.framework */; };
 		DB1B5C8F1DDED197004FC528 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1B5C8E1DDED197004FC528 /* ProgressView.swift */; };
 		DB1B5C911DDED20F004FC528 /* FeaturedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1B5C901DDED20F004FC528 /* FeaturedViewController.swift */; };
@@ -51,6 +55,9 @@
 		0BFF539A1DDB18DE00ACF9BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BFF539C1DDB18DE00ACF9BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F35DE281DE0D9FA0083715C /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		3F40E87A1DE49E21009DCEC8 /* UserStatisticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStatisticViewController.swift; sourceTree = "<group>"; };
+		3F40E87C1DE4ACC5009DCEC8 /* UserStatisticCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStatisticCategoryViewController.swift; sourceTree = "<group>"; };
+		3F40E87E1DE4B1DE009DCEC8 /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		3F5EBC8A1DE1689E00C2F15F /* Session.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Session.storyboard; sourceTree = "<group>"; };
 		3F5EBC8C1DE1693200C2F15F /* SessionStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStartViewController.swift; sourceTree = "<group>"; };
 		3F5EBC8E1DE1695400C2F15F /* SessionOngoingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionOngoingViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +74,7 @@
 		3F9722EF1DDF786100152446 /* MeFocus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeFocus.entitlements; sourceTree = "<group>"; };
 		3F9722F31DDF7AEF00152446 /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		3F9722F51DDF840F00152446 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		3FBFF1821DE473D00017F799 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTableViewCell.swift; sourceTree = "<group>"; };
 		B13A83EE95948A159C5FDDD5 /* Pods-MeFocus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeFocus.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeFocus/Pods-MeFocus.release.xcconfig"; sourceTree = "<group>"; };
 		DB1B5C8E1DDED197004FC528 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		DB1B5C901DDED20F004FC528 /* FeaturedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedViewController.swift; sourceTree = "<group>"; };
@@ -91,12 +99,14 @@
 			children = (
 				0BDA37E31DDDF63C00C51DBD /* TimerTableViewController.swift */,
 				DB1B5C901DDED20F004FC528 /* FeaturedViewController.swift */,
-				3F9722ED1DDF70B300152446 /* UserLoginViewController.swift */,
 				3F5EBC8C1DE1693200C2F15F /* SessionStartViewController.swift */,
 				3F5EBC8E1DE1695400C2F15F /* SessionOngoingViewController.swift */,
 				3F5EBC921DE1770300C2F15F /* OnboardIntroViewController.swift */,
 				0B1BBCDF1DE4359C001F2827 /* CategoryTableViewController.swift */,
 				3F70ACEB1DE34B9F00F16BD0 /* UserProfileViewController.swift */,
+				3F9722ED1DDF70B300152446 /* UserLoginViewController.swift */,
+				3F40E87A1DE49E21009DCEC8 /* UserStatisticViewController.swift */,
+				3F40E87C1DE4ACC5009DCEC8 /* UserStatisticCategoryViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -147,6 +157,7 @@
 			children = (
 				3F6DDDA61DE2239C00EEFF51 /* Background.swift */,
 				3F70ACEF1DE3746900F16BD0 /* Label.swift */,
+				3F40E87E1DE4B1DE009DCEC8 /* Navigation.swift */,
 			);
 			name = Themes;
 			sourceTree = "<group>";
@@ -184,6 +195,7 @@
 			children = (
 				DB1B5C8E1DDED197004FC528 /* ProgressView.swift */,
 				3F7352401DE18F4D001721C8 /* AutoCompleteGoal.swift */,
+				3FBFF1821DE473D00017F799 /* SessionTableViewCell.swift */,
 				0B1BBCE21DE4376D001F2827 /* CategoryCell.swift */,
 			);
 			name = Views;
@@ -337,10 +349,13 @@
 			files = (
 				0B1BBCE01DE4359C001F2827 /* CategoryTableViewController.swift in Sources */,
 				3F9722F61DDF840F00152446 /* App.swift in Sources */,
+				3F40E87D1DE4ACC5009DCEC8 /* UserStatisticCategoryViewController.swift in Sources */,
+				3F40E87F1DE4B1DE009DCEC8 /* Navigation.swift in Sources */,
 				3F60A46C1DE072B700A6D948 /* Storage.swift in Sources */,
 				3F9722EE1DDF70B300152446 /* UserLoginViewController.swift in Sources */,
 				0BDA37E41DDDF63C00C51DBD /* TimerTableViewController.swift in Sources */,
 				0B1BBCE31DE4376D001F2827 /* CategoryCell.swift in Sources */,
+				3F40E87B1DE49E21009DCEC8 /* UserStatisticViewController.swift in Sources */,
 				DB1B5C8F1DDED197004FC528 /* ProgressView.swift in Sources */,
 				3F70ACEC1DE34B9F00F16BD0 /* UserProfileViewController.swift in Sources */,
 				3F5EBC8F1DE1695400C2F15F /* SessionOngoingViewController.swift in Sources */,
@@ -348,6 +363,7 @@
 				3F70ACF01DE3746900F16BD0 /* Label.swift in Sources */,
 				0BFF53961DDB18DE00ACF9BF /* MeFocus.xcdatamodeld in Sources */,
 				3F5EBC931DE1770300C2F15F /* OnboardIntroViewController.swift in Sources */,
+				3FBFF1831DE473D00017F799 /* SessionTableViewCell.swift in Sources */,
 				3F5EBC8D1DE1693200C2F15F /* SessionStartViewController.swift in Sources */,
 				3F6DDDA71DE2239C00EEFF51 /* Background.swift in Sources */,
 				0BFF538E1DDB18DE00ACF9BF /* AppDelegate.swift in Sources */,
