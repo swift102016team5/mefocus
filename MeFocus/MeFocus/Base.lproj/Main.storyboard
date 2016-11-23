@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FEu-gX-YnE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8mk-io-mbx">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,7 +18,7 @@
                         <viewControllerLayoutGuide type="bottom" id="UFI-rQ-HTp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DL3-FB-WJw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -25,26 +28,194 @@
             </objects>
             <point key="canvasLocation" x="2031" y="168"/>
         </scene>
+        <!--Session Start View Controller-->
+        <scene sceneID="ncu-1a-fHC">
+            <objects>
+                <viewController id="8mk-io-mbx" customClass="SessionStartViewController" customModule="MeFocus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jja-sn-Ns7"/>
+                        <viewControllerLayoutGuide type="bottom" id="iCX-lr-iY6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cvg-dy-Bjl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q53-ti-e3b" customClass="BackgroundLeftRightUIView" customModule="MeFocus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eik-22-FW2" customClass="HFourLabel" customModule="MeFocus" customModuleProvider="target">
+                                        <rect key="frame" x="124.5" y="78" width="71" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jPh-aj-RwA" customClass="AutoCompleteGoal" customModule="MeFocus" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="28" width="260" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="3aJ-19-dnL"/>
+                                    <constraint firstItem="jPh-aj-RwA" firstAttribute="leading" secondItem="Q53-ti-e3b" secondAttribute="leading" constant="30" id="9sd-zK-2Te"/>
+                                    <constraint firstAttribute="trailing" secondItem="jPh-aj-RwA" secondAttribute="trailing" constant="30" id="Hmh-2m-U5F"/>
+                                    <constraint firstItem="eik-22-FW2" firstAttribute="top" secondItem="jPh-aj-RwA" secondAttribute="bottom" constant="20" id="bYn-hc-aoW"/>
+                                    <constraint firstItem="jPh-aj-RwA" firstAttribute="top" secondItem="Q53-ti-e3b" secondAttribute="top" constant="28" id="jDe-CD-VSQ"/>
+                                    <constraint firstItem="eik-22-FW2" firstAttribute="centerX" secondItem="Q53-ti-e3b" secondAttribute="centerX" id="jw2-Ox-lgS"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6H6-XL-tx0" customClass="BackgroundDarkerUIView" customModule="MeFocus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="240" width="170" height="72"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hour" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sle-Gx-kKb" customClass="HFourDarkLabel" customModule="MeFocus" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="38" width="170" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXB-kb-LWg" customClass="HThreeLabel" customModule="MeFocus" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="14" width="170" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="UXB-kb-LWg" firstAttribute="top" secondItem="6H6-XL-tx0" secondAttribute="top" constant="14" id="3KR-T2-9iv"/>
+                                    <constraint firstAttribute="height" constant="72" id="4B1-hN-tic"/>
+                                    <constraint firstItem="sle-Gx-kKb" firstAttribute="leading" secondItem="6H6-XL-tx0" secondAttribute="leading" id="8Pz-5l-1be"/>
+                                    <constraint firstItem="sle-Gx-kKb" firstAttribute="top" secondItem="UXB-kb-LWg" secondAttribute="bottom" constant="3" id="9IU-25-8X6"/>
+                                    <constraint firstItem="UXB-kb-LWg" firstAttribute="leading" secondItem="6H6-XL-tx0" secondAttribute="leading" id="Tzn-E5-Lvg"/>
+                                    <constraint firstAttribute="trailing" secondItem="UXB-kb-LWg" secondAttribute="trailing" id="V1R-jo-biq"/>
+                                    <constraint firstAttribute="trailing" secondItem="sle-Gx-kKb" secondAttribute="trailing" id="sFt-Fb-yoL"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0uO-TQ-o7a" customClass="BackgroundLighterUIView" customModule="MeFocus" customModuleProvider="target">
+                                <rect key="frame" x="170" y="240" width="150" height="72"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20.000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKY-kZ-QRd" customClass="HThreeLabel" customModule="MeFocus" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="14" width="150" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minute" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Liz-S6-fLg" customClass="HFourLabel" customModule="MeFocus" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="38" width="150" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Liz-S6-fLg" firstAttribute="leading" secondItem="0uO-TQ-o7a" secondAttribute="leading" id="0LO-4K-e7T"/>
+                                    <constraint firstItem="Liz-S6-fLg" firstAttribute="top" secondItem="xKY-kZ-QRd" secondAttribute="bottom" constant="3" id="LPr-sD-h64"/>
+                                    <constraint firstAttribute="trailing" secondItem="Liz-S6-fLg" secondAttribute="trailing" id="S5g-uB-gmz"/>
+                                    <constraint firstItem="xKY-kZ-QRd" firstAttribute="leading" secondItem="0uO-TQ-o7a" secondAttribute="leading" id="gSO-7k-1yC"/>
+                                    <constraint firstAttribute="trailing" secondItem="xKY-kZ-QRd" secondAttribute="trailing" id="i2y-wJ-D9k"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rLd-zX-vFn" customClass="CircularSlider" customModule="HGCircularSlider">
+                                <rect key="frame" x="55" y="338" width="210" height="210"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7T-DQ-abP">
+                                        <rect key="frame" x="80" y="80" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="play-button"/>
+                                        <connections>
+                                            <segue destination="aoG-zR-pTr" kind="popoverPresentation" popoverAnchorView="T7T-DQ-abP" id="Tza-xK-cLn">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
+                                        <color key="value" red="0.0475365935844866" green="0.87077112573857862" blue="0.38601676406786029" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endThumbStrokeHighlightedColor">
+                                        <color key="value" red="1" green="0.49019607840000001" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endThumbStrokeColor">
+                                        <color key="value" red="0.99607843139999996" green="0.80784313730000001" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="diskFillColor">
+                                        <color key="value" red="0.82745098039999998" green="0.3294117647" blue="0.0" alpha="0.2012681935" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Q53-ti-e3b" firstAttribute="top" secondItem="cvg-dy-Bjl" secondAttribute="top" id="4ll-SE-d3w"/>
+                            <constraint firstItem="0uO-TQ-o7a" firstAttribute="top" secondItem="Q53-ti-e3b" secondAttribute="bottom" id="6WR-oE-IDL"/>
+                            <constraint firstAttribute="trailing" secondItem="Q53-ti-e3b" secondAttribute="trailing" id="8hN-eH-UfI"/>
+                            <constraint firstItem="0uO-TQ-o7a" firstAttribute="leading" secondItem="cvg-dy-Bjl" secondAttribute="leading" constant="170" id="Bqo-uK-FGL"/>
+                            <constraint firstItem="0uO-TQ-o7a" firstAttribute="top" secondItem="Q53-ti-e3b" secondAttribute="bottom" id="Dpk-Va-Ukc"/>
+                            <constraint firstItem="6H6-XL-tx0" firstAttribute="top" secondItem="Q53-ti-e3b" secondAttribute="bottom" id="EXP-la-veg"/>
+                            <constraint firstItem="6H6-XL-tx0" firstAttribute="leading" secondItem="cvg-dy-Bjl" secondAttribute="leading" id="GL9-NG-2ap"/>
+                            <constraint firstItem="0uO-TQ-o7a" firstAttribute="leading" secondItem="6H6-XL-tx0" secondAttribute="trailing" id="HhA-yW-ZUe"/>
+                            <constraint firstItem="0uO-TQ-o7a" firstAttribute="leading" secondItem="6H6-XL-tx0" secondAttribute="trailing" id="Nc2-om-QUm"/>
+                            <constraint firstItem="xKY-kZ-QRd" firstAttribute="centerY" secondItem="UXB-kb-LWg" secondAttribute="centerY" id="a9C-JH-0me"/>
+                            <constraint firstItem="6H6-XL-tx0" firstAttribute="top" secondItem="Q53-ti-e3b" secondAttribute="bottom" id="ejv-iK-FTU"/>
+                            <constraint firstItem="Q53-ti-e3b" firstAttribute="leading" secondItem="cvg-dy-Bjl" secondAttribute="leading" id="fWI-cD-RVW"/>
+                            <constraint firstItem="0uO-TQ-o7a" firstAttribute="top" secondItem="6H6-XL-tx0" secondAttribute="top" id="go0-7a-bP1"/>
+                            <constraint firstItem="0uO-TQ-o7a" firstAttribute="bottom" secondItem="6H6-XL-tx0" secondAttribute="bottom" id="rH2-WH-3O9"/>
+                            <constraint firstAttribute="trailing" secondItem="0uO-TQ-o7a" secondAttribute="trailing" id="rhr-r3-gsG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="goalTextField" destination="jPh-aj-RwA" id="rYO-nF-M8f"/>
+                        <outlet property="hourLabel" destination="UXB-kb-LWg" id="JkK-Zh-Bgj"/>
+                        <outlet property="minuteLabel" destination="xKY-kZ-QRd" id="anQ-gq-oJP"/>
+                        <outlet property="startButton" destination="T7T-DQ-abP" id="kTi-XX-E7F"/>
+                        <outlet property="timeSlider" destination="rLd-zX-vFn" id="hIF-1n-7Rg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XNl-6a-ony" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2031" y="-1350"/>
+        </scene>
         <!--Timer Table View Controller-->
         <scene sceneID="fwE-aZ-LLb">
             <objects>
                 <tableViewController storyboardIdentifier="TimerTableViewController" id="5I0-dw-91q" customClass="TimerTableViewController" customModule="MeFocus" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="9cW-2W-uRb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.76470588235294112" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
                             <tableViewSection id="9TE-g8-skh">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="79" id="j2m-ba-hYy">
-                                        <rect key="frame" x="0.0" y="64" width="375" height="79"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j2m-ba-hYy" id="6Pe-fN-7Le">
-                                            <frame key="frameInset" width="375" height="78.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set your goal here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nA6-g8-5ZJ">
-                                                    <frame key="frameInset" minX="56" minY="24" width="209" height="30"/>
+                                                    <rect key="frame" x="56" y="24" width="209" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
@@ -55,21 +226,21 @@
                                         <color key="backgroundColor" red="0.0" green="0.76470588235294112" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="I46-Up-bwW" detailTextLabel="FcJ-Mk-SKg" style="IBUITableViewCellStyleValue1" id="xPU-mw-sZi">
-                                        <rect key="frame" x="0.0" y="143" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="79" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xPU-mw-sZi" id="lQ2-Ef-jry">
-                                            <frame key="frameInset" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I46-Up-bwW">
-                                                    <frame key="frameInset" minX="15" minY="12" width="64" height="20.5"/>
+                                                    <rect key="frame" x="15" y="12" width="64" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="focus" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FcJ-Mk-SKg">
-                                                    <frame key="frameInset" minX="301.5" minY="12" width="38.5" height="20.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Focus" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FcJ-Mk-SKg">
+                                                    <rect key="frame" x="243" y="12" width="42" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -78,36 +249,30 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.76470588235294112" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="3mM-7g-aNm" kind="presentation" modalPresentationStyle="formSheet" id="C5F-Fe-4nh"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="339" id="CqF-tQ-xUK">
-                                        <rect key="frame" x="0.0" y="187" width="375" height="339"/>
+                                        <rect key="frame" x="0.0" y="123" width="320" height="339"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CqF-tQ-xUK" id="YCP-mI-7Ne">
-                                            <frame key="frameInset" width="375" height="338.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="339"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xU5-3g-Xzo" customClass="CircularSlider" customModule="HGCircularSlider">
-                                                    <frame key="frameInset" minX="40" minY="37" width="240" height="240"/>
+                                                    <rect key="frame" x="45" y="70" width="230" height="230"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" placeholderIntrinsicWidth="167" placeholderIntrinsicHeight="48" text="0h 0m 0s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VVP-51-bJg">
-                                                            <frame key="frameInset" minX="21" minY="96" width="198" height="48"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Light" family="Apple SD Gothic Neo" pointSize="50"/>
-                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
-                                                            <color key="value" red="0.99607843137254903" green="0.80784313725490198" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="value" red="0.95294117647058818" green="0.61176470588235299" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
                                                             <color key="value" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                                            <real key="value" value="5"/>
+                                                            <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="endThumbStrokeHighlightedColor">
                                                             <color key="value" red="1" green="0.49019607843137253" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -116,21 +281,28 @@
                                                             <color key="value" red="0.99607843137254903" green="0.80784313725490198" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="diskFillColor">
-                                                            <color key="value" red="0.99607843137254903" green="0.80784313725490198" blue="0.40784313725490196" alpha="0.2012681934931507" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="value" red="0.82745098039215681" green="0.32941176470588235" blue="0.0" alpha="0.2012681934931507" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
                                                             <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
-                                                            <real key="value" value="5"/>
+                                                            <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
                                                             <real key="value" value="0.0"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" placeholderIntrinsicWidth="167" placeholderIntrinsicHeight="48" text="0h 0m 0s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VVP-51-bJg">
+                                                    <rect key="frame" x="61" y="21" width="198" height="48"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="50"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6le-4O-fo8">
-                                                    <frame key="frameInset" minX="97" minY="285" width="131" height="37"/>
+                                                    <rect key="frame" x="94" y="150" width="131" height="37"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
                                                     <state key="normal" title="START">
@@ -154,6 +326,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="VaF-5g-k2r"/>
                     <connections>
+                        <outlet property="categoryLabel" destination="FcJ-Mk-SKg" id="f9R-ac-46r"/>
                         <outlet property="circularSlider" destination="xU5-3g-Xzo" id="DdL-4l-G8D"/>
                         <outlet property="startButton" destination="6le-4O-fo8" id="r1H-LH-3Pt"/>
                         <outlet property="timerLabel" destination="VVP-51-bJg" id="8uR-oD-1NE"/>
@@ -163,6 +336,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qQ9-hG-Tca" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2030.625" y="-584.15492957746483"/>
+        </scene>
+        <!--Category Table View Controller-->
+        <scene sceneID="F6h-Mw-sAT">
+            <objects>
+                <tableViewController id="oRp-Uu-1il" customClass="CategoryTableViewController" customModule="MeFocus" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="tqZ-y5-ynn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="X6n-wt-fIX" customClass="CategoryCell" customModule="MeFocus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X6n-wt-fIX" id="N3v-99-Uks">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOb-mn-zhN">
+                                            <rect key="frame" x="8" y="0.0" width="267" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="categoryLabel" destination="zOb-mn-zhN" id="9T7-nz-PGl"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="oRp-Uu-1il" id="k7S-cZ-9sr"/>
+                            <outlet property="delegate" destination="oRp-Uu-1il" id="eDa-V9-Oba"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="sUJ-rS-2ES">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9lr-oa-Y0h">
+                            <connections>
+                                <action selector="onCancel:" destination="oRp-Uu-1il" id="AYy-AP-Q6B"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="categoryTableView" destination="tqZ-y5-ynn" id="V74-Oo-PH7"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VKd-F2-law" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4080" y="-584.15492957746483"/>
         </scene>
         <!--TabBarController-->
         <scene sceneID="vw1-XL-c3Z">
@@ -220,5 +443,101 @@
             </objects>
             <point key="canvasLocation" x="960.79999999999995" y="168.6656671664168"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="B3m-vo-ROl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3mM-7g-aNm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6u6-Nq-ybE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oRp-Uu-1il" kind="relationship" relationship="rootViewController" id="1MV-Qu-nUG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y6p-fa-ttF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3082.5" y="-584.15492957746483"/>
+        </scene>
+        <!--Session Ongoing View Controller-->
+        <scene sceneID="8Hg-lQ-Iir">
+            <objects>
+                <viewController id="aoG-zR-pTr" customClass="SessionOngoingViewController" customModule="MeFocus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DZL-Wd-w3H"/>
+                        <viewControllerLayoutGuide type="bottom" id="s1W-OA-KpQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k8h-G6-ls6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eBR-Lr-lo5" customClass="CircularSlider" customModule="HGCircularSlider">
+                                <rect key="frame" x="55" y="28" width="210" height="210"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0h 0m 0s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="j18-ZX-NBj">
+                                        <rect key="frame" x="33" y="69" width="145" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
+                                        <color key="value" red="0.047536593580000001" green="0.87077112570000004" blue="0.38601676410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endThumbStrokeHighlightedColor">
+                                        <color key="value" red="1" green="0.49019607840000001" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endThumbStrokeColor">
+                                        <color key="value" red="0.99607843139999996" green="0.80784313730000001" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="diskFillColor">
+                                        <color key="value" red="0.82745098039999998" green="0.3294117647" blue="0.0" alpha="0.2012681935" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="diskColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lus-jh-NHm">
+                                <rect key="frame" x="128" y="300" width="65" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Give up!"/>
+                                <connections>
+                                    <action selector="onGiveUp:" destination="aoG-zR-pTr" eventType="touchUpInside" id="0MM-Kv-gXo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="timeLabel" destination="j18-ZX-NBj" id="fsr-aa-1CI"/>
+                        <outlet property="timeSlider" destination="eBR-Lr-lo5" id="7lG-w8-HfA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ktD-ut-Ce7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3082.5" y="-1350"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="play-button" width="512" height="512"/>
+    </resources>
 </document>

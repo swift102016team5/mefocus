@@ -24,6 +24,7 @@ class UserLoginViewController: UIViewController {
             (auth:Auth) in
             // Dont have profile
             if auth.profile == nil {
+                
                 let controller = A0Lock.shared().newLockViewController()
                 controller?.onAuthenticationBlock = { maybeProfile, maybeToken in
                     // Do something with token  profile. e.g.: save them.
@@ -44,14 +45,26 @@ class UserLoginViewController: UIViewController {
                     auth.profile = profile
 
                     controller?.dismiss(animated: true, completion: nil)
+                    self.toProfile()
                 }
                 A0Lock.shared().present(controller, from: self)
                 return
             }
             // Already have profile 
             // Do some navigations ...
+            self.toProfile()
         }
         
+    }
+    
+    func toProfile(){
+        App.shared.present(
+            presenter: self,
+            storyboard: "User",
+            controller: "UserProfileViewController",
+            modifier: nil,
+            completion: nil
+        )
     }
     
     override func didReceiveMemoryWarning() {

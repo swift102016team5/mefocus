@@ -8,6 +8,8 @@
 
 import Foundation
 import CoreData
+import AVFoundation
+import UIKit
 
 extension Session {
     
@@ -68,6 +70,23 @@ class SessionsManager:NSObject {
 
     static func reset(){
         SessionsManager.pauses = 0
+    }
+    
+    static func alert() -> AVAudioPlayer?{
+        if let asset = NSDataAsset(name:"cohangxom") {
+            var player:AVAudioPlayer
+
+            do {
+                try player = AVAudioPlayer(data: asset.data, fileTypeHint:"mp3")
+                player.volume = 1
+                return player
+            }
+            catch {
+                print("Cannot play notification \(error)")
+            }
+            
+        }
+        return nil
     }
     
     static func isExceedMaxiumPause(session:Session) -> Bool {

@@ -18,6 +18,9 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
+  - Charts (3.0.0):
+    - Charts/Core (= 3.0.0)
+  - Charts/Core (3.0.0)
   - HGCircularSlider (1.0.2)
   - Lock (1.27.1):
     - Lock/Core (= 1.27.1)
@@ -36,8 +39,10 @@ PODS:
   - SimpleKeychain (0.7.0)
 
 DEPENDENCIES:
+  - AFNetworking (~> 3.1.0)
   - AutoCompleteTextField
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
+  - Charts
   - HGCircularSlider
   - Lock (~> 1.27)
   - SimpleKeychain (~> 0.7)
@@ -55,11 +60,12 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AutoCompleteTextField: 8129516998156b0dedd006547a2d0b67f4dd8edb
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Charts: beb341928d2135613b4325a6c6aff9f2f6de895e
   HGCircularSlider: 70b782934c4826af56386f7bf373bd89fb424f8d
   Lock: c8709bb9d798eb2824accd78170140faab1a3fc2
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   SimpleKeychain: b50cef3b87939d480ea1143425c00f5b4b70fe21
 
-PODFILE CHECKSUM: 4b6afb5cc1114ac0cf82690d34364c01dc9cd780
+PODFILE CHECKSUM: 3b5a3e08953140b680c24e1ec03f9ada26c8f321
 
 COCOAPODS: 1.1.0.rc.3
