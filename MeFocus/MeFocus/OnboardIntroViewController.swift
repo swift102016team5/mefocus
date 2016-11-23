@@ -12,7 +12,7 @@ class OnboardIntroViewController: UIViewController {
 
     var pageVC: UIPageViewController!
     lazy var arrVc: [UIViewController] = {
-        return [self.vcInstance(name:"FirstVc"), self.vcInstance(name:"SecondVc"), self.vcInstance(name:"thirdVc")]
+        return [self.vcInstance(name:"FirstVc"), self.vcInstance(name:"SecondVc"), self.vcInstance(name:"ThirdVc")]
     }()
     
     private func vcInstance(name: String) -> UIViewController {

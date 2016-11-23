@@ -107,7 +107,7 @@
         <!--Third View Controller-->
         <scene sceneID="qLO-dF-VZp">
             <objects>
-                <viewController storyboardIdentifier="thirdVc" id="54O-MX-gke" customClass="ThirdViewController" customModule="MeFocus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ThirdVc" id="54O-MX-gke" customClass="ThirdViewController" customModule="MeFocus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xL6-ds-Nwb"/>
                         <viewControllerLayoutGuide type="bottom" id="Qtr-tZ-C4W"/>
