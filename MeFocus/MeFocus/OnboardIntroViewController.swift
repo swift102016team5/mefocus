@@ -10,10 +10,28 @@ import UIKit
 
 class OnboardIntroViewController: UIViewController {
 
+    var pageVC: UIPageViewController!
+    lazy var arrVc: [UIViewController] = {
+        return [self.vcInstance(name:"FirstVc"), self.vcInstance(name:"SecondVc"), self.vcInstance(name:"thirdVc")]
+    }()
+    
+    private func vcInstance(name: String) -> UIViewController {
+        return UIStoryboard(name: "Onboard", bundle: nil).instantiateViewController(withIdentifier: name)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         App.shared.viewedOnboard()
-        // Do any additional setup after loading the view.
+        self.pageVC = UIStoryboard(name: "Onboard", bundle: nil).instantiateViewController(withIdentifier: "pageVC") as! UIPageViewController
+        self.pageVC.dataSource = self
+        if let firstVc = arrVc.first {
+            self.pageVC.setViewControllers([firstVc], direction: .forward, animated: true, completion: nil)
+        }
+        self.pageVC.view.frame.origin = self.view.frame.origin
+        self.pageVC.view.frame.size = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height * 0.7)
+        self.addChildViewController(self.pageVC)
+        self.view.addSubview(self.pageVC.view)
+        self.didMove(toParentViewController: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,14 +61,41 @@ class OnboardIntroViewController: UIViewController {
         )
     }
     
-    /*
-    // MARK: - Navigation
+   
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension OnboardIntroViewController: UIPageViewControllerDataSource {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let viewControllerIndex = arrVc.index(of: viewController) else {
+            return nil
+        }
+        let nextIndex = viewControllerIndex + 1
+        guard nextIndex < arrVc.count else {
+            return nil
+        }
+
+        return arrVc[nextIndex]
     }
-    */
-
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard let viewControllerIndex = arrVc.index(of: viewController) else {
+            return nil
+        }
+        let previousIndex = viewControllerIndex - 1
+        guard previousIndex >= 0 else {
+            return nil
+        }
+        return arrVc[previousIndex]
+    }
+    
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        guard let firstVc = pageVC.viewControllers?.first, let firstVcIndex = arrVc.index(of: firstVc) else {
+            return 0
+        }
+        return firstVcIndex
+    }
+    
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return arrVc.count
+    }
 }

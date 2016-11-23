@@ -31,6 +31,12 @@
 		DB1B5C8F1DDED197004FC528 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1B5C8E1DDED197004FC528 /* ProgressView.swift */; };
 		DB1B5C911DDED20F004FC528 /* FeaturedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1B5C901DDED20F004FC528 /* FeaturedViewController.swift */; };
 		DB1B5C931DDED29D004FC528 /* dog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DB1B5C921DDED29D004FC528 /* dog.jpg */; };
+		DBBAEEE31DE5364400CD9CC9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBAEEE21DE5364400CD9CC9 /* FirstViewController.swift */; };
+		DBBAEEE51DE536BE00CD9CC9 /* img1.png in Resources */ = {isa = PBXBuildFile; fileRef = DBBAEEE41DE536BE00CD9CC9 /* img1.png */; };
+		DBBAEEE71DE538C900CD9CC9 /* focus.png in Resources */ = {isa = PBXBuildFile; fileRef = DBBAEEE61DE538C900CD9CC9 /* focus.png */; };
+		DBBAEEE91DE5426F00CD9CC9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBAEEE81DE5426F00CD9CC9 /* SecondViewController.swift */; };
+		DBBAEEEB1DE549FF00CD9CC9 /* image3.png in Resources */ = {isa = PBXBuildFile; fileRef = DBBAEEEA1DE549FF00CD9CC9 /* image3.png */; };
+		DBBAEEED1DE54A3A00CD9CC9 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBAEEEC1DE54A3A00CD9CC9 /* ThirdViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +69,12 @@
 		DB1B5C8E1DDED197004FC528 /* ProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		DB1B5C901DDED20F004FC528 /* FeaturedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedViewController.swift; sourceTree = "<group>"; };
 		DB1B5C921DDED29D004FC528 /* dog.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dog.jpg; sourceTree = "<group>"; };
+		DBBAEEE21DE5364400CD9CC9 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		DBBAEEE41DE536BE00CD9CC9 /* img1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img1.png; sourceTree = "<group>"; };
+		DBBAEEE61DE538C900CD9CC9 /* focus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = focus.png; sourceTree = "<group>"; };
+		DBBAEEE81DE5426F00CD9CC9 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		DBBAEEEA1DE549FF00CD9CC9 /* image3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image3.png; sourceTree = "<group>"; };
+		DBBAEEEC1DE54A3A00CD9CC9 /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		F86EBD245FD761FD66432B85 /* Pods_MeFocus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeFocus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -86,7 +98,7 @@
 				3F9722ED1DDF70B300152446 /* UserLoginViewController.swift */,
 				3F5EBC8C1DE1693200C2F15F /* SessionStartViewController.swift */,
 				3F5EBC8E1DE1695400C2F15F /* SessionOngoingViewController.swift */,
-				3F5EBC921DE1770300C2F15F /* OnboardIntroViewController.swift */,
+				DB41C7F61DE3E765007F63F6 /* OnboardIntro */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -127,7 +139,6 @@
 				0BFF53941DDB18DE00ACF9BF /* MeFocus.xcdatamodeld */,
 				3F9722EB1DDF708A00152446 /* User.storyboard */,
 				3F5EBC8A1DE1689E00C2F15F /* Session.storyboard */,
-				3F5EBC901DE176D600C2F15F /* Onboard.storyboard */,
 			);
 			path = MeFocus;
 			sourceTree = "<group>";
@@ -175,6 +186,21 @@
 				3F7352401DE18F4D001721C8 /* AutoCompleteGoal.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		DB41C7F61DE3E765007F63F6 /* OnboardIntro */ = {
+			isa = PBXGroup;
+			children = (
+				3F5EBC921DE1770300C2F15F /* OnboardIntroViewController.swift */,
+				DBBAEEE21DE5364400CD9CC9 /* FirstViewController.swift */,
+				DBBAEEE81DE5426F00CD9CC9 /* SecondViewController.swift */,
+				DBBAEEEC1DE54A3A00CD9CC9 /* ThirdViewController.swift */,
+				3F5EBC901DE176D600C2F15F /* Onboard.storyboard */,
+				DBBAEEEA1DE549FF00CD9CC9 /* image3.png */,
+				DBBAEEE61DE538C900CD9CC9 /* focus.png */,
+				DBBAEEE41DE536BE00CD9CC9 /* img1.png */,
+			);
+			name = OnboardIntro;
 			sourceTree = "<group>";
 		};
 		DF8198C40945DF8C2F4C1E57 /* Pods */ = {
@@ -259,7 +285,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB1B5C931DDED29D004FC528 /* dog.jpg in Resources */,
+				DBBAEEEB1DE549FF00CD9CC9 /* image3.png in Resources */,
+				DBBAEEE51DE536BE00CD9CC9 /* img1.png in Resources */,
 				3F9722EC1DDF708A00152446 /* User.storyboard in Resources */,
+				DBBAEEE71DE538C900CD9CC9 /* focus.png in Resources */,
 				0BFF539B1DDB18DE00ACF9BF /* LaunchScreen.storyboard in Resources */,
 				0BFF53981DDB18DE00ACF9BF /* Assets.xcassets in Resources */,
 				3F5EBC911DE176D600C2F15F /* Onboard.storyboard in Resources */,
@@ -327,13 +356,16 @@
 				3F60A46C1DE072B700A6D948 /* Storage.swift in Sources */,
 				3F9722EE1DDF70B300152446 /* UserLoginViewController.swift in Sources */,
 				0BDA37E41DDDF63C00C51DBD /* TimerTableViewController.swift in Sources */,
+				DBBAEEED1DE54A3A00CD9CC9 /* ThirdViewController.swift in Sources */,
 				DB1B5C8F1DDED197004FC528 /* ProgressView.swift in Sources */,
 				3F5EBC8F1DE1695400C2F15F /* SessionOngoingViewController.swift in Sources */,
 				3F7352411DE18F4D001721C8 /* AutoCompleteGoal.swift in Sources */,
 				0BFF53961DDB18DE00ACF9BF /* MeFocus.xcdatamodeld in Sources */,
 				3F5EBC931DE1770300C2F15F /* OnboardIntroViewController.swift in Sources */,
+				DBBAEEE31DE5364400CD9CC9 /* FirstViewController.swift in Sources */,
 				3F5EBC8D1DE1693200C2F15F /* SessionStartViewController.swift in Sources */,
 				3F6DDDA71DE2239C00EEFF51 /* BackgroundUIView.swift in Sources */,
+				DBBAEEE91DE5426F00CD9CC9 /* SecondViewController.swift in Sources */,
 				0BFF538E1DDB18DE00ACF9BF /* AppDelegate.swift in Sources */,
 				DB1B5C911DDED20F004FC528 /* FeaturedViewController.swift in Sources */,
 				3F35DE291DE0D9FA0083715C /* Session.swift in Sources */,
