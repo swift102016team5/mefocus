@@ -64,9 +64,12 @@ class SessionOngoingViewController: UIViewController {
         timeSlider.trackFillColor = UIColor.flatWhite
         timeSlider.diskFillColor = UIColor.flatWhite
         timeSlider.diskColor = UIColor.flatWhite
+        timeSlider.endThumbStrokeColor = UIColor.flatWhite.withAlphaComponent(0)
+        timeSlider.endThumbTintColor = UIColor.flatWhite.withAlphaComponent(0)
+        timeSlider.endThumbStrokeHighlightedColor = UIColor.flatWhite.withAlphaComponent(0)
         timeSlider.lineWidth = 3
-        timeSlider.thumbRadius = 0
-        timeSlider.thumbLineWidth = 0
+        timeSlider.thumbLineWidth = 2.5
+        timeSlider.thumbRadius = 12
         
         timeSlider.isEnabled = false
         timeSlider.maximumValue = CGFloat(userTargetTime)

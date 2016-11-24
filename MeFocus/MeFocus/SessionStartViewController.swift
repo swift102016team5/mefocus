@@ -49,7 +49,7 @@ class SessionStartViewController: UIViewController {
         let sessionOngoingViewController = segue.destination as! SessionOngoingViewController
         do {
             if goal == "" || goal == nil {
-                goal = "Live it Real!"
+                goal = "Live it Real"
             }
             try sessionOngoingViewController.session = SessionsManager.start (
                 goal: goal!,
