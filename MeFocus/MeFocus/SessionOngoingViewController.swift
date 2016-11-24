@@ -15,7 +15,6 @@ class SessionOngoingViewController: UIViewController {
     let fullTimeFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.zeroFormattingBehavior = .dropAll
-        formatter.unitsStyle = .abbreviated
         formatter.allowedUnits = [.hour, .minute, .second]
         return formatter
     }()
@@ -23,11 +22,11 @@ class SessionOngoingViewController: UIViewController {
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var timeSlider: CircularSlider!
+    @IBOutlet weak var goalLabel: UILabel!
     
     var session: Session? {
         didSet {
             // Setup some infomation
-            print(session)
             userTargetTime = Int((session?.duration)!)
             backgroundLimitTime = Int((session?.maximum_pause_duration)!)
         }
@@ -61,12 +60,13 @@ class SessionOngoingViewController: UIViewController {
     }
     
     func initTimeSlider() {
-        timeSlider.trackColor = App.shared.theme.backgroundLighColor.withAlphaComponent(0.1)
-        timeSlider.trackFillColor = App.shared.theme.backgroundDarkColor
-        timeSlider.diskFillColor = App.shared.theme.backgroundLighColor.withAlphaComponent(0.2)
-        timeSlider.endThumbStrokeColor = UIColor.flatGreen
-        timeSlider.endThumbTintColor = UIColor.flatWhite
-        timeSlider.endThumbStrokeHighlightedColor = UIColor.flatGreenDark
+        timeSlider.trackColor = UIColor.flatOrange
+        timeSlider.trackFillColor = UIColor.flatWhite
+        timeSlider.diskFillColor = UIColor.flatWhite
+        timeSlider.diskColor = UIColor.flatWhite
+        timeSlider.lineWidth = 3
+        timeSlider.thumbRadius = 0
+        timeSlider.thumbLineWidth = 0
         
         timeSlider.isEnabled = false
         timeSlider.maximumValue = CGFloat(userTargetTime)
@@ -78,6 +78,10 @@ class SessionOngoingViewController: UIViewController {
         var components = DateComponents()
         components.second = userTargetTime
         timeLabel.text = fullTimeFormatter.string(from: components)
+        timeLabel.textColor = App.shared.theme.backgroundDarkColor
+        
+        goalLabel.textColor = App.shared.theme.backgroundDarkColor
+        goalLabel.text = "\((session?.goal?.capitalized(with: Locale.autoupdatingCurrent))!)!"
     }
     
     func runTimer() {
@@ -160,6 +164,7 @@ class SessionOngoingViewController: UIViewController {
                                             trigger: trigger)
         
         UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         UNUserNotificationCenter.current().add(request) { (error) in
             if let error = error {
                 NSLog(error.localizedDescription)
@@ -179,6 +184,7 @@ class SessionOngoingViewController: UIViewController {
         backgroundTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (backgroundTimer) in
             self.remainBackgroundTime = self.remainBackgroundTime - 1
             NSLog("Background time: \(self.remainBackgroundTime)")
+            
             if self.remainBackgroundTime == 0 {
                 NSLog("You failed your goal!!!")
                 self.goalFailed = true
@@ -239,7 +245,7 @@ extension SessionOngoingViewController: UNUserNotificationCenterDelegate {
         //You can either present alert ,sound or increase badge while the app is in foreground too with ios 10
         //to distinguish between notifications
         if notification.request.identifier == requestIdentifier {
-            completionHandler([.alert,.sound,.badge])
+            completionHandler([.alert, .sound, .badge])
         }
     }
     

@@ -9,14 +9,22 @@
 import UIKit
 import AutoCompleteTextField
 import HGCircularSlider
+import AVFoundation
 
 class SessionStartViewController: UIViewController {
+    
+    let timeFormatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.zeroFormattingBehavior = .pad
+        formatter.allowedUnits = [.hour, .minute]
+        return formatter
+    }()
     
     @IBOutlet weak var goalTextField: AutoCompleteGoal!
     @IBOutlet weak var timeSlider: CircularSlider!
     @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var hourLabel: HThreeLabel!
-    @IBOutlet weak var minuteLabel: HThreeLabel!
+    @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var timeLabel: UILabel!
     
     var userTargetTime = 0
     
@@ -25,7 +33,6 @@ class SessionStartViewController: UIViewController {
         goalTextField.autoCompleteTextFieldDataSource = goalTextField
         goalTextField.autoCompleteGoalDelegate = self
         initViews()
-        view.backgroundColor = UIColor.flatWhite
     }
     
     func textViewDidChange(textView: UITextView) { // Handle the text changes here
@@ -39,12 +46,13 @@ class SessionStartViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         SessionsManager.unfinished?.finish()
         
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         let sessionOngoingViewController = segue.destination as! SessionOngoingViewController
         do {
+            if goal == "" || goal == nil {
+                goal = "Live it Real!"
+            }
             try sessionOngoingViewController.session = SessionsManager.start (
-                goal: goal ?? "Stay Focus",
+                goal: goal!,
                 duration: duration ?? 0,
                 maximPauseDuration: maximumPauseDuration ?? 0
             )
@@ -59,15 +67,19 @@ class SessionStartViewController: UIViewController {
         initLabels()
         
         startButton.isEnabled = false
+        settingButton.isEnabled = true
     }
     
     func initTimeSlider() {
-        timeSlider.trackColor = App.shared.theme.backgroundLighColor
-        timeSlider.trackFillColor = App.shared.theme.backgroundDarkColor
-        timeSlider.diskFillColor = App.shared.theme.backgroundLighColor
-        timeSlider.endThumbStrokeColor = UIColor.flatGreen
-        timeSlider.endThumbTintColor = UIColor.flatWhite
-        timeSlider.endThumbStrokeHighlightedColor = UIColor.flatGreenDark
+        timeSlider.trackColor = UIColor.flatWhite.withAlphaComponent(0.7)
+        timeSlider.trackFillColor = UIColor.flatWhite
+        timeSlider.diskFillColor = UIColor.flatWhite.withAlphaComponent(0)
+        timeSlider.endThumbStrokeColor = UIColor.flatWhite
+        timeSlider.endThumbTintColor = App.shared.theme.backgroundDarkColor
+        timeSlider.endThumbStrokeHighlightedColor = UIColor.flatWhite
+        timeSlider.lineWidth = 2.5
+        timeSlider.thumbLineWidth = 2.5
+        timeSlider.thumbRadius = 12
         
         timeSlider.maximumValue = 12 * 60 // 12h
         timeSlider.minimumValue = 0
@@ -76,19 +88,17 @@ class SessionStartViewController: UIViewController {
     }
     
     func initLabels() {
-        minuteLabel.text = "0"
-        hourLabel.text = "0"
+        timeLabel.text = "00:00"
+        goalTextField.textColor = App.shared.theme.backgroundDarkColor
     }
     
     func updateTimerOnSliderChange() {
         timeSlider.endPointValue.round()
         let totalMinutes = Int(timeSlider.endPointValue)
-        let minutes = totalMinutes % 60
-        let hours = totalMinutes / 60
-        minuteLabel.text = "\(minutes)"
-        hourLabel.text = "\(hours)"
+        var components = DateComponents()
+        components.minute = totalMinutes
+        timeLabel.text = timeFormatter.string(from: components)
         
-        goal = goalTextField.text
         duration = totalMinutes * 60
         maximumPauseDuration = 10
         

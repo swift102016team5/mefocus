@@ -65,6 +65,30 @@ class BackgroundLeftRightUIView: BackgroundUIView {
     
 }
 
+class BackgroundRadialUIView: UIView {
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        backgroundColor = GradientColor(
+            .radial,
+            frame: bounds,
+            colors: [
+                App.shared.theme.backgroundDarkColor.lighten(byPercentage: 0.12)!,
+                App.shared.theme.backgroundDarkColor
+            ]
+        )
+        tintColor = App.shared.theme.textColor
+        
+        let labels = subviews.flatMap{$0 as? UILabel}
+        for label in labels {
+            label.textColor = tintColor
+        }
+        layer.masksToBounds = true
+        layer.cornerRadius = bounds.width / 2
+    }
+    
+}
+
 class BackgroundGradientGrayUIView:BackgroundUIView{
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
