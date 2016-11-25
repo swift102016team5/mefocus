@@ -23,7 +23,10 @@ class BackgroundNavigation: UINavigationBar {
         backgroundColor = App.shared.theme.backgroundColor
         barTintColor = App.shared.theme.backgroundColor
         tintColor = App.shared.theme.textColor
-        titleTextAttributes = [NSForegroundColorAttributeName:App.shared.theme.textColor]
+        titleTextAttributes = [
+            NSForegroundColorAttributeName:App.shared.theme.textColor,
+            NSFontAttributeName: UIFont(name: "Avenir Next Ultra Light",size:16)!
+        ]
     }
 }
 
