@@ -11,6 +11,7 @@
 		0B1BBCE01DE4359C001F2827 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1BBCDF1DE4359C001F2827 /* CategoryTableViewController.swift */; };
 		0B1BBCE31DE4376D001F2827 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1BBCE21DE4376D001F2827 /* CategoryCell.swift */; };
 		0BB30C8F1DE98DDD000BB406 /* RecorderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB30C8E1DE98DDD000BB406 /* RecorderCell.swift */; };
+		0BB30C911DE9D86E000BB406 /* AudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB30C901DE9D86E000BB406 /* AudioCell.swift */; };
 		0BDA37E41DDDF63C00C51DBD /* TimerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA37E31DDDF63C00C51DBD /* TimerTableViewController.swift */; };
 		0BE024591DE7DCA60084BA00 /* BackgroundTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE024581DE7DCA60084BA00 /* BackgroundTimeCell.swift */; };
 		0BFF538E1DDB18DE00ACF9BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF538D1DDB18DE00ACF9BF /* AppDelegate.swift */; };
@@ -58,6 +59,7 @@
 		0B1BBCE21DE4376D001F2827 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		0B3C45021DDB241500DE02B5 /* _10Clock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = _10Clock.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/MeFocus-gwxrxzzwzrvejidugdhtsspmvqwd/Build/Products/Debug-iphonesimulator/10Clock/_10Clock.framework"; sourceTree = "<group>"; };
 		0BB30C8E1DE98DDD000BB406 /* RecorderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderCell.swift; sourceTree = "<group>"; };
+		0BB30C901DE9D86E000BB406 /* AudioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCell.swift; sourceTree = "<group>"; };
 		0BDA37E31DDDF63C00C51DBD /* TimerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTableViewController.swift; sourceTree = "<group>"; };
 		0BE024581DE7DCA60084BA00 /* BackgroundTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundTimeCell.swift; sourceTree = "<group>"; };
 		0BFF538A1DDB18DE00ACF9BF /* MeFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -227,6 +229,7 @@
 				0BE024581DE7DCA60084BA00 /* BackgroundTimeCell.swift */,
 				0BB30C8E1DE98DDD000BB406 /* RecorderCell.swift */,
 				3FC5283D1DE8C4EC0071532A /* SkipButton.swift */,
+				0BB30C901DE9D86E000BB406 /* AudioCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				0BFF538E1DDB18DE00ACF9BF /* AppDelegate.swift in Sources */,
 				DB1B5C911DDED20F004FC528 /* FeaturedViewController.swift in Sources */,
 				3F35DE291DE0D9FA0083715C /* Session.swift in Sources */,
+				0BB30C911DE9D86E000BB406 /* AudioCell.swift in Sources */,
 				3F9722F41DDF7AEF00152446 /* Auth.swift in Sources */,
 				3F7352431DE192BE001721C8 /* Suggestion.swift in Sources */,
 				0B02938F1DE7C9C40042B6A7 /* SessionSettingTableViewController.swift in Sources */,
