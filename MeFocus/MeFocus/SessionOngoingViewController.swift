@@ -43,7 +43,7 @@ class SessionOngoingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         initViews()
         addObservers()
         runTimer()
@@ -158,7 +158,8 @@ class SessionOngoingViewController: UIViewController {
         }
         
         let content = UNMutableNotificationContent()
-        content.body = "Please go back to your task in 10 sec"
+        content.title = "Live it Real!"
+        content.body = "Please go back to your task in \(backgroundLimitTime) seconds"
         content.sound = UNNotificationSound.default()
         
         let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 0.1, repeats: false)
