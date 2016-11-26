@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import SystemConfiguration
 import ChameleonFramework
-
+import Firebase
 /**
  ** Theme truck
  **/
@@ -59,6 +59,8 @@ class App: NSObject {
             textColor:.flatWhite,
             textDarkColor:.flatBlack
         )
+        // Firebase
+        FIRApp.configure()
     }
     
     func getControllerFromStoryboard(
