@@ -69,9 +69,9 @@ class UserProfileViewController: UIViewController {
         totalTimeSpentLabel.text = "40"
         
         sessionsTableView.reloadData()
-        player = SessionsManager.alert()
-        player!.prepareToPlay()
-        player!.play()
+//        player = SessionsManager.alert()
+//        player!.prepareToPlay()
+//        player!.play()
         
         
         // Do any additional setup after loading the view.

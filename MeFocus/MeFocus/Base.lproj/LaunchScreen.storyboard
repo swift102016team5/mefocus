@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,17 +22,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live it Real!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7q0-Um-hCI">
-                                <rect key="frame" x="67" y="263" width="187.5" height="43.5"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="36"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live it real!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AC8-Pn-ShE">
+                                <rect key="frame" x="16" y="285" width="288" height="66"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="48"/>
+                                <color key="textColor" red="0.98553504589999996" green="0.98790836289999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iea-Pd-OZe">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="183"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="183" id="hno-hR-OJK"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RoundedIcon" translatesAutoresizingMaskIntoConstraints="NO" id="818-sH-J3V">
+                                <rect key="frame" x="100" y="140" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="6ej-Ml-Jnf"/>
+                                    <constraint firstAttribute="width" constant="120" id="VKs-op-o5v"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.76470588235294112" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.1450980392" green="0.68627450980000004" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="7q0-Um-hCI" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="4n7-EL-RzC"/>
-                            <constraint firstItem="7q0-Um-hCI" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="xHA-BF-evM"/>
+                            <constraint firstItem="AC8-Pn-ShE" firstAttribute="top" secondItem="818-sH-J3V" secondAttribute="bottom" constant="25" id="5iJ-3L-qIp"/>
+                            <constraint firstItem="818-sH-J3V" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="CLt-be-m6d"/>
+                            <constraint firstItem="818-sH-J3V" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="120" id="Enm-8Z-ExF"/>
+                            <constraint firstAttribute="trailing" secondItem="iea-Pd-OZe" secondAttribute="trailing" id="IJ4-qh-4aO"/>
+                            <constraint firstItem="iea-Pd-OZe" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="YTD-pV-ZbO"/>
+                            <constraint firstItem="AC8-Pn-ShE" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="nJd-tB-5eZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AC8-Pn-ShE" secondAttribute="trailing" id="p5L-6G-Gvn"/>
+                            <constraint firstItem="iea-Pd-OZe" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="wu5-Un-bgJ"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -40,4 +61,7 @@
             <point key="canvasLocation" x="52.5" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="RoundedIcon" width="120" height="120"/>
+    </resources>
 </document>

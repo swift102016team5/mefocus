@@ -23,9 +23,19 @@ extension UIFont {
         let descriptor = fontDescriptor.withSymbolicTraits([.traitItalic])
         return UIFont(descriptor: descriptor!, size: 0)
     }
+    
 }
 
-class HOneLabel: UILabel {
+class BaseLabel:UILabel {
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        font = UIFont(name: "Avenir Next Ultra Light", size: 16)
+    }
+    
+}
+
+class HOneLabel: BaseLabel {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -41,7 +51,7 @@ class HOneLabel: UILabel {
 
 }
 
-class HTwoLabel: UILabel {
+class HTwoLabel: BaseLabel {
     
     /*
      // Only override draw() if you perform custom drawing.
@@ -57,7 +67,7 @@ class HTwoLabel: UILabel {
     
 }
 
-class HThreeLabel: UILabel {
+class HThreeLabel: BaseLabel {
     
     /*
      // Only override draw() if you perform custom drawing.
@@ -73,7 +83,7 @@ class HThreeLabel: UILabel {
     
 }
 
-class HFourLabel: UILabel {
+class HFourLabel: BaseLabel {
     
     /*
      // Only override draw() if you perform custom drawing.
@@ -106,7 +116,7 @@ class HFourDarkLabel: HFourLabel {
 }
 
 
-class NormalLabel: UILabel {
+class NormalLabel: BaseLabel {
     
     /*
      // Only override draw() if you perform custom drawing.
@@ -122,7 +132,7 @@ class NormalLabel: UILabel {
     
 }
 
-class SmallLabel: UILabel {
+class SmallLabel: BaseLabel {
     
     /*
      // Only override draw() if you perform custom drawing.

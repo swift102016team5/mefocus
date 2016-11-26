@@ -106,8 +106,19 @@ class App: NSObject {
             modifier: modifier
         )
         
-        delegate.window = UIWindow(frame: UIScreen.main.bounds)
+        delegate.window = delegate.window ?? UIWindow(frame: UIScreen.main.bounds)
         if let window = delegate.window {
+            
+            if let root = window.rootViewController {
+                present(
+                    presenter: root,
+                    storyboard: storyboard,
+                    controller: controller,
+                    modifier: modifier,
+                    completion: nil
+                )
+                return
+            }
             
             window.rootViewController = redirect
             window.makeKeyAndVisible()
