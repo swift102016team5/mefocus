@@ -19,6 +19,8 @@ class SessionStartViewController: UIViewController {
         formatter.allowedUnits = [.hour, .minute]
         return formatter
     }()
+    let sessionSettingIdentifier = "sessionSetting"
+    let sessionOngoingIdentifier = "sessionOngoing"
     
     @IBOutlet weak var goalTextField: AutoCompleteGoal!
     @IBOutlet weak var timeSlider: CircularSlider!
@@ -41,25 +43,43 @@ class SessionStartViewController: UIViewController {
     
     var goal: String?
     var duration: Int?
-    var maximumPauseDuration: Int?
+    var maximumPauseDuration = 10
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         SessionsManager.unfinished?.finish()
         
-        let sessionOngoingViewController = segue.destination as! SessionOngoingViewController
-        do {
-            if goal == "" || goal == nil {
-                goal = "Live it Real"
+        let identifier = segue.identifier
+        
+        if identifier == sessionOngoingIdentifier {
+            let sessionOngoingViewController = segue.destination as! SessionOngoingViewController
+            do {
+                if goal == "" || goal == nil {
+                    goal = "Live it Real"
+                }
+                try sessionOngoingViewController.session = SessionsManager.start (
+                    goal: goal!,
+                    duration: duration ?? 0,
+                    maximPauseDuration: maximumPauseDuration
+                )
             }
-            try sessionOngoingViewController.session = SessionsManager.start (
-                goal: goal!,
-                duration: duration ?? 0,
-                maximPauseDuration: maximumPauseDuration ?? 0
-            )
+            catch {
+                print("Cannot save session \(error)")
+            }
         }
-        catch {
-            print("Cannot save session \(error)")
+        
+        if identifier == sessionSettingIdentifier {
+            let navigationController = segue.destination as! UINavigationController
+            let sessionSettingTableViewController = navigationController.topViewController as! SessionSettingTableViewController
+            sessionSettingTableViewController.delegate = self
+            
+            let backroundTimes = sessionSettingTableViewController.backgroundLimitTime
+            for index in 0..<backroundTimes.count {
+                if backroundTimes[index] == maximumPauseDuration {
+                    sessionSettingTableViewController.selectedTimeLimitIndex = index
+                }
+            }
         }
+        
     }
     
     func initViews() {
@@ -100,7 +120,6 @@ class SessionStartViewController: UIViewController {
         timeLabel.text = timeFormatter.string(from: components)
         
         duration = totalMinutes * 60
-        maximumPauseDuration = 10
         
         startButton.isEnabled = totalMinutes > 0
     }
@@ -115,6 +134,14 @@ extension SessionStartViewController: AutoCompleteGoalDelegate {
     
     func onResignFirstResponder(goal: String) {
         self.goal = goal
+    }
+    
+}
+
+extension SessionStartViewController: SessionSettingTableViewControllerDelegate {
+    
+    func sessionSettingTableViewController(_ tableViewController: UITableViewController, backgroundLimitTime: Int) {
+        maximumPauseDuration = backgroundLimitTime
     }
     
 }

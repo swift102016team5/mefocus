@@ -26,7 +26,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Circled Play-50"/>
                                 <connections>
-                                    <segue destination="TsG-2M-Wz5" kind="presentation" id="nFo-Wv-kaS"/>
+                                    <segue destination="TsG-2M-Wz5" kind="presentation" identifier="sessionOngoing" id="nFo-Wv-kaS"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QU9-hj-QIx" customClass="CircularSlider" customModule="HGCircularSlider">
@@ -97,10 +97,14 @@
                                 <rect key="frame" x="59" y="466" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Plus Filled-51"/>
+                                <connections>
+                                    <segue destination="5bj-Ss-bJ2" kind="showDetail" identifier="sessionSetting" id="BTx-u3-QbE"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.15910354933476081" green="0.75993416878172593" blue="0.38437713972803705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="26l-yh-l34"/>
                     <connections>
                         <outlet property="goalTextField" destination="LNI-zP-uvS" id="sRx-q8-aRa"/>
                         <outlet property="settingButton" destination="jQ1-7Y-wJf" id="Zgv-h8-MFN"/>
@@ -111,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fft-Lb-g0r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="256.875" y="-1265.4929577464789"/>
+            <point key="canvasLocation" x="1254.375" y="-1265.4929577464789"/>
         </scene>
         <!--Session Ongoing View Controller-->
         <scene sceneID="pnc-wc-bE1">
@@ -201,7 +205,111 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tYO-Ys-mTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1119.375" y="-1265.4929577464789"/>
+            <point key="canvasLocation" x="1254" y="-281"/>
+        </scene>
+        <!--Session Setting Table View Controller-->
+        <scene sceneID="e4C-Ge-8K2">
+            <objects>
+                <tableViewController id="e9T-I5-giq" customClass="SessionSettingTableViewController" customModule="MeFocus" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TwL-dA-Ke1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BackgroundTimeCell" id="4zJ-Nv-QI3" customClass="BackgroundTimeCell" customModule="MeFocus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4zJ-Nv-QI3" id="V2o-Y1-SSw">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoe-w2-ppO">
+                                            <rect key="frame" x="8" y="0.0" width="115" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="timeLimitLabel" destination="qoe-w2-ppO" id="hPy-3Y-PkD"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecorderCell" rowHeight="73" id="cpm-uq-I6M" customClass="RecorderCell" customModule="MeFocus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="320" height="73"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cpm-uq-I6M" id="Mxm-O3-ZNB">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkw-Aa-2lr">
+                                            <rect key="frame" x="47" y="25" width="50" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Record"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLd-5Q-gNE">
+                                            <rect key="frame" x="145" y="24" width="37" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Stop"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6J-oL-uua">
+                                            <rect key="frame" x="250" y="24" width="31" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Play"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usY-N6-bcO">
+                                            <rect key="frame" x="190" y="8" width="66" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Delete All"/>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="deleteAllBtn" destination="usY-N6-bcO" id="rKf-HI-8Fp"/>
+                                    <outlet property="playBtn" destination="b6J-oL-uua" id="P3J-yt-qvd"/>
+                                    <outlet property="recordBtn" destination="zkw-Aa-2lr" id="x2D-h8-sPM"/>
+                                    <outlet property="stopBtn" destination="zLd-5Q-gNE" id="eeM-LB-Qhb"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="e9T-I5-giq" id="0H6-L3-U0D"/>
+                            <outlet property="delegate" destination="e9T-I5-giq" id="EjU-my-ZLU"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="21D-sq-GkW">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="P6Y-mA-46L">
+                            <connections>
+                                <action selector="onBack:" destination="e9T-I5-giq" id="d0P-XO-qLI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="settingTable" destination="TwL-dA-Ke1" id="cFf-8o-2NN"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2cQ-Mw-BGw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3412.5" y="-1265.4929577464789"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="adS-Vi-b7Z">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5bj-Ss-bJ2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BKx-IN-TWC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="e9T-I5-giq" kind="relationship" relationship="rootViewController" id="jJw-Cj-7MV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JdY-e7-qKX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2415" y="-1265.4929577464789"/>
         </scene>
     </scenes>
     <resources>
