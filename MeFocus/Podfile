@@ -12,5 +12,5 @@ target 'MeFocus' do
   pod 'AutoCompleteTextField'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
   pod 'Charts'
-  pod 'Socket.IO-Client-Swift', '~> 8.1.2'
+  pod 'SwiftWebSocket', '~> 2.6.5'
 end

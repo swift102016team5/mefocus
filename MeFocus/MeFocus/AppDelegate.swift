@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         registerforDeviceLockNotification()
         // Finish old ongoing session
         SessionsManager.unfinished?.finish()
-        
+        SessionsManager.notify()
         // Check if any unfinished session is going
         let session = SessionsManager.unfinished
         if session != nil {
