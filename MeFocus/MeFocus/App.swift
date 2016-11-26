@@ -10,9 +10,29 @@ import UIKit
 import Foundation
 import SystemConfiguration
 import ChameleonFramework
+import SwiftWebSocket
+import UserNotifications
+/**
+ ** Notification struct
+ **/
+
+struct WebsocketMessage {
+
+    var title:String
+    var body:String
+    
+    init(message:String){
+        
+        let messages = message.components(separatedBy: "|")
+        
+        title = messages[0]
+        body = messages[1]
+    }
+    
+}
 
 /**
- ** Theme truck
+ ** Theme struct
  **/
 
 struct Theme {
@@ -47,6 +67,7 @@ class App: NSObject {
     }
     
     var theme:Theme
+    var ws:WebSocket
     
     override init(){
         // Theming
@@ -59,6 +80,36 @@ class App: NSObject {
             textColor:.flatWhite,
             textDarkColor:.flatBlack
         )
+        ws = WebSocket("wss://mefocusgo.herokuapp.com/ws")
+        ws.event.open = {
+            print("opened")
+        }
+        ws.event.close = { code, reason, clean in
+            print("close")
+        }
+        ws.event.error = { error in
+            print("error \(error)")
+        }
+        ws.event.message = { message in
+            if let text = message as? String {
+                let msg = WebsocketMessage(message: text)
+                let content = UNMutableNotificationContent()
+                
+                content.title = msg.title
+                content.body = msg.body
+                content.sound = UNNotificationSound.default()
+                
+                // Deliver the notification in five seconds.
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+                let request = UNNotificationRequest(identifier: "Distracting", content: content, trigger: trigger)
+                
+                // Schedule the notification.
+                let center = UNUserNotificationCenter.current()
+                center.add(request) { (error) in
+                    
+                }
+            }
+        }
     }
     
     func getControllerFromStoryboard(

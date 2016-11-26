@@ -37,6 +37,7 @@ PODS:
     - Lock/CoreUI
   - Masonry (0.6.4)
   - SimpleKeychain (0.7.0)
+  - SwiftWebSocket (2.6.5)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
@@ -46,6 +47,7 @@ DEPENDENCIES:
   - HGCircularSlider
   - Lock (~> 1.27)
   - SimpleKeychain (~> 0.7)
+  - SwiftWebSocket (~> 2.6.5)
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -65,7 +67,8 @@ SPEC CHECKSUMS:
   Lock: c8709bb9d798eb2824accd78170140faab1a3fc2
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   SimpleKeychain: b50cef3b87939d480ea1143425c00f5b4b70fe21
+  SwiftWebSocket: 1ef8a0efb023544643bdf480c1ec4a62b204f293
 
-PODFILE CHECKSUM: 3b5a3e08953140b680c24e1ec03f9ada26c8f321
+PODFILE CHECKSUM: d498925d5232c1bcc35fb8c11d88469e41b77759
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.1.0.rc.3

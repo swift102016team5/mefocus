@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 import AVFoundation
 import UIKit
+import SwiftWebSocket
 
 extension Session {
     
@@ -70,6 +71,10 @@ class SessionsManager:NSObject {
 
     static func reset(){
         SessionsManager.pauses = 0
+    }
+    
+    static func notify(){
+        
     }
     
     static func alert() -> AVAudioPlayer?{

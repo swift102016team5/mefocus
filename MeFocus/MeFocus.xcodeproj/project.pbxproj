@@ -23,6 +23,7 @@
 		3F3895EF1DE8AAF5005915BB /* OnboardFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3895EE1DE8AAF5005915BB /* OnboardFirstViewController.swift */; };
 		3F3895F11DE8B1B1005915BB /* OnboardSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3895F01DE8B1B1005915BB /* OnboardSecondViewController.swift */; };
 		3F3895F31DE8BCD5005915BB /* OnboardThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3895F21DE8BCD5005915BB /* OnboardThirdViewController.swift */; };
+		3F3A7B6D1DE9D68900ECDD42 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F3A7B6C1DE9D68900ECDD42 /* GoogleService-Info.plist */; };
 		3F40E87B1DE49E21009DCEC8 /* UserStatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F40E87A1DE49E21009DCEC8 /* UserStatisticViewController.swift */; };
 		3F40E87D1DE4ACC5009DCEC8 /* UserStatisticCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F40E87C1DE4ACC5009DCEC8 /* UserStatisticCategoryViewController.swift */; };
 		3F40E87F1DE4B1DE009DCEC8 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F40E87E1DE4B1DE009DCEC8 /* Navigation.swift */; };
@@ -73,6 +74,7 @@
 		3F3895EE1DE8AAF5005915BB /* OnboardFirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardFirstViewController.swift; sourceTree = "<group>"; };
 		3F3895F01DE8B1B1005915BB /* OnboardSecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardSecondViewController.swift; sourceTree = "<group>"; };
 		3F3895F21DE8BCD5005915BB /* OnboardThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardThirdViewController.swift; sourceTree = "<group>"; };
+		3F3A7B6C1DE9D68900ECDD42 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3F40E87A1DE49E21009DCEC8 /* UserStatisticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStatisticViewController.swift; sourceTree = "<group>"; };
 		3F40E87C1DE4ACC5009DCEC8 /* UserStatisticCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStatisticCategoryViewController.swift; sourceTree = "<group>"; };
 		3F40E87E1DE4B1DE009DCEC8 /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				3F9722EB1DDF708A00152446 /* User.storyboard */,
 				3F5EBC8A1DE1689E00C2F15F /* Session.storyboard */,
 				3F5EBC901DE176D600C2F15F /* Onboard.storyboard */,
+				3F3A7B6C1DE9D68900ECDD42 /* GoogleService-Info.plist */,
 			);
 			path = MeFocus;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				DB8035FC1DE5548A00C3DE08 /* image3.png in Resources */,
 				DB8035FB1DE5548A00C3DE08 /* focus.png in Resources */,
 				3F5EBC911DE176D600C2F15F /* Onboard.storyboard in Resources */,
+				3F3A7B6D1DE9D68900ECDD42 /* GoogleService-Info.plist in Resources */,
 				0BFF53931DDB18DE00ACF9BF /* Main.storyboard in Resources */,
 				3F5EBC8B1DE1689E00C2F15F /* Session.storyboard in Resources */,
 			);
