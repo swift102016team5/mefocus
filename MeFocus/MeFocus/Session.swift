@@ -72,6 +72,10 @@ class SessionsManager:NSObject {
         SessionsManager.pauses = 0
     }
     
+    static func notify(){
+    
+    }
+    
     static func alert() -> AVAudioPlayer?{
         if let asset = NSDataAsset(name:"cohangxom") {
             var player:AVAudioPlayer
