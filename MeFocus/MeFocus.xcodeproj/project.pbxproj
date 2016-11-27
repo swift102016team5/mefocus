@@ -10,6 +10,7 @@
 		0B02938F1DE7C9C40042B6A7 /* SessionSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B02938E1DE7C9C40042B6A7 /* SessionSettingTableViewController.swift */; };
 		0B1BBCE01DE4359C001F2827 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1BBCDF1DE4359C001F2827 /* CategoryTableViewController.swift */; };
 		0B1BBCE31DE4376D001F2827 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1BBCE21DE4376D001F2827 /* CategoryCell.swift */; };
+		0B570EE21DEAC86600190D28 /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B570EE11DEAC86600190D28 /* Recorder.swift */; };
 		0BB30C8F1DE98DDD000BB406 /* RecorderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB30C8E1DE98DDD000BB406 /* RecorderCell.swift */; };
 		0BB30C911DE9D86E000BB406 /* AudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB30C901DE9D86E000BB406 /* AudioCell.swift */; };
 		0BDA37E41DDDF63C00C51DBD /* TimerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA37E31DDDF63C00C51DBD /* TimerTableViewController.swift */; };
@@ -59,6 +60,7 @@
 		0B1BBCDF1DE4359C001F2827 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		0B1BBCE21DE4376D001F2827 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		0B3C45021DDB241500DE02B5 /* _10Clock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = _10Clock.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/MeFocus-gwxrxzzwzrvejidugdhtsspmvqwd/Build/Products/Debug-iphonesimulator/10Clock/_10Clock.framework"; sourceTree = "<group>"; };
+		0B570EE11DEAC86600190D28 /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 		0BB30C8E1DE98DDD000BB406 /* RecorderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderCell.swift; sourceTree = "<group>"; };
 		0BB30C901DE9D86E000BB406 /* AudioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCell.swift; sourceTree = "<group>"; };
 		0BDA37E31DDDF63C00C51DBD /* TimerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTableViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				3F9722F31DDF7AEF00152446 /* Auth.swift */,
 				3F9722F51DDF840F00152446 /* App.swift */,
 				3F60A46B1DE072B700A6D948 /* Storage.swift */,
+				0B570EE11DEAC86600190D28 /* Recorder.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				0B1BBCE01DE4359C001F2827 /* CategoryTableViewController.swift in Sources */,
 				3F9722F61DDF840F00152446 /* App.swift in Sources */,
 				3F40E87D1DE4ACC5009DCEC8 /* UserStatisticCategoryViewController.swift in Sources */,
+				0B570EE21DEAC86600190D28 /* Recorder.swift in Sources */,
 				3F40E87F1DE4B1DE009DCEC8 /* Navigation.swift in Sources */,
 				3F60A46C1DE072B700A6D948 /* Storage.swift in Sources */,
 				0BB30C8F1DE98DDD000BB406 /* RecorderCell.swift in Sources */,
