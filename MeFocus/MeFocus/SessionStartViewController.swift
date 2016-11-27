@@ -28,13 +28,21 @@ class SessionStartViewController: UIViewController {
     @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var coachNameLabel: NormalLabel!
     var userTargetTime = 0
+    
+    var coach:User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         goalTextField.autoCompleteTextFieldDataSource = goalTextField
         goalTextField.autoCompleteGoalDelegate = self
         initViews()
+        
+        if coach != nil{
+            coachNameLabel.text = coach?.name
+        }
+        
     }
     
     func textViewDidChange(textView: UITextView) { // Handle the text changes here
