@@ -533,8 +533,9 @@ extension SessionSettingTableViewController : AVAudioPlayerDelegate {
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         print("finished playing \(flag)")
-        playingCell?.playBtn.setTitle("Play", for: .normal)
+        playingCell?.playBtn.setImage(#imageLiteral(resourceName: "Play-25"), for: .normal)
         isPlaying = false
+        playingCell = nil
     }
     
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
