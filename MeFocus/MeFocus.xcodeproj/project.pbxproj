@@ -28,6 +28,7 @@
 		3F40E87B1DE49E21009DCEC8 /* UserStatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F40E87A1DE49E21009DCEC8 /* UserStatisticViewController.swift */; };
 		3F40E87D1DE4ACC5009DCEC8 /* UserStatisticCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F40E87C1DE4ACC5009DCEC8 /* UserStatisticCategoryViewController.swift */; };
 		3F40E87F1DE4B1DE009DCEC8 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F40E87E1DE4B1DE009DCEC8 /* Navigation.swift */; };
+		3F55824B1DEAD50D005652CC /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55824A1DEAD50D005652CC /* ProfileButton.swift */; };
 		3F5EBC8B1DE1689E00C2F15F /* Session.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F5EBC8A1DE1689E00C2F15F /* Session.storyboard */; };
 		3F5EBC8D1DE1693200C2F15F /* SessionStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5EBC8C1DE1693200C2F15F /* SessionStartViewController.swift */; };
 		3F5EBC8F1DE1695400C2F15F /* SessionOngoingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5EBC8E1DE1695400C2F15F /* SessionOngoingViewController.swift */; };
@@ -80,6 +81,7 @@
 		3F40E87A1DE49E21009DCEC8 /* UserStatisticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStatisticViewController.swift; sourceTree = "<group>"; };
 		3F40E87C1DE4ACC5009DCEC8 /* UserStatisticCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStatisticCategoryViewController.swift; sourceTree = "<group>"; };
 		3F40E87E1DE4B1DE009DCEC8 /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		3F55824A1DEAD50D005652CC /* ProfileButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		3F5EBC8A1DE1689E00C2F15F /* Session.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Session.storyboard; sourceTree = "<group>"; };
 		3F5EBC8C1DE1693200C2F15F /* SessionStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStartViewController.swift; sourceTree = "<group>"; };
 		3F5EBC8E1DE1695400C2F15F /* SessionOngoingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionOngoingViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				0BE024581DE7DCA60084BA00 /* BackgroundTimeCell.swift */,
 				0BB30C8E1DE98DDD000BB406 /* RecorderCell.swift */,
 				3FC5283D1DE8C4EC0071532A /* SkipButton.swift */,
+				3F55824A1DEAD50D005652CC /* ProfileButton.swift */,
 				0BB30C901DE9D86E000BB406 /* AudioCell.swift */,
 			);
 			name = Views;
@@ -393,6 +396,7 @@
 				0B1BBCE01DE4359C001F2827 /* CategoryTableViewController.swift in Sources */,
 				3F9722F61DDF840F00152446 /* App.swift in Sources */,
 				3F40E87D1DE4ACC5009DCEC8 /* UserStatisticCategoryViewController.swift in Sources */,
+				3F55824B1DEAD50D005652CC /* ProfileButton.swift in Sources */,
 				0B570EE21DEAC86600190D28 /* Recorder.swift in Sources */,
 				3F40E87F1DE4B1DE009DCEC8 /* Navigation.swift in Sources */,
 				3F60A46C1DE072B700A6D948 /* Storage.swift in Sources */,

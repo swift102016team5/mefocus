@@ -94,21 +94,10 @@ class UserProfileViewController: UIViewController {
     */
 
     @IBAction func onCreateNewSession(_ sender: Any) {
-        
-        if SessionsManager.unfinished != nil {
-            App.shared.present(
-                presenter: self,
-                storyboard: "Session",
-                controller: "SessionOngoingViewController",
-                modifier: nil,
-                completion: nil
-            )
-            return
-        }
         App.shared.present(
             presenter: self,
             storyboard: "Session",
-            controller: "SessionStartViewController",
+            controller: "SessionStartNavigationController",
             modifier: nil,
             completion: nil
         )
