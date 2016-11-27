@@ -1,14 +1,14 @@
 //
-//  SkipButton.swift
+//  ProfileButton.swift
 //  MeFocus
 //
-//  Created by Hao on 11/26/16.
+//  Created by Hao on 11/27/16.
 //  Copyright © 2016 Group5. All rights reserved.
 //
 
 import UIKit
 
-class SkipButton: UIButton {
+class ProfileButton: UIButton {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -25,16 +25,15 @@ class SkipButton: UIButton {
             action: #selector(self.didTouchUp),
             for:UIControlEvents.touchUpInside
         )
-        titleLabel?.font = UIFont(name: "Avenir Next Ultra Light", size: 16)!
     }
     
     @objc func didTouchUp(_ sender: Any){
         App.shared.redirect(
             delegate: UIApplication.shared.delegate as! AppDelegate,
-            storyboard: "Session",
-            controller: "SessionStartNavigationController",
+            storyboard: "User",
+            controller: "UserLoginViewController",
             modifier:nil
         )
     }
-
+    
 }

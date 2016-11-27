@@ -133,7 +133,7 @@ class App: NSObject {
         controller:String,
         modifier:((UIViewController) -> Void)?,
         completion:(() -> Void)?
-        ){
+        )-> UIViewController {
         
         let presenting = getControllerFromStoryboard(
             storyboard: storyboard,
@@ -142,6 +142,8 @@ class App: NSObject {
         )
         
         presenter.present(presenting, animated: true, completion: completion)
+    
+        return presenting
     }
     
     func redirect(
@@ -150,26 +152,26 @@ class App: NSObject {
         controller:String,
         modifier:((UIViewController) -> Void)?) {
         
-        
-        let redirect = getControllerFromStoryboard(
-            storyboard: storyboard,
-            controller: controller,
-            modifier: modifier
-        )
-        
         delegate.window = delegate.window ?? UIWindow(frame: UIScreen.main.bounds)
         if let window = delegate.window {
             
             if let root = window.rootViewController {
-                present(
+                let presenting = present(
                     presenter: root,
                     storyboard: storyboard,
                     controller: controller,
                     modifier: modifier,
                     completion: nil
                 )
+                window.rootViewController = presenting
                 return
             }
+                        
+            let redirect = getControllerFromStoryboard(
+                storyboard: storyboard,
+                controller: controller,
+                modifier: modifier
+            )
             
             window.rootViewController = redirect
             window.makeKeyAndVisible()

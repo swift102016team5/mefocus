@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         App.shared.redirect(
             delegate: self,
             storyboard: "Session",
-            controller: "SessionStartViewController",
+            controller: "SessionNavigationStartController",
             modifier:nil
         )
         return true
