@@ -12,6 +12,10 @@ class AudioCell: UITableViewCell {
 
     @IBOutlet weak var audioNameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var playBtn: UIButton!
+    @IBOutlet weak var deleteBtn: UIButton!
+    
+    var url: URL!
     
     override func awakeFromNib() {
         super.awakeFromNib()

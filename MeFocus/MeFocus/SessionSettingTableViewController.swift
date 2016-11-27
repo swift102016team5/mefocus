@@ -33,7 +33,9 @@ class SessionSettingTableViewController: UITableViewController {
     var numberOfAudio = 0 // = audioList.count. But when recording, numberOfAudio = audioList.count + 1
     var recordingCell: AudioCell? // new cell created while recording audio
     var recorderCell: RecorderCell? // will be set when call cellForRowAt, or each time user record new audio
+    var playingCell: AudioCell?
     var willBeRecording = false
+    var isPlaying = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,13 +98,11 @@ class SessionSettingTableViewController: UITableViewController {
                 let audioCell = tableView.dequeueReusableCell(withIdentifier: "AudioCell") as! AudioCell
                 
                 if willBeRecording, row == numberOfAudio - 1 {
-                    audioCell.statusLabel.isHidden = false
-                    audioCell.audioNameLabel.isHidden = true
+                    layoutRecordingAudioCell(of: audioCell)
                     return audioCell
                 }
                 
-                audioCell.statusLabel.isHidden = true
-                audioCell.audioNameLabel.text = audioList[row].lastPathComponent
+                layoutAudioCell(of: audioCell, atRow: row)
                 
                 return audioCell
             }
@@ -119,19 +119,38 @@ class SessionSettingTableViewController: UITableViewController {
         let recorderCell = tableView.dequeueReusableCell(withIdentifier: "RecorderCell", for: indexPath) as! RecorderCell
         recorderCell.recordBtn.addTarget(self, action: #selector(onRecord(_:)), for: .touchUpInside)
         recorderCell.playBtn.addTarget(self, action: #selector(onPlay(_:)), for: .touchUpInside)
-        recorderCell.stopBtn.addTarget(self, action: #selector(onStop(_:)), for: .touchUpInside)
+        recorderCell.stopBtn.addTarget(self, action: #selector(onStopRecording(_:)), for: .touchUpInside)
         recorderCell.deleteAllBtn.addTarget(self, action: #selector(onRemoveAll(_:)), for: .touchUpInside)
         return recorderCell
     }
     
+    private func layoutRecordingAudioCell(of audioCell: AudioCell) {
+        audioCell.statusLabel.isHidden = false
+        audioCell.audioNameLabel.isHidden = true
+        audioCell.playBtn.isHidden = true
+        audioCell.deleteBtn.isHidden = true
+    }
+    
+    private func layoutAudioCell(of audioCell: AudioCell, atRow row: Int) {
+        audioCell.statusLabel.isHidden = true
+        audioCell.audioNameLabel.text = audioList[row].lastPathComponent
+        audioCell.playBtn.isHidden = false
+        audioCell.deleteBtn.isHidden = false
+        audioCell.url = audioList[row]
+        audioCell.playBtn.addTarget(self, action: #selector(playAudio(_:)), for: .touchUpInside)
+        audioCell.deleteBtn.addTarget(self, action: #selector(askToDelete(_:)), for: .touchUpInside)
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.section {
+        let section = indexPath.section
+        let row = indexPath.row
+        switch section {
         case 0:
-            if indexPath.row != selectedTimeLimitIndex {
+            if row != selectedTimeLimitIndex {
                 let selectedIndexpath = IndexPath(row: selectedTimeLimitIndex, section: 0)
                 settingTable.cellForRow(at: selectedIndexpath)?.accessoryType = .none
                 settingTable.cellForRow(at: indexPath)?.accessoryType = .checkmark
-                selectedTimeLimitIndex = indexPath.row
+                selectedTimeLimitIndex = row
             }
         default:
             break
@@ -257,12 +276,13 @@ class SessionSettingTableViewController: UITableViewController {
     
     func onRemoveAll(_ sender: AnyObject) {
         recorderCell?.recordBtn.setTitle("Record", for: .normal)
+        player?.stop()
         deleteAllRecordings()
         listRecordings()
         settingTable.reloadSections([1], with: .automatic)
     }
     
-    func onStop(_ sender: UIButton) {
+    func onStopRecording(_ sender: UIButton) {
         print("stop")
         willBeRecording = false
         
@@ -357,10 +377,10 @@ class SessionSettingTableViewController: UITableViewController {
                     let recordingIndexPath = IndexPath(row: self.numberOfAudio - 1, section: 1)
                     self.recordingCell = self.settingTable.cellForRow(at: recordingIndexPath) as? AudioCell
                     self.meterTimer = Timer.scheduledTimer(timeInterval: 0.1,
-                                                           target:self,
-                                                           selector:#selector(SessionSettingTableViewController.updateAudioMeter(_:)),
-                                                           userInfo:nil,
-                                                           repeats:true)
+                                                           target: self,
+                                                           selector: #selector(SessionSettingTableViewController.updateAudioMeter(_:)),
+                                                           userInfo: nil,
+                                                           repeats: true)
                 } else {
                     print("Permission to record not granted")
                 }
@@ -436,19 +456,19 @@ class SessionSettingTableViewController: UITableViewController {
     
     func askForNotifications() {
         NotificationCenter.default.addObserver(self,
-                                               selector:#selector(SessionSettingTableViewController.background(_:)),
-                                               name:NSNotification.Name.UIApplicationWillResignActive,
-                                               object:nil)
+                                               selector: #selector(SessionSettingTableViewController.background(_:)),
+                                               name: NSNotification.Name.UIApplicationWillResignActive,
+                                               object: nil)
         
         NotificationCenter.default.addObserver(self,
-                                               selector:#selector(SessionSettingTableViewController.foreground(_:)),
-                                               name:NSNotification.Name.UIApplicationWillEnterForeground,
-                                               object:nil)
+                                               selector: #selector(SessionSettingTableViewController.foreground(_:)),
+                                               name: NSNotification.Name.UIApplicationWillEnterForeground,
+                                               object: nil)
         
         NotificationCenter.default.addObserver(self,
-                                               selector:#selector(SessionSettingTableViewController.routeChange(_:)),
-                                               name:NSNotification.Name.AVAudioSessionRouteChange,
-                                               object:nil)
+                                               selector: #selector(SessionSettingTableViewController.routeChange(_:)),
+                                               name: NSNotification.Name.AVAudioSessionRouteChange,
+                                               object: nil)
     }
     
     func background(_ notification:Notification) {
@@ -514,7 +534,9 @@ class SessionSettingTableViewController: UITableViewController {
     func listRecordings() {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         do {
-            let urls = try FileManager.default.contentsOfDirectory(at: documentsDirectory, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+            let urls = try FileManager.default.contentsOfDirectory(at: documentsDirectory,
+                                                                   includingPropertiesForKeys: nil,
+                                                                   options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
             self.audioList = urls.filter({(name: URL) -> Bool in
                 return name.lastPathComponent.hasSuffix("m4a")
             })
@@ -526,14 +548,82 @@ class SessionSettingTableViewController: UITableViewController {
             print("something went wrong listing recordings")
         }
     }
+    
+    func playAudio(_ sender: UIButton!) {
+        playingCell = sender.superview?.superview as? AudioCell
+        
+        guard !isPlaying else {
+            player?.stop()
+            isPlaying = false
+            playingCell?.playBtn.setTitle("Play", for: .normal)
+            return
+        }
+        
+        let url = playingCell?.url
+        print("playing \(url)")
+        
+        do {
+            playingCell?.playBtn.setTitle("Stop", for: .normal)
+            self.isPlaying = true
+            
+            self.player = try AVAudioPlayer(contentsOf: url!)
+            player.delegate = self
+            player.prepareToPlay()
+            player.volume = 1.0
+            player.play()
+        } catch let error as NSError {
+            self.player = nil
+            print(error.localizedDescription)
+        } catch {
+            print("AVAudioPlayer init failed")
+        }
+    }
+    
+    func askToDelete(_ sender: UIButton!) {
+        let deleteCell = sender.superview?.superview as! AudioCell
+        let indexPath = settingTable.indexPath(for: deleteCell)
+        let row = indexPath?.row
+        let alert = UIAlertController(title: "Delete",
+                                      message: "Delete Recording \(audioList[row!].lastPathComponent)?",
+            preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes",
+                                      style: .default,
+                                      handler: { action in
+                                        print("yes was tapped \(self.audioList[row!])")
+                                        self.deleteRecording(self.audioList[row!])
+        }))
+        alert.addAction(UIAlertAction(title: "No",
+                                      style: .default,
+                                      handler: { action in
+                                        print("no was tapped")
+        }))
+        self.present(alert, animated:true, completion:nil)
+    }
+    
+    func deleteRecording(_ url:URL) {
+        print("removing file at \(url.absoluteString)")
+        let fileManager = FileManager.default
+        
+        do {
+            try fileManager.removeItem(at: url)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        } catch {
+            print("error deleting recording")
+        }
+        
+        DispatchQueue.main.async(execute: {
+            self.listRecordings()
+            self.settingTable.reloadData()
+        })
+    }
 
 }
 
 // MARK: AVAudioRecorderDelegate
 extension SessionSettingTableViewController : AVAudioRecorderDelegate {
     
-    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder,
-                                         successfully flag: Bool) {
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         print("finished recording \(flag)")
         
         // iOS8 and later
@@ -550,15 +640,14 @@ extension SessionSettingTableViewController : AVAudioRecorderDelegate {
             print("delete was tapped")
             self.recorder?.deleteRecording()
             self.recorder = nil
+            
             self.listRecordings()
             self.settingTable.reloadSections([1], with: .automatic)
         }))
         self.present(alert, animated:true, completion:nil)
     }
     
-    func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder,
-                                          error: Error?) {
-        
+    func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
         if let e = error {
             print("\(e.localizedDescription)")
         }
@@ -568,16 +657,17 @@ extension SessionSettingTableViewController : AVAudioRecorderDelegate {
 
 // MARK: AVAudioPlayerDelegate
 extension SessionSettingTableViewController : AVAudioPlayerDelegate {
+    
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         print("finished playing \(flag)")
-//        recordButton.isEnabled = true
-//        stopButton.isEnabled = false
+        playingCell?.playBtn.setTitle("Play", for: .normal)
+        isPlaying = false
     }
     
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
         if let e = error {
             print("\(e.localizedDescription)")
         }
-        
     }
+    
 }

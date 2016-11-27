@@ -265,10 +265,22 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWq-J9-cNh">
+                                            <rect key="frame" x="8" y="17" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Play"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yu6-w0-JGs">
+                                            <rect key="frame" x="266" y="17" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Delete"/>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="audioNameLabel" destination="yTV-CX-Ux0" id="QVU-z0-OYA"/>
+                                    <outlet property="deleteBtn" destination="Yu6-w0-JGs" id="ehQ-0V-FRT"/>
+                                    <outlet property="playBtn" destination="LWq-J9-cNh" id="kRX-Wj-38L"/>
                                     <outlet property="statusLabel" destination="We2-0f-buW" id="aIS-rU-8ul"/>
                                 </connections>
                             </tableViewCell>
