@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecordHeaderView" customModule="MeFocus" customModuleProvider="target">
+            <connections>
+                <outlet property="recordBtn" destination="cjZ-kn-V21" id="WZb-Xq-LKj"/>
+                <outlet property="stopBtn" destination="C4z-VV-pfz" id="nhM-8G-WGf"/>
+                <outlet property="titleLabel" destination="P2v-wS-u0f" id="qt7-bG-FXF"/>
+                <outlet property="view" destination="iN0-l3-epB" id="0TT-lg-uWz"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="325" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record Your Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2v-wS-u0f">
+                    <rect key="frame" x="20" y="15.5" width="168" height="20"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjZ-kn-V21">
+                    <rect key="frame" x="245" y="13" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="Dmp-Pc-zbd"/>
+                        <constraint firstAttribute="height" constant="25" id="KdS-2V-lAN"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="Add Record Filled-25"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4z-VV-pfz">
+                    <rect key="frame" x="285" y="13" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="2oU-uJ-aIN"/>
+                        <constraint firstAttribute="height" constant="25" id="Lnt-Rb-JCL"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="Stop-25"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="C4z-VV-pfz" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="40b-Kk-DDe"/>
+                <constraint firstItem="P2v-wS-u0f" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="4yJ-7U-8UN"/>
+                <constraint firstItem="cjZ-kn-V21" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Csb-CJ-2cP"/>
+                <constraint firstItem="P2v-wS-u0f" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="KHg-QS-b4t"/>
+                <constraint firstAttribute="trailing" secondItem="C4z-VV-pfz" secondAttribute="trailing" constant="15" id="QGp-q1-rwL"/>
+                <constraint firstItem="C4z-VV-pfz" firstAttribute="leading" secondItem="cjZ-kn-V21" secondAttribute="trailing" constant="15" id="zch-ol-8li"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="213" y="-181"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Add Record Filled-25" width="25" height="25"/>
+        <image name="Stop-25" width="25" height="25"/>
+    </resources>
+</document>

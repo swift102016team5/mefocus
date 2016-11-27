@@ -6,10 +6,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Lets focus!-->
+        <!--Let's Focus!-->
         <scene sceneID="fDs-zO-z1Y">
             <objects>
                 <viewController storyboardIdentifier="SessionStartViewController" id="4Ca-pB-wPb" customClass="SessionStartViewController" customModule="MeFocus" customModuleProvider="target" sceneMemberID="viewController">
@@ -104,7 +105,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.15910354933476081" green="0.75993416878172593" blue="0.38437713972803705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Lets focus!" id="26l-yh-l34">
+                    <navigationItem key="navigationItem" title="Let's Focus!" id="26l-yh-l34">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="Nx2-SW-pPn">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3VW-Sq-c7W" customClass="ProfileButton" customModule="MeFocus" customModuleProvider="target">
                                 <rect key="frame" x="16" y="7" width="30" height="30"/>
@@ -215,7 +216,7 @@
             </objects>
             <point key="canvasLocation" x="1254" y="-281"/>
         </scene>
-        <!--Session Setting Table View Controller-->
+        <!--Setting-->
         <scene sceneID="e4C-Ge-8K2">
             <objects>
                 <tableViewController id="e9T-I5-giq" customClass="SessionSettingTableViewController" customModule="MeFocus" customModuleProvider="target" sceneMemberID="viewController">
@@ -231,93 +232,78 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoe-w2-ppO">
-                                            <rect key="frame" x="8" y="0.0" width="115" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoe-w2-ppO">
+                                            <rect key="frame" x="15" y="10" width="290" height="23"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="qoe-w2-ppO" firstAttribute="leading" secondItem="V2o-Y1-SSw" secondAttribute="leading" constant="15" id="HnK-mO-o2A"/>
+                                        <constraint firstAttribute="bottom" secondItem="qoe-w2-ppO" secondAttribute="bottom" constant="10" id="U0V-95-Vn4"/>
+                                        <constraint firstAttribute="trailing" secondItem="qoe-w2-ppO" secondAttribute="trailing" constant="15" id="VOL-Rj-dg7"/>
+                                        <constraint firstItem="qoe-w2-ppO" firstAttribute="top" secondItem="V2o-Y1-SSw" secondAttribute="top" constant="10" id="eO3-hp-3NT"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <connections>
                                     <outlet property="timeLimitLabel" destination="qoe-w2-ppO" id="hPy-3Y-PkD"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AudioCell" rowHeight="81" id="bZm-ju-il8" customClass="AudioCell" customModule="MeFocus" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AudioCell" rowHeight="81" id="bZm-ju-il8" customClass="AudioCell" customModule="MeFocus" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="320" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bZm-ju-il8" id="z6d-V9-gd0">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="We2-0f-buW">
-                                            <rect key="frame" x="8" y="8" width="304" height="49"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="We2-0f-buW">
+                                            <rect key="frame" x="136.5" y="30" width="47.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="audioName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTV-CX-Ux0">
-                                            <rect key="frame" x="8" y="8" width="304" height="48"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="audioName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTV-CX-Ux0">
+                                            <rect key="frame" x="116.5" y="30" width="87" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWq-J9-cNh">
-                                            <rect key="frame" x="8" y="17" width="46" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Play"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWq-J9-cNh">
+                                            <rect key="frame" x="23" y="28" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="25" id="GCZ-ms-7Kj"/>
+                                                <constraint firstAttribute="height" constant="25" id="swy-IX-0gk"/>
+                                            </constraints>
+                                            <state key="normal" title="Play" image="Play-25"/>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yu6-w0-JGs">
-                                            <rect key="frame" x="266" y="17" width="46" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Delete"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yu6-w0-JGs">
+                                            <rect key="frame" x="282" y="33" width="15" height="15"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="15" id="i2V-fj-vdO"/>
+                                                <constraint firstAttribute="width" constant="15" id="qcr-5A-U7x"/>
+                                            </constraints>
+                                            <state key="normal" title="Delete" image="Delete-25"/>
                                         </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="We2-0f-buW" firstAttribute="centerY" secondItem="z6d-V9-gd0" secondAttribute="centerY" id="0dF-Uk-w2A"/>
+                                        <constraint firstItem="LWq-J9-cNh" firstAttribute="leading" secondItem="z6d-V9-gd0" secondAttribute="leadingMargin" constant="15" id="2UZ-r5-imd"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Yu6-w0-JGs" secondAttribute="trailing" constant="15" id="8Ou-1p-7ri"/>
+                                        <constraint firstItem="Yu6-w0-JGs" firstAttribute="centerY" secondItem="z6d-V9-gd0" secondAttribute="centerY" id="HwC-35-v9m"/>
+                                        <constraint firstItem="yTV-CX-Ux0" firstAttribute="centerY" secondItem="z6d-V9-gd0" secondAttribute="centerY" id="RY0-fy-Xeh"/>
+                                        <constraint firstItem="We2-0f-buW" firstAttribute="centerX" secondItem="z6d-V9-gd0" secondAttribute="centerX" id="cJy-Ec-LNn"/>
+                                        <constraint firstItem="LWq-J9-cNh" firstAttribute="centerY" secondItem="z6d-V9-gd0" secondAttribute="centerY" id="d5Q-OW-EPd"/>
+                                        <constraint firstItem="yTV-CX-Ux0" firstAttribute="centerX" secondItem="z6d-V9-gd0" secondAttribute="centerX" id="nzv-mx-v7m"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <connections>
                                     <outlet property="audioNameLabel" destination="yTV-CX-Ux0" id="QVU-z0-OYA"/>
                                     <outlet property="deleteBtn" destination="Yu6-w0-JGs" id="ehQ-0V-FRT"/>
                                     <outlet property="playBtn" destination="LWq-J9-cNh" id="kRX-Wj-38L"/>
                                     <outlet property="statusLabel" destination="We2-0f-buW" id="aIS-rU-8ul"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecorderCell" rowHeight="133" id="cpm-uq-I6M" customClass="RecorderCell" customModule="MeFocus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="153" width="320" height="133"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cpm-uq-I6M" id="Mxm-O3-ZNB">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkw-Aa-2lr">
-                                            <rect key="frame" x="47" y="25" width="50" height="22"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Record"/>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLd-5Q-gNE">
-                                            <rect key="frame" x="145" y="24" width="37" height="22"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Stop"/>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6J-oL-uua">
-                                            <rect key="frame" x="250" y="24" width="31" height="22"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Play"/>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usY-N6-bcO">
-                                            <rect key="frame" x="190" y="8" width="66" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Delete All"/>
-                                        </button>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="deleteAllBtn" destination="usY-N6-bcO" id="rKf-HI-8Fp"/>
-                                    <outlet property="playBtn" destination="b6J-oL-uua" id="P3J-yt-qvd"/>
-                                    <outlet property="recordBtn" destination="zkw-Aa-2lr" id="x2D-h8-sPM"/>
-                                    <outlet property="stopBtn" destination="zLd-5Q-gNE" id="eeM-LB-Qhb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -326,8 +312,8 @@
                             <outlet property="delegate" destination="e9T-I5-giq" id="EjU-my-ZLU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="21D-sq-GkW">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="P6Y-mA-46L">
+                    <navigationItem key="navigationItem" title="Setting" id="21D-sq-GkW">
+                        <barButtonItem key="leftBarButtonItem" image="Back-30" id="P6Y-mA-46L">
                             <connections>
                                 <action selector="onBack:" destination="e9T-I5-giq" id="d0P-XO-qLI"/>
                             </connections>
@@ -346,7 +332,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5bj-Ss-bJ2" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BKx-IN-TWC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BKx-IN-TWC" customClass="BackgroundNavigation" customModule="MeFocus" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -379,9 +365,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Back-30" width="30" height="30"/>
         <image name="Cancel Filled-50" width="50" height="50"/>
         <image name="Circled Play-50" width="50" height="50"/>
         <image name="Circled User Male-30" width="30" height="30"/>
+        <image name="Delete-25" width="25" height="25"/>
+        <image name="Play-25" width="25" height="25"/>
         <image name="Plus Filled-51" width="50" height="50"/>
     </resources>
 </document>

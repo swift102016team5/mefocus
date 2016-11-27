@@ -79,7 +79,6 @@ class SessionStartViewController: UIViewController {
                 }
             }
         }
-        
     }
     
     func initViews() {

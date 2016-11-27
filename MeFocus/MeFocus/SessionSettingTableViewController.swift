@@ -32,7 +32,7 @@ class SessionSettingTableViewController: UITableViewController {
     var audioList = [URL]() // update at first start, or after recording and save (keep) audio file
     var numberOfAudio = 0 // = audioList.count. But when recording, numberOfAudio = audioList.count + 1
     var recordingCell: AudioCell? // new cell created while recording audio
-    var recorderCell: RecorderCell? // will be set when call cellForRowAt, or each time user record new audio
+    var recordHeader: RecordHeaderView!
     var playingCell: AudioCell?
     var willBeRecording = false
     var isPlaying = false
@@ -44,18 +44,11 @@ class SessionSettingTableViewController: UITableViewController {
         settingTable.delegate = self
         settingTable.rowHeight = UITableViewAutomaticDimension
         settingTable.estimatedRowHeight = 100
+        settingTable.separatorColor = UIColor.flatGreen
         
         setSessionPlayback()
-        askForNotifications()
-        checkHeadphones()
         // set the recordings array
         listRecordings()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     @IBAction func onBack(_ sender: UIBarButtonItem) {
@@ -74,7 +67,7 @@ class SessionSettingTableViewController: UITableViewController {
         case 0:
             return limitTimeStr.count
         case 1:
-            return numberOfAudio + 1
+            return numberOfAudio
         default:
             return 0
         }
@@ -87,41 +80,35 @@ class SessionSettingTableViewController: UITableViewController {
         switch section {
         case 0:
             let backgroundTimeCell = tableView.dequeueReusableCell(withIdentifier: "BackgroundTimeCell") as! BackgroundTimeCell
+            backgroundTimeCell.tintColor = UIColor.flatGreenDark
+
             let timeLimitLabel = backgroundTimeCell.timeLimitLabel
             
             timeLimitLabel?.text = limitTimeStr[row]
-            timeLimitLabel?.font = UIFont(name: "AvenirNext-Regular", size: 17)
+            timeLimitLabel?.font = UIFont(name: "Avenir Next Ultra Light", size: 17)
+            timeLimitLabel?.textColor = UIColor.flatBlack
             backgroundTimeCell.accessoryType = (row == selectedTimeLimitIndex) ? .checkmark : .none
             return backgroundTimeCell
         case 1:
-            if row < numberOfAudio {
-                let audioCell = tableView.dequeueReusableCell(withIdentifier: "AudioCell") as! AudioCell
-                
-                if willBeRecording, row == numberOfAudio - 1 {
-                    layoutRecordingAudioCell(of: audioCell)
-                    return audioCell
-                }
-                
-                layoutAudioCell(of: audioCell, atRow: row)
-                
-                return audioCell
+            guard numberOfAudio > 0 else {
+                return UITableViewCell()
             }
             
-            let recorderCellIndexPath = IndexPath(row: numberOfAudio, section: 1)
-            recorderCell = createRecorderCell(for: tableView, at: recorderCellIndexPath)
-            return recorderCell!
+            let audioCell = tableView.dequeueReusableCell(withIdentifier: "AudioCell") as! AudioCell
+            audioCell.statusLabel.textColor = UIColor.flatBlue
+            audioCell.audioNameLabel.textColor = UIColor.flatBlack
+            audioCell.statusLabel.font = UIFont(name: "Avenir Next Ultra Light", size: 18)
+            audioCell.audioNameLabel.font = UIFont(name: "Avenir Next Ultra Light", size: 15)
+            if willBeRecording, row == 0 {
+                layoutRecordingAudioCell(of: audioCell)
+                return audioCell
+            }
+            layoutAudioCell(of: audioCell, atRow: row)
+            
+            return audioCell
         default:
             return UITableViewCell()
         }
-    }
-    
-    private func createRecorderCell(for tableView: UITableView, at indexPath: IndexPath) -> RecorderCell {
-        let recorderCell = tableView.dequeueReusableCell(withIdentifier: "RecorderCell", for: indexPath) as! RecorderCell
-        recorderCell.recordBtn.addTarget(self, action: #selector(onRecord(_:)), for: .touchUpInside)
-        recorderCell.playBtn.addTarget(self, action: #selector(onPlay(_:)), for: .touchUpInside)
-        recorderCell.stopBtn.addTarget(self, action: #selector(onStopRecording(_:)), for: .touchUpInside)
-        recorderCell.deleteAllBtn.addTarget(self, action: #selector(onRemoveAll(_:)), for: .touchUpInside)
-        return recorderCell
     }
     
     private func layoutRecordingAudioCell(of audioCell: AudioCell) {
@@ -133,9 +120,11 @@ class SessionSettingTableViewController: UITableViewController {
     
     private func layoutAudioCell(of audioCell: AudioCell, atRow row: Int) {
         audioCell.statusLabel.isHidden = true
+        audioCell.audioNameLabel.isHidden = false
         audioCell.audioNameLabel.text = audioList[row].lastPathComponent
         audioCell.playBtn.isHidden = false
         audioCell.deleteBtn.isHidden = false
+        audioCell.playBtn.setImage(#imageLiteral(resourceName: "Play-25"), for: .normal)
         audioCell.url = audioList[row]
         audioCell.playBtn.addTarget(self, action: #selector(playAudio(_:)), for: .touchUpInside)
         audioCell.deleteBtn.addTarget(self, action: #selector(askToDelete(_:)), for: .touchUpInside)
@@ -158,67 +147,43 @@ class SessionSettingTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerLabel = UILabel()
-        headerLabel.frame = CGRect(x: 20, y: 0, width: tableView.bounds.width, height: 50)
-        headerLabel.font = UIFont(name: "Avenir Book", size: 20)
-        headerLabel.textColor = UIColor.flatGray
+        let headerFrame = CGRect(x: 20, y: 0, width: tableView.bounds.width, height: 50)
         switch section {
         case 0:
+            let headerView = UIView()
+            let headerLabel = UILabel()
+            headerLabel.frame = headerFrame
+            headerLabel.font = UIFont(name: "Avenir Book", size: 20)
+            headerLabel.textColor = UIColor.flatGreenDark
             headerLabel.text = "Background Time Limit"
+            headerView.backgroundColor = UIColor.flatWhite
+            headerView.addSubview(headerLabel)
+            
+            return headerView
         case 1:
-            headerLabel.text = "Record Your Message"
+            recordHeader = RecordHeaderView(frame: headerFrame)
+            recordHeader.titleLabel.text = "Record Your Message"
+            recordHeader.titleLabel.font = UIFont(name: "Avenir Book", size: 20)
+            recordHeader.titleLabel.textColor = UIColor.flatGreenDark
+            recordHeader.view.backgroundColor = UIColor.flatWhite
+            recordHeader.stopBtn.isEnabled = false
+            recordHeader.recordBtn.isEnabled = true
+            recordHeader.recordBtn.addTarget(self, action: #selector(onRecord(_:)), for: .touchUpInside)
+            recordHeader.stopBtn.addTarget(self, action: #selector(onStopRecording(_:)), for: .touchUpInside)
+            return recordHeader
         default:
-            break
+            return nil
         }
-        
-        let headerView = UIView()
-        headerView.addSubview(headerLabel)
-        
-        return headerView
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 50
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     func onRecord(_ sender: UIButton!) {
         if player != nil && player.isPlaying {
             player.stop()
+            playingCell?.playBtn.setImage(#imageLiteral(resourceName: "Play-25"), for: .normal)
         }
         
         if recorder == nil {
@@ -227,12 +192,12 @@ class SessionSettingTableViewController: UITableViewController {
             willBeRecording = true
             
             settingTable.beginUpdates()
-            let newAudioCellIndexPath = IndexPath(row: numberOfAudio - 1, section: 1)
+            let newAudioCellIndexPath = IndexPath(row: 0, section: 1)
             settingTable.insertRows(at: [newAudioCellIndexPath], with: .automatic)
             settingTable.endUpdates()
             
-            recorderCell = settingTable.cellForRow(at: IndexPath(row: numberOfAudio, section: 1)) as? RecorderCell
-            recorderCell?.recordBtn.setTitle("Pause", for: UIControlState())
+            recordHeader.recordBtn.setImage(#imageLiteral(resourceName: "Circled Pause Filled-25"), for: .normal)
+            recordHeader.stopBtn.isEnabled = true
             recordWithPermission(true)
             return
         }
@@ -240,11 +205,12 @@ class SessionSettingTableViewController: UITableViewController {
         if let recorder = recorder, recorder.isRecording {
             print("pausing")
             recorder.pause()
-            sender.setTitle("Continue", for: UIControlState())
+            recordHeader.recordBtn.setImage(#imageLiteral(resourceName: "Play Record Filled-25"), for: .normal)
             
         } else {
             print("recording")
-            sender.setTitle("Pause", for: UIControlState())
+            recordHeader.recordBtn.setImage(#imageLiteral(resourceName: "Circled Pause Filled-25"), for: .normal)
+            recordHeader.stopBtn.isEnabled = true
             recordWithPermission(false)
         }
     }
@@ -260,9 +226,6 @@ class SessionSettingTableViewController: UITableViewController {
             let s = String(format: "%02d:%02d", min, sec)
             recordingCell.statusLabel.text = s
             recorder.updateMeters()
-            // if you want to draw some graphics...
-            //var apc0 = recorder.averagePowerForChannel(0)
-            //var peak0 = recorder.peakPowerForChannel(0)
         }
     }
     
@@ -272,10 +235,9 @@ class SessionSettingTableViewController: UITableViewController {
         player = nil
     }
     
-    // MARK: - Recording part
-    
+    // backup func
     func onRemoveAll(_ sender: AnyObject) {
-        recorderCell?.recordBtn.setTitle("Record", for: .normal)
+        recordHeader.recordBtn.setImage(#imageLiteral(resourceName: "Add Record Filled-25"), for: .normal)
         player?.stop()
         deleteAllRecordings()
         listRecordings()
@@ -290,7 +252,7 @@ class SessionSettingTableViewController: UITableViewController {
         player?.stop()
         meterTimer.invalidate()
         
-        recorderCell?.recordBtn.setTitle("Record", for: .normal)
+        recordHeader.recordBtn.setImage(#imageLiteral(resourceName: "Add Record Filled-25"), for: .normal)
         let session = AVAudioSession.sharedInstance()
         do {
             try session.setActive(false)
@@ -300,32 +262,6 @@ class SessionSettingTableViewController: UITableViewController {
         }
         
         //recorder = nil
-    }
-    
-    func onPlay(_ sender: UIButton) {
-        setSessionPlayback()
-        play()
-    }
-    
-    func play() {
-        var url: URL?
-        if self.recorder != nil {
-            url = self.recorder?.url
-        } else {
-            url = self.soundFileURL!
-        }
-        print("playing \(url)")
-        
-        do {
-            self.player = try AVAudioPlayer(contentsOf: url!)
-            player.delegate = self
-            player.prepareToPlay()
-            player.volume = 1.0
-            player.play()
-        } catch let error as NSError {
-            self.player = nil
-            print(error.localizedDescription)
-        }
     }
     
     func setupRecorder() {
@@ -374,7 +310,7 @@ class SessionSettingTableViewController: UITableViewController {
                         self.setupRecorder()
                     }
                     self.recorder?.record()
-                    let recordingIndexPath = IndexPath(row: self.numberOfAudio - 1, section: 1)
+                    let recordingIndexPath = IndexPath(row: 0, section: 1)
                     self.recordingCell = self.settingTable.cellForRow(at: recordingIndexPath) as? AudioCell
                     self.meterTimer = Timer.scheduledTimer(timeInterval: 0.1,
                                                            target: self,
@@ -454,83 +390,6 @@ class SessionSettingTableViewController: UITableViewController {
         }
     }
     
-    func askForNotifications() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(SessionSettingTableViewController.background(_:)),
-                                               name: NSNotification.Name.UIApplicationWillResignActive,
-                                               object: nil)
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(SessionSettingTableViewController.foreground(_:)),
-                                               name: NSNotification.Name.UIApplicationWillEnterForeground,
-                                               object: nil)
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(SessionSettingTableViewController.routeChange(_:)),
-                                               name: NSNotification.Name.AVAudioSessionRouteChange,
-                                               object: nil)
-    }
-    
-    func background(_ notification:Notification) {
-        print("background")
-    }
-    
-    func foreground(_ notification:Notification) {
-        print("foreground")
-    }
-    
-    
-    func routeChange(_ notification:Notification) {
-        print("routeChange \((notification as NSNotification).userInfo)")
-        
-        if let userInfo = (notification as NSNotification).userInfo {
-            //print("userInfo \(userInfo)")
-            if let reason = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt {
-                //print("reason \(reason)")
-                switch AVAudioSessionRouteChangeReason(rawValue: reason)! {
-                case AVAudioSessionRouteChangeReason.newDeviceAvailable:
-                    print("NewDeviceAvailable")
-                    print("did you plug in headphones?")
-                    checkHeadphones()
-                case AVAudioSessionRouteChangeReason.oldDeviceUnavailable:
-                    print("OldDeviceUnavailable")
-                    print("did you unplug headphones?")
-                    checkHeadphones()
-                case AVAudioSessionRouteChangeReason.categoryChange:
-                    print("CategoryChange")
-                case AVAudioSessionRouteChangeReason.override:
-                    print("Override")
-                case AVAudioSessionRouteChangeReason.wakeFromSleep:
-                    print("WakeFromSleep")
-                case AVAudioSessionRouteChangeReason.unknown:
-                    print("Unknown")
-                case AVAudioSessionRouteChangeReason.noSuitableRouteForCategory:
-                    print("NoSuitableRouteForCategory")
-                case AVAudioSessionRouteChangeReason.routeConfigurationChange:
-                    print("RouteConfigurationChange")
-                    
-                }
-            }
-        }
-    }
-    
-    func checkHeadphones() {
-        // check NewDeviceAvailable and OldDeviceUnavailable for them being plugged in/unplugged
-        let currentRoute = AVAudioSession.sharedInstance().currentRoute
-        if currentRoute.outputs.count > 0 {
-            for description in currentRoute.outputs {
-                if description.portType == AVAudioSessionPortHeadphones {
-                    print("headphones are plugged in")
-                    break
-                } else {
-                    print("headphones are unplugged")
-                }
-            }
-        } else {
-            print("checking headphones requires a connection to a device")
-        }
-    }
-    
     func listRecordings() {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         do {
@@ -541,6 +400,7 @@ class SessionSettingTableViewController: UITableViewController {
                 return name.lastPathComponent.hasSuffix("m4a")
             })
             numberOfAudio = audioList.count
+            self.audioList.reverse()
             
         } catch let error as NSError {
             print(error.localizedDescription)
@@ -550,12 +410,21 @@ class SessionSettingTableViewController: UITableViewController {
     }
     
     func playAudio(_ sender: UIButton!) {
-        playingCell = sender.superview?.superview as? AudioCell
+        // assign the new playingCell
+        let newPlayingCell = sender.superview?.superview as? AudioCell
+        
+        if isPlaying, playingCell != newPlayingCell {
+            playingCell?.playBtn.setImage(#imageLiteral(resourceName: "Play-25"), for: .normal)
+            player?.stop()
+            isPlaying = false
+        }
+        
+        playingCell = newPlayingCell
         
         guard !isPlaying else {
             player?.stop()
             isPlaying = false
-            playingCell?.playBtn.setTitle("Play", for: .normal)
+            playingCell?.playBtn.setImage(#imageLiteral(resourceName: "Play-25"), for: .normal)
             return
         }
         
@@ -563,7 +432,7 @@ class SessionSettingTableViewController: UITableViewController {
         print("playing \(url)")
         
         do {
-            playingCell?.playBtn.setTitle("Stop", for: .normal)
+            playingCell?.playBtn.setImage(#imageLiteral(resourceName: "Stop-25"), for: .normal)
             self.isPlaying = true
             
             self.player = try AVAudioPlayer(contentsOf: url!)
@@ -580,6 +449,10 @@ class SessionSettingTableViewController: UITableViewController {
     }
     
     func askToDelete(_ sender: UIButton!) {
+        player?.stop()
+        isPlaying = false
+        playingCell = nil
+        
         let deleteCell = sender.superview?.superview as! AudioCell
         let indexPath = settingTable.indexPath(for: deleteCell)
         let row = indexPath?.row

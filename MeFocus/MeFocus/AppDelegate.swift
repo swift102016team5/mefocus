@@ -34,19 +34,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SessionsManager.unfinished?.finish()
         SessionsManager.notify()
         // Check if any unfinished session is going
-        let session = SessionsManager.unfinished
-        if session != nil {
-            App.shared.redirect(
-                delegate: self,
-                storyboard: "Session",
-                controller: "SessionOngoingViewController",
-                modifier:{(controller:UIViewController) in
-                    let ongoing = controller as! SessionOngoingViewController
-                    ongoing.session = session
-                }
-            )
-            return true
-        }
+//        let session = SessionsManager.unfinished
+//        if session != nil {
+//            App.shared.redirect(
+//                delegate: self,
+//                storyboard: "Session",
+//                controller: "SessionOngoingViewController",
+//                modifier:{(controller:UIViewController) in
+//                    let ongoing = controller as! SessionOngoingViewController
+//                    ongoing.session = session
+//                }
+//            )
+//            return true
+//        }
         
         // If user havent seen onboard screen , navigate to it
         if !App.shared.isViewedOnboard() {
@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         App.shared.redirect(
             delegate: self,
             storyboard: "Session",
-            controller: "SessionNavigationStartController",
+            controller: "SessionStartNavigationController",
             modifier:nil
         )
         return true

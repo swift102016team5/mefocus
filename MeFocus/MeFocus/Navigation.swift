@@ -20,11 +20,11 @@ class BackgroundNavigation: UINavigationBar {
     */
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        backgroundColor = App.shared.theme.backgroundColor
-        barTintColor = App.shared.theme.backgroundColor
+        backgroundColor = App.shared.theme.backgroundDarkColor
+        barTintColor = App.shared.theme.backgroundDarkColor
         tintColor = App.shared.theme.textColor
         titleTextAttributes = [
-            NSForegroundColorAttributeName:App.shared.theme.textColor,
+            NSForegroundColorAttributeName: App.shared.theme.textColor,
             NSFontAttributeName: UIFont(name: "Avenir Next Ultra Light",size:16)!
         ]
     }
@@ -64,7 +64,7 @@ class BackgroundClearNavigation: UINavigationBar {
     }
 }
 
-class BackgroundTabNavigation:UITabBar {
+class BackgroundTabNavigation: UITabBar {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

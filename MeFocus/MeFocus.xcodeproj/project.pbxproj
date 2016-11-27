@@ -11,7 +11,8 @@
 		0B1BBCE01DE4359C001F2827 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1BBCDF1DE4359C001F2827 /* CategoryTableViewController.swift */; };
 		0B1BBCE31DE4376D001F2827 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1BBCE21DE4376D001F2827 /* CategoryCell.swift */; };
 		0B570EE21DEAC86600190D28 /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B570EE11DEAC86600190D28 /* Recorder.swift */; };
-		0BB30C8F1DE98DDD000BB406 /* RecorderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB30C8E1DE98DDD000BB406 /* RecorderCell.swift */; };
+		0B570EE51DEB51A600190D28 /* RecordHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B570EE41DEB51A600190D28 /* RecordHeaderView.xib */; };
+		0B570EE71DEB54D900190D28 /* RecordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B570EE61DEB54D900190D28 /* RecordHeaderView.swift */; };
 		0BB30C911DE9D86E000BB406 /* AudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB30C901DE9D86E000BB406 /* AudioCell.swift */; };
 		0BDA37E41DDDF63C00C51DBD /* TimerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA37E31DDDF63C00C51DBD /* TimerTableViewController.swift */; };
 		0BE024591DE7DCA60084BA00 /* BackgroundTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE024581DE7DCA60084BA00 /* BackgroundTimeCell.swift */; };
@@ -62,7 +63,8 @@
 		0B1BBCE21DE4376D001F2827 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		0B3C45021DDB241500DE02B5 /* _10Clock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = _10Clock.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/MeFocus-gwxrxzzwzrvejidugdhtsspmvqwd/Build/Products/Debug-iphonesimulator/10Clock/_10Clock.framework"; sourceTree = "<group>"; };
 		0B570EE11DEAC86600190D28 /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
-		0BB30C8E1DE98DDD000BB406 /* RecorderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderCell.swift; sourceTree = "<group>"; };
+		0B570EE41DEB51A600190D28 /* RecordHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordHeaderView.xib; sourceTree = "<group>"; };
+		0B570EE61DEB54D900190D28 /* RecordHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordHeaderView.swift; sourceTree = "<group>"; };
 		0BB30C901DE9D86E000BB406 /* AudioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCell.swift; sourceTree = "<group>"; };
 		0BDA37E31DDDF63C00C51DBD /* TimerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTableViewController.swift; sourceTree = "<group>"; };
 		0BE024581DE7DCA60084BA00 /* BackgroundTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundTimeCell.swift; sourceTree = "<group>"; };
@@ -122,6 +124,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B570EE31DEB517F00190D28 /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				0B570EE41DEB51A600190D28 /* RecordHeaderView.xib */,
+			);
+			name = xib;
+			sourceTree = "<group>";
+		};
 		0BDA37E21DDDF61100C51DBD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,15 +240,16 @@
 		DB1B5C8D1DDED183004FC528 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0B570EE31DEB517F00190D28 /* xib */,
 				DB1B5C8E1DDED197004FC528 /* ProgressView.swift */,
 				3F7352401DE18F4D001721C8 /* AutoCompleteGoal.swift */,
 				3FBFF1821DE473D00017F799 /* SessionTableViewCell.swift */,
 				0B1BBCE21DE4376D001F2827 /* CategoryCell.swift */,
 				0BE024581DE7DCA60084BA00 /* BackgroundTimeCell.swift */,
-				0BB30C8E1DE98DDD000BB406 /* RecorderCell.swift */,
 				3FC5283D1DE8C4EC0071532A /* SkipButton.swift */,
 				3F55824A1DEAD50D005652CC /* ProfileButton.swift */,
 				0BB30C901DE9D86E000BB406 /* AudioCell.swift */,
+				0B570EE61DEB54D900190D28 /* RecordHeaderView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -328,6 +339,7 @@
 				DB8035FD1DE5548A00C3DE08 /* img1.png in Resources */,
 				3F9722EC1DDF708A00152446 /* User.storyboard in Resources */,
 				0BFF539B1DDB18DE00ACF9BF /* LaunchScreen.storyboard in Resources */,
+				0B570EE51DEB51A600190D28 /* RecordHeaderView.xib in Resources */,
 				0BFF53981DDB18DE00ACF9BF /* Assets.xcassets in Resources */,
 				DB8035FC1DE5548A00C3DE08 /* image3.png in Resources */,
 				DB8035FB1DE5548A00C3DE08 /* focus.png in Resources */,
@@ -400,7 +412,6 @@
 				0B570EE21DEAC86600190D28 /* Recorder.swift in Sources */,
 				3F40E87F1DE4B1DE009DCEC8 /* Navigation.swift in Sources */,
 				3F60A46C1DE072B700A6D948 /* Storage.swift in Sources */,
-				0BB30C8F1DE98DDD000BB406 /* RecorderCell.swift in Sources */,
 				3F9722EE1DDF70B300152446 /* UserLoginViewController.swift in Sources */,
 				3FC5283E1DE8C4EC0071532A /* SkipButton.swift in Sources */,
 				0BDA37E41DDDF63C00C51DBD /* TimerTableViewController.swift in Sources */,
@@ -411,6 +422,7 @@
 				DB1B5C8F1DDED197004FC528 /* ProgressView.swift in Sources */,
 				3F70ACEC1DE34B9F00F16BD0 /* UserProfileViewController.swift in Sources */,
 				3F3895F11DE8B1B1005915BB /* OnboardSecondViewController.swift in Sources */,
+				0B570EE71DEB54D900190D28 /* RecordHeaderView.swift in Sources */,
 				3F3895F31DE8BCD5005915BB /* OnboardThirdViewController.swift in Sources */,
 				3F5EBC8F1DE1695400C2F15F /* SessionOngoingViewController.swift in Sources */,
 				3F7352411DE18F4D001721C8 /* AutoCompleteGoal.swift in Sources */,
