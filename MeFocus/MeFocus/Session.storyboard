@@ -9,6 +9,90 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Find coach-->
+        <scene sceneID="6E2-uw-NlU">
+            <objects>
+                <viewController storyboardIdentifier="SessionPickMonitorViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Ns-OS-qfq" customClass="SessionPickMonitorViewController" customModule="MeFocus" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="62" sectionHeaderHeight="28" sectionFooterHeight="28" id="cSO-8j-Ut8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="d0b-Zc-5b0">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MonitorTableViewCell" rowHeight="62" id="WQI-bl-ioO" customClass="MonitorTableViewCell" customModule="MeFocus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="320" height="62"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WQI-bl-ioO" id="0ZY-6X-76r">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqj-79-6tX" customClass="HTwoNormalLabel" customModule="MeFocus" customModuleProvider="target">
+                                            <rect key="frame" x="62" y="6" width="79" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="haodt@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Asm-zK-VZY" customClass="NormalLabel" customModule="MeFocus" customModuleProvider="target">
+                                            <rect key="frame" x="62" y="35" width="138" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nUE-on-aeE">
+                                            <rect key="frame" x="6" y="6" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="Mvp-Er-nHD"/>
+                                                <constraint firstAttribute="height" constant="50" id="hF4-fY-8p0"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="oqj-79-6tX" firstAttribute="leading" secondItem="nUE-on-aeE" secondAttribute="trailing" constant="6" id="5X0-M7-JIg"/>
+                                        <constraint firstItem="Asm-zK-VZY" firstAttribute="leading" secondItem="nUE-on-aeE" secondAttribute="trailing" constant="6" id="6ya-fI-SmF"/>
+                                        <constraint firstItem="oqj-79-6tX" firstAttribute="top" secondItem="nUE-on-aeE" secondAttribute="top" id="dn8-3f-0pu"/>
+                                        <constraint firstItem="nUE-on-aeE" firstAttribute="centerY" secondItem="0ZY-6X-76r" secondAttribute="centerY" id="ivO-dS-Hvf"/>
+                                        <constraint firstItem="nUE-on-aeE" firstAttribute="leading" secondItem="0ZY-6X-76r" secondAttribute="leading" constant="6" id="q7f-lg-NjZ"/>
+                                        <constraint firstItem="Asm-zK-VZY" firstAttribute="bottom" secondItem="nUE-on-aeE" secondAttribute="bottom" id="tv3-Ku-QVK"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="oqj-79-6tX" id="9bO-4b-z9m"/>
+                                    <outlet property="nicknameLabel" destination="Asm-zK-VZY" id="bKm-qN-QKQ"/>
+                                    <outlet property="pictureImageView" destination="nUE-on-aeE" id="KuM-rx-QC4"/>
+                                    <segue destination="be0-4t-TVL" kind="showDetail" identifier="Choose" id="HGd-zi-hyL"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Find coach" id="NHi-s3-sJU">
+                        <barButtonItem key="leftBarButtonItem" image="Back-30" id="5UJ-pk-Iv8">
+                            <connections>
+                                <segue destination="be0-4t-TVL" kind="showDetail" identifier="Back" id="Sha-bB-Ckc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="d0b-Zc-5b0" id="1Rv-qD-jOQ"/>
+                        <outlet property="searchDisplayController" destination="nb2-Q1-jSj" id="a3X-JJ-iqm"/>
+                        <outlet property="tableView" destination="cSO-8j-Ut8" id="HBO-jJ-EcF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l5F-i0-lPt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="nb2-Q1-jSj">
+                    <connections>
+                        <outlet property="delegate" destination="9Ns-OS-qfq" id="ZiJ-Vu-JY0"/>
+                        <outlet property="searchContentsController" destination="9Ns-OS-qfq" id="2Io-oR-Icc"/>
+                        <outlet property="searchResultsDataSource" destination="9Ns-OS-qfq" id="fNx-Dr-he1"/>
+                        <outlet property="searchResultsDelegate" destination="9Ns-OS-qfq" id="aSA-2L-cGL"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="3241.875" y="-2030.2816901408451"/>
+        </scene>
         <!--Lets focus!-->
         <scene sceneID="fDs-zO-z1Y">
             <objects>
@@ -101,6 +185,13 @@
                                     <segue destination="5bj-Ss-bJ2" kind="showDetail" identifier="sessionSetting" id="BTx-u3-QbE"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You migh need a coach!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DO-k0-IJV" customClass="NormalLabel" customModule="MeFocus" customModuleProvider="target">
+                                <rect key="frame" x="40" y="162" width="240" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.15910354933476081" green="0.75993416878172593" blue="0.38437713972803705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -112,8 +203,19 @@
                                 <state key="normal" image="Circled User Male-30"/>
                             </button>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="vYu-x4-avM">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wb6-SU-rnZ">
+                                <rect key="frame" x="274" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Coach-30"/>
+                                <connections>
+                                    <segue destination="4vb-hZ-odJ" kind="showDetail" id="yIF-qn-UeM"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="coachNameLabel" destination="3DO-k0-IJV" id="ayI-Lf-oqR"/>
                         <outlet property="goalTextField" destination="LNI-zP-uvS" id="sRx-q8-aRa"/>
                         <outlet property="settingButton" destination="jQ1-7Y-wJf" id="Zgv-h8-MFN"/>
                         <outlet property="startButton" destination="kHG-os-Nyb" id="0MB-0g-h3d"/>
@@ -228,7 +330,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4zJ-Nv-QI3" id="V2o-Y1-SSw">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoe-w2-ppO">
@@ -248,7 +350,7 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="81"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bZm-ju-il8" id="z6d-V9-gd0">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="We2-0f-buW">
@@ -288,7 +390,7 @@
                                 <rect key="frame" x="0.0" y="153" width="320" height="133"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cpm-uq-I6M" id="Mxm-O3-ZNB">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="133"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkw-Aa-2lr">
@@ -377,11 +479,34 @@
             </objects>
             <point key="canvasLocation" x="1254.375" y="-1265.4929577464789"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oP9-fG-dw8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4vb-hZ-odJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Js9-UP-rUd" customClass="BackgroundNavigation" customModule="MeFocus" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9Ns-OS-qfq" kind="relationship" relationship="rootViewController" id="5jT-90-hyn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q16-Y4-NRu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2244.375" y="-2030.2816901408451"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Back-30" width="30" height="30"/>
         <image name="Cancel Filled-50" width="50" height="50"/>
         <image name="Circled Play-50" width="50" height="50"/>
         <image name="Circled User Male-30" width="30" height="30"/>
+        <image name="Coach-30" width="30" height="30"/>
         <image name="Plus Filled-51" width="50" height="50"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Sha-bB-Ckc"/>
+    </inferredMetricsTieBreakers>
 </document>

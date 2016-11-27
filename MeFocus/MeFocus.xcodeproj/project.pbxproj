@@ -20,6 +20,9 @@
 		0BFF53961DDB18DE00ACF9BF /* MeFocus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BFF53941DDB18DE00ACF9BF /* MeFocus.xcdatamodeld */; };
 		0BFF53981DDB18DE00ACF9BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BFF53971DDB18DE00ACF9BF /* Assets.xcassets */; };
 		0BFF539B1DDB18DE00ACF9BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BFF53991DDB18DE00ACF9BF /* LaunchScreen.storyboard */; };
+		3F1712211DEB4A1A005F9BB0 /* SessionPickMonitorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1712201DEB4A1A005F9BB0 /* SessionPickMonitorViewController.swift */; };
+		3F1712231DEB4A54005F9BB0 /* MonitorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1712221DEB4A54005F9BB0 /* MonitorTableViewCell.swift */; };
+		3F1712251DEB55AF005F9BB0 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1712241DEB55AF005F9BB0 /* Api.swift */; };
 		3F35DE291DE0D9FA0083715C /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F35DE281DE0D9FA0083715C /* Session.swift */; };
 		3F3895EF1DE8AAF5005915BB /* OnboardFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3895EE1DE8AAF5005915BB /* OnboardFirstViewController.swift */; };
 		3F3895F11DE8B1B1005915BB /* OnboardSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3895F01DE8B1B1005915BB /* OnboardSecondViewController.swift */; };
@@ -73,6 +76,9 @@
 		0BFF53971DDB18DE00ACF9BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BFF539A1DDB18DE00ACF9BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0BFF539C1DDB18DE00ACF9BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F1712201DEB4A1A005F9BB0 /* SessionPickMonitorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionPickMonitorViewController.swift; sourceTree = "<group>"; };
+		3F1712221DEB4A54005F9BB0 /* MonitorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorTableViewCell.swift; sourceTree = "<group>"; };
+		3F1712241DEB55AF005F9BB0 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		3F35DE281DE0D9FA0083715C /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		3F3895EE1DE8AAF5005915BB /* OnboardFirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardFirstViewController.swift; sourceTree = "<group>"; };
 		3F3895F01DE8B1B1005915BB /* OnboardSecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardSecondViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +145,7 @@
 				3F40E87A1DE49E21009DCEC8 /* UserStatisticViewController.swift */,
 				3F40E87C1DE4ACC5009DCEC8 /* UserStatisticCategoryViewController.swift */,
 				0B02938E1DE7C9C40042B6A7 /* SessionSettingTableViewController.swift */,
+				3F1712201DEB4A1A005F9BB0 /* SessionPickMonitorViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -205,6 +212,7 @@
 				3F9722F51DDF840F00152446 /* App.swift */,
 				3F60A46B1DE072B700A6D948 /* Storage.swift */,
 				0B570EE11DEAC86600190D28 /* Recorder.swift */,
+				3F1712241DEB55AF005F9BB0 /* Api.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -239,6 +247,7 @@
 				3FC5283D1DE8C4EC0071532A /* SkipButton.swift */,
 				3F55824A1DEAD50D005652CC /* ProfileButton.swift */,
 				0BB30C901DE9D86E000BB406 /* AudioCell.swift */,
+				3F1712221DEB4A54005F9BB0 /* MonitorTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -414,16 +423,19 @@
 				3F3895F31DE8BCD5005915BB /* OnboardThirdViewController.swift in Sources */,
 				3F5EBC8F1DE1695400C2F15F /* SessionOngoingViewController.swift in Sources */,
 				3F7352411DE18F4D001721C8 /* AutoCompleteGoal.swift in Sources */,
+				3F1712251DEB55AF005F9BB0 /* Api.swift in Sources */,
 				3F70ACF01DE3746900F16BD0 /* Label.swift in Sources */,
 				0BFF53961DDB18DE00ACF9BF /* MeFocus.xcdatamodeld in Sources */,
 				3F5EBC931DE1770300C2F15F /* OnboardIntroViewController.swift in Sources */,
 				3FBFF1831DE473D00017F799 /* SessionTableViewCell.swift in Sources */,
 				3F5EBC8D1DE1693200C2F15F /* SessionStartViewController.swift in Sources */,
+				3F1712211DEB4A1A005F9BB0 /* SessionPickMonitorViewController.swift in Sources */,
 				3F6DDDA71DE2239C00EEFF51 /* Background.swift in Sources */,
 				0BFF538E1DDB18DE00ACF9BF /* AppDelegate.swift in Sources */,
 				DB1B5C911DDED20F004FC528 /* FeaturedViewController.swift in Sources */,
 				3F35DE291DE0D9FA0083715C /* Session.swift in Sources */,
 				0BB30C911DE9D86E000BB406 /* AudioCell.swift in Sources */,
+				3F1712231DEB4A54005F9BB0 /* MonitorTableViewCell.swift in Sources */,
 				3F9722F41DDF7AEF00152446 /* Auth.swift in Sources */,
 				3F7352431DE192BE001721C8 /* Suggestion.swift in Sources */,
 				0B02938F1DE7C9C40042B6A7 /* SessionSettingTableViewController.swift in Sources */,
