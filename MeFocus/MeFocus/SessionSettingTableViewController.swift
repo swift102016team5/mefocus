@@ -11,7 +11,7 @@ import AVFoundation
 
 @objc protocol SessionSettingTableViewControllerDelegate {
     
-    @objc func sessionSettingTableViewController(_ tableViewController: UITableViewController, backgroundLimitTime: Int)
+    @objc optional func sessionSettingTableViewController(_ tableViewController: UITableViewController, backgroundLimitTime: Int)
     
 }
 
@@ -59,7 +59,7 @@ class SessionSettingTableViewController: UITableViewController {
     }
 
     @IBAction func onBack(_ sender: UIBarButtonItem) {
-        delegate?.sessionSettingTableViewController(self, backgroundLimitTime: backgroundLimitTime[selectedTimeLimitIndex])
+        delegate?.sessionSettingTableViewController!(self, backgroundLimitTime: backgroundLimitTime[selectedTimeLimitIndex])
         dismiss(animated: true, completion: nil)
     }
     

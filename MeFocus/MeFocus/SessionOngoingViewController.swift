@@ -9,6 +9,7 @@
 import UIKit
 import HGCircularSlider
 import UserNotifications
+import AVFoundation
 
 class SessionOngoingViewController: UIViewController {
     
@@ -40,6 +41,8 @@ class SessionOngoingViewController: UIViewController {
     var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
     var timeBeforePause: NSDate?
     var userTargetTime = 0
+    var audioList = [URL]()
+    var player: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +50,8 @@ class SessionOngoingViewController: UIViewController {
         initViews()
         addObservers()
         runTimer()
+        loadAudioList()
+        
     }
     
     @IBAction func onGiveUp(_ sender: UIButton) {
@@ -175,8 +180,8 @@ class SessionOngoingViewController: UIViewController {
             }
         }
         
-        
         startBackgroundCountdown()
+        playAudio()
     }
     
     func startBackgroundCountdown() {
@@ -197,6 +202,44 @@ class SessionOngoingViewController: UIViewController {
                 self.endBackgroundTask()
             }
         })
+    }
+    
+    func playAudio() {
+        guard audioList.count > 0 else {
+            player = SessionsManager.alert()
+            player?.play()
+            return
+        }
+        
+        do {
+            let index = randomIndex(inRange: audioList.count)
+            player = try AVAudioPlayer(contentsOf: audioList[index])
+            player?.prepareToPlay()
+            player?.volume = 1.0
+            player?.play()
+        } catch let error as NSError {
+            self.player = nil
+            print(error.localizedDescription)
+        } catch {
+            print("AVAudioPlayer init failed")
+        }
+    }
+    
+    func loadAudioList() {
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        do {
+            let urls = try FileManager.default.contentsOfDirectory(at: documentsDirectory,
+                                                                   includingPropertiesForKeys: nil,
+                                                                   options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+            self.audioList = urls.filter({(name: URL) -> Bool in
+                return name.lastPathComponent.hasSuffix("m4a")
+            })
+            
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        } catch {
+            print("something went wrong listing recordings")
+        }
     }
     
     func registerForBackgroundTask() {
@@ -253,4 +296,11 @@ extension SessionOngoingViewController: UNUserNotificationCenterDelegate {
         }
     }
     
+}
+
+extension SessionOngoingViewController {
+    func randomIndex(inRange range: Int) -> Int {
+        let randomNumber: UInt32 = arc4random_uniform(UInt32(range))
+        return Int(randomNumber)
+    }
 }
