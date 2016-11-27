@@ -10,8 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Let's Focus!-->
-        <!--Find coach!-->
+        <!--Find coach-->
         <scene sceneID="6E2-uw-NlU">
             <objects>
                 <viewController storyboardIdentifier="SessionPickMonitorViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Ns-OS-qfq" customClass="SessionPickMonitorViewController" customModule="MeFocus" customModuleProvider="target" sceneMemberID="viewController">
@@ -29,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="62"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WQI-bl-ioO" id="0ZY-6X-76r">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqj-79-6tX" customClass="HTwoNormalLabel" customModule="MeFocus" customModuleProvider="target">
@@ -95,7 +94,7 @@
             </objects>
             <point key="canvasLocation" x="3241.875" y="-2030.2816901408451"/>
         </scene>
-        <!--Let's focus!-->
+        <!--Let's Focus!-->
         <scene sceneID="fDs-zO-z1Y">
             <objects>
                 <viewController storyboardIdentifier="SessionStartViewController" id="4Ca-pB-wPb" customClass="SessionStartViewController" customModule="MeFocus" customModuleProvider="target" sceneMemberID="viewController">
@@ -507,7 +506,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4vb-hZ-odJ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Js9-UP-rUd" customClass="BackgroundNavigation" customModule="MeFocus" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Js9-UP-rUd" customClass="BackgroundNavigation" customModule="MeFocus" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -526,9 +525,9 @@
         <image name="Cancel Filled-50" width="50" height="50"/>
         <image name="Circled Play-50" width="50" height="50"/>
         <image name="Circled User Male-30" width="30" height="30"/>
+        <image name="Coach-30" width="30" height="30"/>
         <image name="Delete-25" width="25" height="25"/>
         <image name="Play-25" width="25" height="25"/>
-        <image name="Coach-30" width="30" height="30"/>
         <image name="Plus Filled-51" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
