@@ -3,9 +3,9 @@
 This is an app app that encourage users to not using their cell phones for a while to stay focus on whatever they want to do: learning, working, going out, playing with friends …
 
 Completed user stories:
--Required:
--- [x] User can use the app without login / register
--- [x] User can set a goal with a period if time (maximum 12 hours), with some other settings like notification sound - maximum time app allow for using phone 
+- Required:
+ -- [x] User can use the app without login / register
+ -- [x] User can set a goal with a period if time (maximum 12 hours), with some other settings like notification sound - maximum time app allow for using phone 
 -- [x] User can add a monitor to receive notification if user use phone
 -- [x] User can view all goals completed 
 -- [x] User can view statistic 
