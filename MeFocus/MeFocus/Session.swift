@@ -28,6 +28,8 @@ extension Session {
     
     func finish(){
         end_at = Int64(NSDate().timeIntervalSince1970)
+        is_success = !isExceedMaxiumPause() && !isOver()
+        
         SessionsManager.reset()
         Storage.shared.save()
     }
@@ -98,8 +100,13 @@ class SessionsManager:NSObject {
         return SessionsManager.pauses > session.maximum_pause_duration
     }
 
+    static func all() -> [Session]{
+        let request = Storage.shared.request(entityName: "Session")
+        let sessions = Storage.shared.fetch(request: request) as! [Session]
+        return sessions
+    }
     
-    // Get unfinished session , usefull for navigation 
+    // Get unfinished session , usefull for navigation
     static var unfinished:Session? {
         get {
             

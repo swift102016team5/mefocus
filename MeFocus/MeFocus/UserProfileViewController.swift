@@ -43,25 +43,7 @@ class UserProfileViewController: UIViewController {
         sessionsTableView.estimatedRowHeight = 200
         sessionsTableView.rowHeight = UITableViewAutomaticDimension
         
-        sessions = [
-            Session(data:[
-                "goal":"Ahihi",
-                "duration":2000,
-                "is_success":true
-            ]),
-            Session(data:[
-                "goal":"Work",
-                "duration":2000
-            ]),
-            Session(data:[
-                "goal":"Relax",
-                "duration":2000
-            ]),
-            Session(data:[
-                "goal":"Homework !",
-                "duration":2000
-            ])
-        ]
+        sessions = SessionsManager.all()
         
         totalSessionLabel.text = String(sessions.count)
         totalTimeSpentLabel.text = "40"
