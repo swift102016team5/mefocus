@@ -14,12 +14,17 @@ struct User {
     var nickname:String
     var picture:String
     var name:String
+    var email:String
     
     init(dictionary:NSDictionary){
-    
-        nickname = dictionary["nickname"] as! String
+        
+        email = dictionary["email"] as? String ?? ""
         picture = dictionary["picture"] as! String
-        name = dictionary["name"] as! String
+        name = dictionary["name"] as? String ?? ""
+        nickname = dictionary["nickname"] as? String ?? ""
+        
+        name = (name == "") ? email : name
+        nickname = (nickname == "") ? email : nickname
     
     }
     

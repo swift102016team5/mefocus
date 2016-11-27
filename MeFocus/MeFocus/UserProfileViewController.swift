@@ -26,8 +26,6 @@ class UserProfileViewController: UIViewController {
     
     @IBOutlet weak var emailLabel: HFourLabel!
     
-    var player:AVAudioPlayer?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,11 +67,6 @@ class UserProfileViewController: UIViewController {
         totalTimeSpentLabel.text = "40"
         
         sessionsTableView.reloadData()
-//        player = SessionsManager.alert()
-//        player!.prepareToPlay()
-//        player!.play()
-        
-        
         // Do any additional setup after loading the view.
     }
 
