@@ -28,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="62"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WQI-bl-ioO" id="0ZY-6X-76r">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqj-79-6tX" customClass="HTwoNormalLabel" customModule="MeFocus" customModuleProvider="target">

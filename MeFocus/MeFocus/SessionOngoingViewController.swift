@@ -56,8 +56,15 @@ class SessionOngoingViewController: UIViewController {
     
     @IBAction func onGiveUp(_ sender: UIButton) {
         stopTimer()
-        dismiss(animated: true, completion: nil)
+        App.shared.present(
+            presenter: self,
+            storyboard: "Session",
+            controller: "SessionStartNavigationController",
+            modifier: nil,
+            completion:nil
+        )
     }
+    
     
     func initViews() {
         initTimeSlider()
