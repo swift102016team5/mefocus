@@ -17,7 +17,7 @@ import AVFoundation
 
 class SessionSettingTableViewController: UITableViewController {
 
-    let limitTimeStr = ["10 seconds", "30 seconds", "1 minutes"]
+    let limitTimeStr = ["10 seconds", "30 seconds", "1 minute"]
     let backgroundLimitTime = [10, 30, 60]
     
     @IBOutlet var settingTable: UITableView!
@@ -43,7 +43,7 @@ class SessionSettingTableViewController: UITableViewController {
         settingTable.dataSource = self
         settingTable.delegate = self
         settingTable.rowHeight = UITableViewAutomaticDimension
-        settingTable.estimatedRowHeight = 100
+        settingTable.estimatedRowHeight = 50
         settingTable.separatorColor = UIColor.flatGreen
         
         setSessionPlayback()
