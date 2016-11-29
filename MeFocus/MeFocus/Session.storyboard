@@ -113,9 +113,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Circled Play-50"/>
                                 <connections>
-                                    <segue destination="TsG-2M-Wz5" kind="popoverPresentation" identifier="sessionOngoing" popoverAnchorView="kHG-os-Nyb" id="nFo-Wv-kaS">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="TsG-2M-Wz5" kind="presentation" identifier="sessionOngoing" id="nFo-Wv-kaS"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QU9-hj-QIx" customClass="CircularSlider" customModule="HGCircularSlider">
@@ -187,9 +185,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Plus Filled-51"/>
                                 <connections>
-                                    <segue destination="5bj-Ss-bJ2" kind="popoverPresentation" identifier="sessionSetting" popoverAnchorView="jQ1-7Y-wJf" id="BTx-u3-QbE">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="5bj-Ss-bJ2" kind="show" identifier="sessionSetting" id="BTx-u3-QbE"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You migh need a coach!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DO-k0-IJV" customClass="NormalLabel" customModule="MeFocus" customModuleProvider="target">

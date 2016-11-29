@@ -56,6 +56,9 @@ class SessionStartViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         SessionsManager.unfinished?.finish()
         
+        let backgroundLimitIndex = UserDefaults.standard.integer(forKey: backgroundLimitIndexKey)
+        maximumPauseDuration = backgroundLimitTime[backgroundLimitIndex]
+        
         let identifier = segue.identifier
         
         if identifier == sessionOngoingIdentifier {
@@ -72,19 +75,6 @@ class SessionStartViewController: UIViewController {
             }
             catch {
                 print("Cannot save session \(error)")
-            }
-        }
-        
-        if identifier == sessionSettingIdentifier {
-            let navigationController = segue.destination as! UINavigationController
-            let sessionSettingTableViewController = navigationController.topViewController as! SessionSettingTableViewController
-            sessionSettingTableViewController.delegate = self
-            
-            let backroundTimes = sessionSettingTableViewController.backgroundLimitTime
-            for index in 0..<backroundTimes.count {
-                if backroundTimes[index] == maximumPauseDuration {
-                    sessionSettingTableViewController.selectedTimeLimitIndex = index
-                }
             }
         }
     }
@@ -144,12 +134,3 @@ extension SessionStartViewController: AutoCompleteGoalDelegate {
     }
     
 }
-
-extension SessionStartViewController: SessionSettingTableViewControllerDelegate {
-    
-    func sessionSettingTableViewController(_ tableViewController: UITableViewController, backgroundLimitTime: Int) {
-        maximumPauseDuration = backgroundLimitTime
-    }
-    
-}
-
