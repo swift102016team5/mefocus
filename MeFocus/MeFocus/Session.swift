@@ -20,15 +20,15 @@ extension Session {
 
     func isOver() -> Bool {
         let now = Int64(NSDate().timeIntervalSince1970)
-        if start_at + duration >= now {
-            return true
+        if start_at + duration > now {
+            return false
         }
-        return false
+        return true
     }
     
     func finish(){
         end_at = Int64(NSDate().timeIntervalSince1970)
-        is_success = !isExceedMaxiumPause() && !isOver()
+        is_success = isOver() && !isExceedMaxiumPause()
         
         SessionsManager.reset()
         Storage.shared.save()
@@ -61,7 +61,8 @@ class SessionsManager:NSObject {
             let session = Session(data:[
                 "goal":goal,
                 "duration":duration,
-                "maximum_pause_duration":maximPauseDuration
+                "maximum_pause_duration":maximPauseDuration,
+                "start_at":Int64(NSDate().timeIntervalSince1970)
             ])
             Storage.shared.save()
             return session
