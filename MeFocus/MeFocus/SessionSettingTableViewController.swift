@@ -43,7 +43,7 @@ class SessionSettingTableViewController: UITableViewController {
         settingTable.estimatedRowHeight = 50
         settingTable.separatorColor = UIColor.flatGreen
         
-        setSessionPlayback()
+        RecorderAndPlayback.setSessionPlayback()
         // set the recordings array
         listRecordings()
     }
@@ -304,7 +304,7 @@ class SessionSettingTableViewController: UITableViewController {
             AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool) -> Void in
                 if granted {
                     print("Permission to record granted")
-                    self.setSessionPlayAndRecord()
+                    RecorderAndPlayback.setSessionPlayAndRecord()
                     if setup {
                         self.setupRecorder()
                     }
@@ -322,39 +322,6 @@ class SessionSettingTableViewController: UITableViewController {
             })
         } else {
             print("requestRecordPermission unrecognized")
-        }
-    }
-    
-    func setSessionPlayback() {
-        let session:AVAudioSession = AVAudioSession.sharedInstance()
-        
-        do {
-            try session.setCategory(AVAudioSessionCategoryPlayback)
-        } catch let error as NSError {
-            print("could not set session category")
-            print(error.localizedDescription)
-        }
-        do {
-            try session.setActive(true)
-        } catch let error as NSError {
-            print("could not make session active")
-            print(error.localizedDescription)
-        }
-    }
-    
-    func setSessionPlayAndRecord() {
-        let session = AVAudioSession.sharedInstance()
-        do {
-            try session.setCategory(AVAudioSessionCategoryPlayAndRecord)
-        } catch let error as NSError {
-            print("could not set session category")
-            print(error.localizedDescription)
-        }
-        do {
-            try session.setActive(true)
-        } catch let error as NSError {
-            print("could not make session active")
-            print(error.localizedDescription)
         }
     }
     
@@ -432,9 +399,9 @@ class SessionSettingTableViewController: UITableViewController {
         
         do {
             playingCell?.playBtn.setImage(#imageLiteral(resourceName: "Stop-25"), for: .normal)
-            self.isPlaying = true
+            isPlaying = true
             
-            self.player = try AVAudioPlayer(contentsOf: url!)
+            player = try AVAudioPlayer(contentsOf: url!)
             player.delegate = self
             player.prepareToPlay()
             player.volume = 1.0
@@ -542,5 +509,11 @@ extension SessionSettingTableViewController : AVAudioPlayerDelegate {
             print("\(e.localizedDescription)")
         }
     }
+    
+}
+
+extension SessionSettingTableViewController {
+    
+    
     
 }
