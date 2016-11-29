@@ -18,8 +18,8 @@ class UserStatisticCategoryViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
-        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0]
+        let months = ["Study","Work","Dinner","Coffee"]
+        let unitsSold = [25.0,15.0,10.0,50.0]
         
         setChart(dataPoints: months, values: unitsSold)
         
@@ -34,9 +34,8 @@ class UserStatisticCategoryViewController: UIViewController {
             dataEntries.append(dataEntry)
         }
         
-        let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "Units Sold")
+        let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "")
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
-        pieChartView.data = pieChartData
         
         var colors: [UIColor] = []
         
@@ -50,6 +49,9 @@ class UserStatisticCategoryViewController: UIViewController {
         }
         
         pieChartDataSet.colors = colors
+        
+        pieChartView.chartDescription?.text = ""
+        pieChartView.data = pieChartData
         pieChartView.animate(xAxisDuration: 0.5)
     }
 
