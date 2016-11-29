@@ -10,6 +10,7 @@
 		0B02938F1DE7C9C40042B6A7 /* SessionSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B02938E1DE7C9C40042B6A7 /* SessionSettingTableViewController.swift */; };
 		0B1BBCE01DE4359C001F2827 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1BBCDF1DE4359C001F2827 /* CategoryTableViewController.swift */; };
 		0B1BBCE31DE4376D001F2827 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1BBCE21DE4376D001F2827 /* CategoryCell.swift */; };
+		0B51A42C1DEDB33200726DBC /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B51A42B1DEDB33200726DBC /* SweetAlert.swift */; };
 		0B570EE21DEAC86600190D28 /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B570EE11DEAC86600190D28 /* Recorder.swift */; };
 		0B570EE51DEB51A600190D28 /* RecordHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B570EE41DEB51A600190D28 /* RecordHeaderView.xib */; };
 		0B570EE71DEB54D900190D28 /* RecordHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B570EE61DEB54D900190D28 /* RecordHeaderView.swift */; };
@@ -65,6 +66,7 @@
 		0B1BBCDF1DE4359C001F2827 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		0B1BBCE21DE4376D001F2827 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		0B3C45021DDB241500DE02B5 /* _10Clock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = _10Clock.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/MeFocus-gwxrxzzwzrvejidugdhtsspmvqwd/Build/Products/Debug-iphonesimulator/10Clock/_10Clock.framework"; sourceTree = "<group>"; };
+		0B51A42B1DEDB33200726DBC /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SweetAlert.swift; path = "../../../../samples/SweetAlert-iOS-master/SweetAlert/SweetAlert.swift"; sourceTree = "<group>"; };
 		0B570EE11DEAC86600190D28 /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
 		0B570EE41DEB51A600190D28 /* RecordHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordHeaderView.xib; sourceTree = "<group>"; };
 		0B570EE61DEB54D900190D28 /* RecordHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordHeaderView.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				0B570EE31DEB517F00190D28 /* xib */,
+				0B51A42B1DEDB33200726DBC /* SweetAlert.swift */,
 				DB1B5C8E1DDED197004FC528 /* ProgressView.swift */,
 				3F7352401DE18F4D001721C8 /* AutoCompleteGoal.swift */,
 				3FBFF1821DE473D00017F799 /* SessionTableViewCell.swift */,
@@ -431,6 +434,7 @@
 				DB1B5C8F1DDED197004FC528 /* ProgressView.swift in Sources */,
 				3F70ACEC1DE34B9F00F16BD0 /* UserProfileViewController.swift in Sources */,
 				3F3895F11DE8B1B1005915BB /* OnboardSecondViewController.swift in Sources */,
+				0B51A42C1DEDB33200726DBC /* SweetAlert.swift in Sources */,
 				0B570EE71DEB54D900190D28 /* RecordHeaderView.swift in Sources */,
 				3F3895F31DE8BCD5005915BB /* OnboardThirdViewController.swift in Sources */,
 				3F5EBC8F1DE1695400C2F15F /* SessionOngoingViewController.swift in Sources */,

@@ -56,13 +56,7 @@ class SessionOngoingViewController: UIViewController {
     
     @IBAction func onGiveUp(_ sender: UIButton) {
         stopTimer()
-        App.shared.present(
-            presenter: self,
-            storyboard: "Session",
-            controller: "SessionStartNavigationController",
-            modifier: nil,
-            completion:nil
-        )
+        showFailAlert()
     }
     
     
@@ -102,7 +96,7 @@ class SessionOngoingViewController: UIViewController {
     func runTimer() {
         guard !goalFailed else {
             NSLog("You failed!!!")
-            dismiss(animated: true, completion: nil)
+            showFailAlert()
             return
         }
         
@@ -118,7 +112,7 @@ class SessionOngoingViewController: UIViewController {
     func resumeTimer() {
         guard !goalFailed else {
             NSLog("You failed!!!")
-            dismiss(animated: true, completion: nil)
+            showFailAlert()
             return
         }
         
@@ -128,6 +122,7 @@ class SessionOngoingViewController: UIViewController {
         
         guard interval < Double(userTargetTime) else {
             NSLog("You succeeded!!!")
+            showSuccessAlert()
             return
         }
         
@@ -161,6 +156,7 @@ class SessionOngoingViewController: UIViewController {
         if Int(endPointValueInSec) <= 0 {
             stopTimer()
             NSLog("You succeeded!!!")
+            showSuccessAlert()
         }
     }
     
@@ -170,7 +166,7 @@ class SessionOngoingViewController: UIViewController {
         }
         
         let content = UNMutableNotificationContent()
-        content.title = "Live it Real!"
+        content.title = "Don't let it tempt you!"
         content.body = "Please go back to your task in \(backgroundLimitTime) seconds"
         content.sound = UNNotificationSound.default()
         
@@ -306,8 +302,42 @@ extension SessionOngoingViewController: UNUserNotificationCenterDelegate {
 }
 
 extension SessionOngoingViewController {
+    
     func randomIndex(inRange range: Int) -> Int {
         let randomNumber: UInt32 = arc4random_uniform(UInt32(range))
         return Int(randomNumber)
     }
+    
+    func showFailAlert() {
+        SweetAlert().showAlert("Attempt failed!",
+                               subTitle: "You almost finished it :(",
+                               style: AlertStyle.error,
+                               buttonTitle: "Retry",
+                               buttonColor: UIColor.flatRed) { (isOtherButton) -> Void in
+                                App.shared.present(
+                                    presenter: self,
+                                    storyboard: "Session",
+                                    controller: "SessionStartNavigationController",
+                                    modifier: nil,
+                                    completion:nil
+                                )
+        }
+    }
+    
+    func showSuccessAlert() {
+        SweetAlert().showAlert("Congratulation!",
+                               subTitle: "You lived it real! :)",
+                               style: AlertStyle.success,
+                               buttonTitle: "Go on",
+                               buttonColor: UIColor.flatGreen) { (isOtherButton) -> Void in
+                                App.shared.present(
+                                    presenter: self,
+                                    storyboard: "Session",
+                                    controller: "SessionStartNavigationController",
+                                    modifier: nil,
+                                    completion:nil
+                                )
+        }
+    }
+    
 }
