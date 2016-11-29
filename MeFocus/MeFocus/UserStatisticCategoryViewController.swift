@@ -27,10 +27,10 @@ class UserStatisticCategoryViewController: UIViewController {
     
     func setChart(dataPoints: [String], values: [Double]) {
         
-        var dataEntries: [ChartDataEntry] = []
+        var dataEntries: [PieChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
-            let dataEntry = ChartDataEntry(x: values[i], y: Double(i))
+            let dataEntry = PieChartDataEntry(value: values[i], label:dataPoints[i])
             dataEntries.append(dataEntry)
         }
         
