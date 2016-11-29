@@ -9,20 +9,15 @@
 import UIKit
 import AVFoundation
 
-@objc protocol SessionSettingTableViewControllerDelegate {
-    
-    @objc optional func sessionSettingTableViewController(_ tableViewController: UITableViewController, backgroundLimitTime: Int)
-    
-}
+let backgroundLimitIndexKey = "BackgroundLimitIndex"
+let backgroundLimitTime = [10, 30, 60]
 
 class SessionSettingTableViewController: UITableViewController {
 
     let limitTimeStr = ["10 seconds", "30 seconds", "1 minute"]
-    let backgroundLimitTime = [10, 30, 60]
     
     @IBOutlet var settingTable: UITableView!
     
-    weak var delegate: SessionSettingTableViewControllerDelegate?
     var selectedTimeLimitIndex = 0
     
     var recorder: AVAudioRecorder?
@@ -40,6 +35,8 @@ class SessionSettingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        selectedTimeLimitIndex = UserDefaults.standard.integer(forKey: backgroundLimitIndexKey)
+        
         settingTable.dataSource = self
         settingTable.delegate = self
         settingTable.rowHeight = UITableViewAutomaticDimension
@@ -52,7 +49,6 @@ class SessionSettingTableViewController: UITableViewController {
     }
 
     @IBAction func onBack(_ sender: UIBarButtonItem) {
-        delegate?.sessionSettingTableViewController!(self, backgroundLimitTime: backgroundLimitTime[selectedTimeLimitIndex])
         dismiss(animated: true, completion: nil)
     }
     
@@ -140,6 +136,9 @@ class SessionSettingTableViewController: UITableViewController {
                 settingTable.cellForRow(at: selectedIndexpath)?.accessoryType = .none
                 settingTable.cellForRow(at: indexPath)?.accessoryType = .checkmark
                 selectedTimeLimitIndex = row
+                // persist
+                UserDefaults.standard.set(selectedTimeLimitIndex, forKey: backgroundLimitIndexKey)
+                UserDefaults.standard.synchronize()
             }
         default:
             break
