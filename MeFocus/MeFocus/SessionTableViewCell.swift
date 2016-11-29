@@ -16,6 +16,12 @@ class SessionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var durationLabel: UILabel!
     
+    let fullTimeFormatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        return formatter
+    }()
+    
     var session:Session?{
         didSet{
             if let session = session {
@@ -24,7 +30,11 @@ class SessionTableViewCell: UITableViewCell {
                 if !session.is_success {
                     statusImageView.image = #imageLiteral(resourceName: "Cancel-50")
                 }
-//                durationLabel.text = session.duration
+                
+                var components = DateComponents()
+                components.second = Int(session.duration)
+                
+                durationLabel.text = fullTimeFormatter.string(from: components)
             }
         }
     }
