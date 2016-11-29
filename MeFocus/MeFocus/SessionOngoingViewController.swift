@@ -137,10 +137,16 @@ class SessionOngoingViewController: UIViewController {
         runTimer()
     }
     
+    func pauseTimer() {
+        timeBeforePause = NSDate()
+        isCountingTime = false
+        timer?.invalidate()
+    }
+    
     func stopTimer() {
         isCountingTime = false
         timer?.invalidate()
-        SessionsManager.unfinished?.finish()
+        session?.finish()
     }
     
     func saveCurrentTime() {
@@ -148,9 +154,8 @@ class SessionOngoingViewController: UIViewController {
             return
         }
         
-        timeBeforePause = NSDate()
+        pauseTimer()
         NSLog("Time before paused: \(timeBeforePause)")
-        stopTimer()
     }
     
     func updateTimerOnCountdown() {
@@ -195,8 +200,8 @@ class SessionOngoingViewController: UIViewController {
     }
     
     func startBackgroundCountdown() {
-        print("start background countdown")
-        stopTimer()
+        NSLog("start background countdown at \(NSDate())")
+        pauseTimer()
         registerForBackgroundTask()
         
         // Background task
@@ -216,7 +221,6 @@ class SessionOngoingViewController: UIViewController {
     }
     
     func playAudio() {
-        print(audioList.count)
         guard audioList.count > 0 else {
             player = SessionsManager.alert()
             player?.play()
@@ -232,9 +236,9 @@ class SessionOngoingViewController: UIViewController {
             player?.play()
         } catch let error as NSError {
             player = nil
-            print(error.localizedDescription)
+            NSLog(error.localizedDescription)
         } catch {
-            print("AVAudioPlayer init failed")
+            NSLog("AVAudioPlayer init failed")
         }
     }
     
@@ -249,9 +253,9 @@ class SessionOngoingViewController: UIViewController {
             })
             
         } catch let error as NSError {
-            print(error.localizedDescription)
+            NSLog(error.localizedDescription)
         } catch {
-            print("something went wrong listing recordings")
+            NSLog("something went wrong listing recordings")
         }
     }
     
@@ -323,7 +327,7 @@ extension SessionOngoingViewController: AVAudioPlayerDelegate {
     
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
         if let e = error {
-            print("\(e.localizedDescription)")
+            NSLog("\(e.localizedDescription)")
         }
     }
     
