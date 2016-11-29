@@ -49,6 +49,7 @@ class SessionOngoingViewController: UIViewController {
         
         initViews()
         runTimer()
+        RecorderAndPlayback.setSessionPlayback()
         loadAudioList()
     }
     
@@ -215,6 +216,7 @@ class SessionOngoingViewController: UIViewController {
     }
     
     func playAudio() {
+        print(audioList.count)
         guard audioList.count > 0 else {
             player = SessionsManager.alert()
             player?.play()
@@ -224,11 +226,12 @@ class SessionOngoingViewController: UIViewController {
         do {
             let index = randomIndex(inRange: audioList.count)
             player = try AVAudioPlayer(contentsOf: audioList[index])
+            player?.delegate = self
             player?.prepareToPlay()
             player?.volume = 1.0
             player?.play()
         } catch let error as NSError {
-            self.player = nil
+            player = nil
             print(error.localizedDescription)
         } catch {
             print("AVAudioPlayer init failed")
@@ -316,6 +319,16 @@ extension SessionOngoingViewController: UNUserNotificationCenterDelegate {
     
 }
 
+extension SessionOngoingViewController: AVAudioPlayerDelegate {
+    
+    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+        if let e = error {
+            print("\(e.localizedDescription)")
+        }
+    }
+    
+}
+
 extension SessionOngoingViewController {
     
     func randomIndex(inRange range: Int) -> Int {
@@ -324,6 +337,7 @@ extension SessionOngoingViewController {
     }
     
     func showFailAlert() {
+        App.shared.ws.send(message:"Hey Tuan Anh| Hao is using his phone")
         SweetAlert().showAlert("Attempt failed!",
                                subTitle: "You almost finished it :(",
                                style: AlertStyle.error,
