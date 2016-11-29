@@ -48,10 +48,16 @@ class SessionOngoingViewController: UIViewController {
         super.viewDidLoad()
         
         initViews()
-        addObservers()
         runTimer()
         loadAudioList()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        registerObservers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        unregisterObserver()
     }
     
     @IBAction func onGiveUp(_ sender: UIButton) {
@@ -188,6 +194,7 @@ class SessionOngoingViewController: UIViewController {
     }
     
     func startBackgroundCountdown() {
+        print("start background countdown")
         stopTimer()
         registerForBackgroundTask()
         
@@ -248,6 +255,7 @@ class SessionOngoingViewController: UIViewController {
     func registerForBackgroundTask() {
         NSLog("Background task started!")
         NSLog("Background time remaining = \(UIApplication.shared.backgroundTimeRemaining) seconds")
+        UIApplication.shared.endBackgroundTask(backgroundTask)
         // Register backgroundTask
         backgroundTask = UIApplication.shared.beginBackgroundTask(withName: returnNotification, expirationHandler: { () in
             self.endBackgroundTask()
@@ -261,7 +269,7 @@ class SessionOngoingViewController: UIViewController {
         backgroundTask = UIBackgroundTaskInvalid
     }
 
-    func addObservers() {
+    func registerObservers() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(SessionOngoingViewController.triggerNotification),
                                                name: NSNotification.Name(returnNotification),
@@ -278,6 +286,13 @@ class SessionOngoingViewController: UIViewController {
                                                selector: #selector(SessionOngoingViewController.resumeTimer),
                                                name: NSNotification.Name(resumeTimerNotification),
                                                object: nil)
+    }
+    
+    func unregisterObserver() {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(returnNotification), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(enterForegroundNotification), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(saveCurrentTimeNotification), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(resumeTimerNotification), object: nil)
     }
 
 }
