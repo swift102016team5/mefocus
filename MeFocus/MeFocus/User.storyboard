@@ -73,7 +73,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="Bar Chart Filled-50"/>
                                         <connections>
-                                            <segue destination="5he-Gn-xbM" kind="presentation" id="M3g-kQ-vvX"/>
+                                            <segue destination="5he-Gn-xbM" kind="show" id="M3g-kQ-vvX"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8tK-bl-VLv">
@@ -266,9 +266,7 @@
                     <navigationItem key="navigationItem" title="Last 7 days" id="RPd-ZS-nHb">
                         <barButtonItem key="leftBarButtonItem" image="Back-30" id="Uqu-eP-Lug">
                             <connections>
-                                <segue destination="h8H-N3-CVY" kind="popoverPresentation" popoverAnchorBarButtonItem="Uqu-eP-Lug" id="Fwl-iN-wkR">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <segue destination="h8H-N3-CVY" kind="presentation" id="Fwl-iN-wkR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

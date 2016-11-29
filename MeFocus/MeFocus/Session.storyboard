@@ -28,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="72" width="320" height="62"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WQI-bl-ioO" id="0ZY-6X-76r">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqj-79-6tX" customClass="HTwoNormalLabel" customModule="MeFocus" customModuleProvider="target">
@@ -64,7 +64,7 @@
                                     <outlet property="nameLabel" destination="oqj-79-6tX" id="9bO-4b-z9m"/>
                                     <outlet property="nicknameLabel" destination="Asm-zK-VZY" id="bKm-qN-QKQ"/>
                                     <outlet property="pictureImageView" destination="nUE-on-aeE" id="KuM-rx-QC4"/>
-                                    <segue destination="be0-4t-TVL" kind="showDetail" identifier="Choose" id="HGd-zi-hyL"/>
+                                    <segue destination="be0-4t-TVL" kind="show" identifier="Choose" action="showDetailViewController:sender:" id="HGd-zi-hyL"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -72,7 +72,9 @@
                     <navigationItem key="navigationItem" title="Find coach" id="NHi-s3-sJU">
                         <barButtonItem key="leftBarButtonItem" image="Back-30" id="5UJ-pk-Iv8">
                             <connections>
-                                <segue destination="be0-4t-TVL" kind="showDetail" identifier="Back" id="Sha-bB-Ckc"/>
+                                <segue destination="be0-4t-TVL" kind="popoverPresentation" identifier="Back" popoverAnchorBarButtonItem="5UJ-pk-Iv8" id="Sha-bB-Ckc">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -111,7 +113,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Circled Play-50"/>
                                 <connections>
-                                    <segue destination="TsG-2M-Wz5" kind="presentation" identifier="sessionOngoing" id="nFo-Wv-kaS"/>
+                                    <segue destination="TsG-2M-Wz5" kind="show" identifier="sessionOngoing" id="nFo-Wv-kaS"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QU9-hj-QIx" customClass="CircularSlider" customModule="HGCircularSlider">
@@ -183,7 +185,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Plus Filled-51"/>
                                 <connections>
-                                    <segue destination="5bj-Ss-bJ2" kind="showDetail" identifier="sessionSetting" id="BTx-u3-QbE"/>
+                                    <segue destination="5bj-Ss-bJ2" kind="popoverPresentation" identifier="sessionSetting" popoverAnchorView="jQ1-7Y-wJf" id="BTx-u3-QbE">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You migh need a coach!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3DO-k0-IJV" customClass="NormalLabel" customModule="MeFocus" customModuleProvider="target">
@@ -210,7 +214,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Coach-30"/>
                                 <connections>
-                                    <segue destination="4vb-hZ-odJ" kind="showDetail" id="yIF-qn-UeM"/>
+                                    <segue destination="4vb-hZ-odJ" kind="presentation" id="yIF-qn-UeM"/>
                                 </connections>
                             </button>
                         </barButtonItem>
