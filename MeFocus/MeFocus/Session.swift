@@ -103,7 +103,7 @@ class SessionsManager:NSObject {
     static func all() -> [Session]{
         let request = Storage.shared.request(entityName: "Session")
         let sessions = Storage.shared.fetch(request: request) as! [Session]
-        return sessions
+        return sessions.reversed()
     }
     
     // Get unfinished session , usefull for navigation
