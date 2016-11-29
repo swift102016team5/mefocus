@@ -20,6 +20,7 @@ class SessionTableViewCell: UITableViewCell {
         didSet{
             if let session = session {
                 goalLabel.text = session.goal
+                statusImageView.image = UIImage(named: "Cancel-50")
                 if !session.is_success {
                     statusImageView.image = #imageLiteral(resourceName: "Cancel-50")
                 }
