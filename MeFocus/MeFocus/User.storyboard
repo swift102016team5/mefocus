@@ -21,6 +21,12 @@
                     <view key="view" contentMode="scaleToFill" id="ctl-aV-i69">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="j78-5R-ipE">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
@@ -67,7 +73,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="Bar Chart Filled-50"/>
                                         <connections>
-                                            <segue destination="5he-Gn-xbM" kind="presentation" id="M3g-kQ-vvX"/>
+                                            <segue destination="5he-Gn-xbM" kind="show" id="M3g-kQ-vvX"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8tK-bl-VLv">
@@ -153,7 +159,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="apm-9H-E7H" id="gd9-3O-g9q">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Relax" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AaD-eo-4Kg" customClass="NormalLabel" customModule="MeFocus" customModuleProvider="target">
@@ -260,9 +266,7 @@
                     <navigationItem key="navigationItem" title="Last 7 days" id="RPd-ZS-nHb">
                         <barButtonItem key="leftBarButtonItem" image="Back-30" id="Uqu-eP-Lug">
                             <connections>
-                                <segue destination="h8H-N3-CVY" kind="popoverPresentation" popoverAnchorBarButtonItem="Uqu-eP-Lug" id="Fwl-iN-wkR">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <segue destination="h8H-N3-CVY" kind="presentation" id="Fwl-iN-wkR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -120,10 +120,12 @@ class App: NSObject {
         
         let storyboard = UIStoryboard(name:storyboard, bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: controller)
+        let animations:[UIModalTransitionStyle] = [.coverVertical,.crossDissolve]
         
         if let m = modifier {
             m(controller)
         }
+        
         return controller
     }
     

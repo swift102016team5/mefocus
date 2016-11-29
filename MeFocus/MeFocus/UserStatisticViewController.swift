@@ -15,6 +15,18 @@ struct Sale {
     var value: Double
 }
 
+class SessionFormatter:NSObject,IAxisValueFormatter{
+    
+    var months:[String] = []
+    
+    public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        
+        return months[Int(value)]
+        
+    }
+    
+}
+
 class DataGenerator {
     
     static var randomizedSale: Double {
@@ -22,7 +34,7 @@ class DataGenerator {
     }
     
     static func data() -> [Sale] {
-        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        let months = ["Study","Work","Dinner","Coffee"]
         var sales = [Sale]()
         
         for month in months {
@@ -61,8 +73,10 @@ class UserStatisticViewController: UIViewController {
             i += 1
         }
         // Create bar chart data set containing salesEntries
-        let chartDataSet = BarChartDataSet(values: salesEntries, label: "Profit")
+        let chartDataSet = BarChartDataSet(values: salesEntries, label: "Goal")
+        let formatter = SessionFormatter()
         
+        formatter.months = salesMonths
         chartDataSet.colors = [.flatOrange, .flatGreen, .flatBlue]
         
         // Set bar chart data to previously created data
@@ -72,7 +86,10 @@ class UserStatisticViewController: UIViewController {
         barChartView.leftAxis.enabled = false
         barChartView.legend.enabled = false
         barChartView.rightAxis.enabled = false
+        barChartView.xAxis.wordWrapEnabled = true
+        barChartView.xAxis.setLabelCount(3, force: true)
         barChartView.xAxis.drawGridLinesEnabled = false
+        barChartView.xAxis.valueFormatter = formatter
         
         barChartView.animate(yAxisDuration: 1.5, easingOption: .easeInOutQuart)
         // Do any additional setup after loading the view.
